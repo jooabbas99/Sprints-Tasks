@@ -1649,6 +1649,24 @@
 					"name": "Role3"
 				}
 			]
+		},
+		{
+			"_type": "FCFlowchart",
+			"_id": "AAAAAAGHAChiwTj7YOo=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Flowchart1",
+			"ownedElements": [
+				{
+					"_type": "FCFlowchartDiagram",
+					"_id": "AAAAAAGHAChiwTj8hjI=",
+					"_parent": {
+						"$ref": "AAAAAAGHAChiwTj7YOo="
+					},
+					"name": "FlowchartDiagram1"
+				}
+			]
 		}
 	]
 }
