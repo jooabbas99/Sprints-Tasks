@@ -7,8 +7,8 @@
 |--|--|--|--|
 |**( A )**|Analysis|230|-|
 |**( B )** |UI/UX|50|A|
-|**( C )** |Development|480|A - B|
-|**( D )** |Testing|50|A - C|
+|**( C )** |Development|480| B|
+|**( D )** |Testing|50|C|
 |**( E )** |Deployment|20|C - D|
 
 ``
