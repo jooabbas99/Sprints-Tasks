@@ -1,11 +1,26 @@
 //
-// Created by Youssef Abbas on 28/03/2023.
+// Created by Youssef Abbas on 27/03/2023.
 //
+
+/*
+ *
+ *
+1. Test the main flow against the wrong symbol choice
+2. Test the main flow against repeated symbol choice
+3. Test the main flow against X player winning:
+- All Rows winning (3)
+- All Columns winning (3)
+- All Diagonals winning (2)
+4. Test the main flow against O player winning:
+- All Rows winning (3)
+- All Columns winning (3)
+- All Diagonals winning (2)
+5. Test the main flow against X player draw case at least three draw cases
+ */
 #include <stdio.h>
 #include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
+
 
 // Board size
 #define BOARD_SIZE 9
@@ -23,6 +38,7 @@ uint8_t configArray[2];
 
 void drawBoard(uint8_t *board){
     // This function will take a board as an input and prints it on the console
+
     printf("\n");
     printf(" %c | %c | %c \n", board[0], board[1], board[2]);
     printf("---|---|---\n");
@@ -33,7 +49,6 @@ void drawBoard(uint8_t *board){
 }
 void updateBoard(uint8_t *board,uint8_t position , uint8_t value){
     // This function will take the board, position to update and value to set in this position
-//    printf(" %c ",value);
     if(position <= BOARD_SIZE)
         board[position] = value;
 }
@@ -42,7 +57,7 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol){
     //This function will take player number and asks the player to choose between X and O (case insensitive)
     // This function will return 0 when the input symbol is not wrong and/or was not chosen before
     // This function will return 1 when the input symbol is wrong and/or was chosen before
-    printf(" Choose Symbol ( X | O )\n",playerNumber);
+    printf(" Player # %d , Choose Symbol ( X | O )\n",playerNumber);
     static uint8_t symbolSelected ;
     uint8_t symbolInput;
     scanf(" %c",&symbolInput);
@@ -75,19 +90,21 @@ void setPlayerConfig(uint8_t *configArray){
 }
 void loadAndUpdate(uint8_t playerNumber) {
     uint8_t position, symbol;
-    printf("Player %d, please enter a position (1-9): ", playerNumber);
+    printf("Player %d, please enter a position (1-9): ", playerNumber+1);
     scanf("%hhu", &position);
     position--; // Decrement position to match array index
     if (position < 0 || position >= BOARD_SIZE) {
         printf("Invalid position. Please enter a number between 1 and 9.\n");
         loadAndUpdate( playerNumber);
     }
-    if (board[position] != ' ') {
+    else if (board[position] != ' ') {
         printf("Position already taken. Please choose another position.\n");
         loadAndUpdate( playerNumber);
+    } else{
+        symbol = (playerNumber == 1) ? configArray[1] : configArray[0];
+        updateBoard(board, position, symbol);
     }
-    symbol = (playerNumber == 1) ? configArray[1] : configArray[0];
-    updateBoard(board, position, symbol);
+
 }
 
 
