@@ -1,0 +1,3 @@
+/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/Task 1- X-O Game/cmake-build-debug/CMakeFiles/Task_1__X_O_Game.dir
+/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/Task 1- X-O Game/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/Task 1- X-O Game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
