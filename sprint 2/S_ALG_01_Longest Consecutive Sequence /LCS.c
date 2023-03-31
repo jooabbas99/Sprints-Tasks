@@ -22,12 +22,12 @@ int8_t lcsGetSize(int32_t *array, uint8_t arraySize, uint8_t *sizeofLCS){
     */
     // Check if the array is empty
     if (arraySize == 0) {
-        return -1;
+        return EMPTY_ARR;
     }
 
     // Check if the array size is within the range
     if (arraySize == 0 || arraySize > 10) {
-        return -2;
+        return WRONG_SIZE;
     }
 
 
@@ -47,7 +47,7 @@ int8_t lcsGetSize(int32_t *array, uint8_t arraySize, uint8_t *sizeofLCS){
         }
     }
     if(maxCount == 1)
-        return -3;
+        return NO_LCS;
     *sizeofLCS = maxCount;
     return 0;
     //

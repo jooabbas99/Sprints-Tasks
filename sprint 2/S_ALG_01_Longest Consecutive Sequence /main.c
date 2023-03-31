@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include "sort.h"
-#include <stdint.h>
-#include "LCS.h"
+#include "main.h"
 /*
 Task Description
     The Longest Consecutive Subsequence(LCS) is a subset of the original array
     where the numbers are in sorted order,
     from lowest to highest, and are in consecutive, increasing order.
  */
-#define MAX_ARR 50
-
-
-
 int main() {
     // read from user
     int32_t array [MAX_ARR] ;

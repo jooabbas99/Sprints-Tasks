@@ -10,6 +10,10 @@
 #include <stdio.h>
 
 #define STACK_SIZE 10
+#define EMPTY_STACK_TOP -1
+#define STACK_FULL -1
+#define STACK_EMPTY -2
+#define STACK_OTHER 0
 typedef struct {
     int8_t elements[STACK_SIZE];
     int8_t top;
