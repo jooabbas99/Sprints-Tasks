@@ -1,0 +1,24 @@
+# ninja log v5
+1	72	1680109030965769927	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+73	155	1680109031048742719	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+1	81	1680108671325866713	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/sort.c.o	4cb633ea6e7acf4c
+1	73	1680109008003591573	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/LCS.c.o	f59b0915a0f4ea3e
+1	117	1680170896633626251	build.ninja	44db8b1dd1669c89
+1	109	1680252449244444623	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+1	110	1680252449244859110	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/sort.c.o	4cb633ea6e7acf4c
+2	110	1680252449244491991	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/LCS.c.o	f59b0915a0f4ea3e
+111	181	1680252449318771406	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+1	63	1680252515545069754	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+63	138	1680252515620602754	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+1	65	1680252559081054355	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+65	135	1680252559152353454	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+1	79	1680252576232900216	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+80	178	1680252576332855953	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+2	64	1680252676785653218	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/LCS.c.o	f59b0915a0f4ea3e
+1	70	1680252676792440076	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+71	158	1680252676881311995	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+10	102	1680252793446716741	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+103	205	1680252793547527997	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a
+2	86	1680253210915756104	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/LCS.c.o	f59b0915a0f4ea3e
+1	93	1680253210923578184	CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir/main.c.o	629943c26c8d7505
+93	185	1680253211017144174	S_ALG_01_Longest_Consecutive_Sequence_	442b92581c6dc67a

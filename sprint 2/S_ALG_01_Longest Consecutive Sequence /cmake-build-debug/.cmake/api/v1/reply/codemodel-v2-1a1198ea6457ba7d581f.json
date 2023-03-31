@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "S_ALG_01_Longest_Consecutive_Sequence_",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "S_ALG_01_Longest_Consecutive_Sequence_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-S_ALG_01_Longest_Consecutive_Sequence_-Debug-fd9bf949f0f5df262ea3.json",
+					"name" : "S_ALG_01_Longest_Consecutive_Sequence_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/S_ALG_01_Longest Consecutive Sequence /cmake-build-debug",
+		"source" : "/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/S_ALG_01_Longest Consecutive Sequence "
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
