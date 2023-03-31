@@ -14,7 +14,6 @@ Task Description
 
 int main() {
     // read from user
-
     int32_t array [MAX_ARR] ;
     uint8_t LCS, arrSize ;
     printf("How many numbers you wana to enter :");
