@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000164  00000000  00000000  00001f98  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000045c  00000000  00000000  000020fc  2**0
+ 10 .debug_str    000004bd  00000000  00000000  000020fc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000004b6  00000000  00000000  00002558  2**0
+ 11 .debug_loc    000004b6  00000000  00000000  000025b9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  00002a0e  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  00002a6f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -83,96 +83,56 @@ Disassembly of section .text:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 0000007c <AppInit>:
-
-#include "application.h"
-uint8_t btnState , counter;
-ST_led_t led[LED_NO];
-void AppInit(){
-	led[0].pinNumber = PIN0;
   7c:	e1 e6       	ldi	r30, 0x61	; 97
   7e:	f0 e0       	ldi	r31, 0x00	; 0
   80:	11 82       	std	Z+1, r1	; 0x01
-	led[0].portNmber = PORT_A;
   82:	81 e4       	ldi	r24, 0x41	; 65
   84:	80 83       	st	Z, r24
-	led[0].ledStatus = LOW;
   86:	12 82       	std	Z+2, r1	; 0x02
-	
-	led[1].pinNumber = PIN1;
   88:	91 e0       	ldi	r25, 0x01	; 1
   8a:	94 83       	std	Z+4, r25	; 0x04
-	led[1].portNmber = PORT_A;
   8c:	83 83       	std	Z+3, r24	; 0x03
-	led[1].ledStatus = LOW;
   8e:	15 82       	std	Z+5, r1	; 0x05
-	
-	led[2].pinNumber = PIN2;
   90:	92 e0       	ldi	r25, 0x02	; 2
   92:	97 83       	std	Z+7, r25	; 0x07
-	led[2].portNmber = PORT_A;
   94:	86 83       	std	Z+6, r24	; 0x06
-	led[2].ledStatus = LOW;
   96:	10 86       	std	Z+8, r1	; 0x08
-	
-	led[3].pinNumber = PIN3;
   98:	93 e0       	ldi	r25, 0x03	; 3
   9a:	92 87       	std	Z+10, r25	; 0x0a
-	led[3].portNmber = PORT_A;
   9c:	81 87       	std	Z+9, r24	; 0x09
-	led[3].ledStatus = LOW;
   9e:	13 86       	std	Z+11, r1	; 0x0b
-	
-	LED_init(&led[0]);
   a0:	cf 01       	movw	r24, r30
   a2:	0e 94 ae 00 	call	0x15c	; 0x15c <LED_init>
-	LED_init(&led[1]);
   a6:	84 e6       	ldi	r24, 0x64	; 100
   a8:	90 e0       	ldi	r25, 0x00	; 0
   aa:	0e 94 ae 00 	call	0x15c	; 0x15c <LED_init>
-	LED_init(&led[2]);
   ae:	87 e6       	ldi	r24, 0x67	; 103
   b0:	90 e0       	ldi	r25, 0x00	; 0
   b2:	0e 94 ae 00 	call	0x15c	; 0x15c <LED_init>
-	LED_init(&led[3]);
   b6:	8a e6       	ldi	r24, 0x6A	; 106
   b8:	90 e0       	ldi	r25, 0x00	; 0
   ba:	0e 94 ae 00 	call	0x15c	; 0x15c <LED_init>
-	BUTTON_init(PORT_B,PIN0);
   be:	60 e0       	ldi	r22, 0x00	; 0
   c0:	82 e4       	ldi	r24, 0x42	; 66
   c2:	0e 94 a7 00 	call	0x14e	; 0x14e <BUTTON_init>
-	btnState = 0;
   c6:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
-	counter = 0;
   ca:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <counter>
   ce:	08 95       	ret
 
 000000d0 <AppStart>:
-}
-
-void AppStart(){
-	
-	BUTTON_status(PORT_B,PIN0,&btnState);
   d0:	40 e6       	ldi	r20, 0x60	; 96
   d2:	50 e0       	ldi	r21, 0x00	; 0
   d4:	60 e0       	ldi	r22, 0x00	; 0
   d6:	82 e4       	ldi	r24, 0x42	; 66
   d8:	0e 94 ab 00 	call	0x156	; 0x156 <BUTTON_status>
-	
-	if (btnState == BUTTON_HIGH)
   dc:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
   e0:	81 30       	cpi	r24, 0x01	; 1
   e2:	a1 f5       	brne	.+104    	; 0x14c <AppStart+0x7c>
-	{
-		counter ++;
   e4:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <counter>
   e8:	8f 5f       	subi	r24, 0xFF	; 255
   ea:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <counter>
-		if (counter <= LED_NO)
   ee:	85 30       	cpi	r24, 0x05	; 5
   f0:	60 f4       	brcc	.+24     	; 0x10a <AppStart+0x3a>
-		{
-			LED_on(&led[counter-1]);
   f2:	90 e0       	ldi	r25, 0x00	; 0
   f4:	01 97       	sbiw	r24, 0x01	; 1
   f6:	9c 01       	movw	r18, r24
@@ -184,18 +144,10 @@ void AppStart(){
  102:	9f 4f       	sbci	r25, 0xFF	; 255
  104:	0e 94 ba 00 	call	0x174	; 0x174 <LED_on>
  108:	10 c0       	rjmp	.+32     	; 0x12a <AppStart+0x5a>
-		}
-		else
-		{	
-			if (counter > 8)
  10a:	89 30       	cpi	r24, 0x09	; 9
  10c:	18 f0       	brcs	.+6      	; 0x114 <AppStart+0x44>
-			{
-				counter = 0;
  10e:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <counter>
  112:	0b c0       	rjmp	.+22     	; 0x12a <AppStart+0x5a>
-			}else {
-				LED_off(&led[counter-5]);
  114:	90 e0       	ldi	r25, 0x00	; 0
  116:	05 97       	sbiw	r24, 0x05	; 5
  118:	9c 01       	movw	r18, r24
@@ -206,124 +158,81 @@ void AppStart(){
  122:	8f 59       	subi	r24, 0x9F	; 159
  124:	9f 4f       	sbci	r25, 0xFF	; 255
  126:	0e 94 c7 00 	call	0x18e	; 0x18e <LED_off>
-				
-			}
-			
-		}
-		BUTTON_status(PORT_B,PIN0,&btnState);
  12a:	40 e6       	ldi	r20, 0x60	; 96
  12c:	50 e0       	ldi	r21, 0x00	; 0
  12e:	60 e0       	ldi	r22, 0x00	; 0
  130:	82 e4       	ldi	r24, 0x42	; 66
  132:	0e 94 ab 00 	call	0x156	; 0x156 <BUTTON_status>
-		while(btnState == HIGH){
  136:	06 c0       	rjmp	.+12     	; 0x144 <AppStart+0x74>
-			BUTTON_status(PORT_B,PIN0,&btnState);
  138:	40 e6       	ldi	r20, 0x60	; 96
  13a:	50 e0       	ldi	r21, 0x00	; 0
  13c:	60 e0       	ldi	r22, 0x00	; 0
  13e:	82 e4       	ldi	r24, 0x42	; 66
  140:	0e 94 ab 00 	call	0x156	; 0x156 <BUTTON_status>
-				
-			}
-			
-		}
-		BUTTON_status(PORT_B,PIN0,&btnState);
-		while(btnState == HIGH){
  144:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
  148:	81 30       	cpi	r24, 0x01	; 1
  14a:	b1 f3       	breq	.-20     	; 0x138 <AppStart+0x68>
  14c:	08 95       	ret
 
 0000014e <BUTTON_init>:
-#include "button.h"
-
-
-
-void BUTTON_init(uint8_t button_port , uint8_t button_pin){
-	DIO_init(button_port,button_pin,IN);
  14e:	40 e0       	ldi	r20, 0x00	; 0
  150:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <DIO_init>
  154:	08 95       	ret
 
 00000156 <BUTTON_status>:
-}
-void BUTTON_status(uint8_t button_port , uint8_t button_pin,uint8_t *status){
-	DIO_read(button_port,button_pin,status);
  156:	0e 94 b8 01 	call	0x370	; 0x370 <DIO_read>
  15a:	08 95       	ret
 
 0000015c <LED_init>:
- *  Author: youss
- */ 
-#include "led.h"
-
-
-void LED_init(ST_led_t *led){
  15c:	cf 93       	push	r28
  15e:	df 93       	push	r29
  160:	ec 01       	movw	r28, r24
-	DIO_init(led->portNmber,led->pinNumber,OUT);
  162:	41 e0       	ldi	r20, 0x01	; 1
  164:	69 81       	ldd	r22, Y+1	; 0x01
  166:	88 81       	ld	r24, Y
  168:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <DIO_init>
-	led->ledStatus = LOW;
  16c:	1a 82       	std	Y+2, r1	; 0x02
-}
  16e:	df 91       	pop	r29
  170:	cf 91       	pop	r28
  172:	08 95       	ret
 
 00000174 <LED_on>:
-void LED_on(ST_led_t *led){
  174:	cf 93       	push	r28
  176:	df 93       	push	r29
  178:	ec 01       	movw	r28, r24
-	DIO_write(led->portNmber,led->pinNumber,HIGH);
  17a:	41 e0       	ldi	r20, 0x01	; 1
  17c:	69 81       	ldd	r22, Y+1	; 0x01
  17e:	88 81       	ld	r24, Y
  180:	0e 94 48 01 	call	0x290	; 0x290 <DIO_write>
-	led->ledStatus = HIGH;
  184:	81 e0       	ldi	r24, 0x01	; 1
  186:	8a 83       	std	Y+2, r24	; 0x02
-}
  188:	df 91       	pop	r29
  18a:	cf 91       	pop	r28
  18c:	08 95       	ret
 
 0000018e <LED_off>:
-void LED_off(ST_led_t *led){
  18e:	cf 93       	push	r28
  190:	df 93       	push	r29
  192:	ec 01       	movw	r28, r24
-	DIO_write(led->portNmber,led->pinNumber,LOW);
  194:	40 e0       	ldi	r20, 0x00	; 0
  196:	69 81       	ldd	r22, Y+1	; 0x01
  198:	88 81       	ld	r24, Y
  19a:	0e 94 48 01 	call	0x290	; 0x290 <DIO_write>
-	led->ledStatus = LOW;
  19e:	1a 82       	std	Y+2, r1	; 0x02
-	
-	
-}
  1a0:	df 91       	pop	r29
  1a2:	cf 91       	pop	r28
  1a4:	08 95       	ret
 
 000001a6 <main>:
-	// DDRA |= (1<<0);
-	//DIO_init(PORT_A,PIN4,OUT);
-	//DIO_init(PORT_B,PIN3,OUT);
-	
-	//LED_init(PORT_A,PIN4);
+#include "Applicaiton/application.h"
+int main(void)
+{
+    /* Replace with your application code */
+
 	AppInit();
  1a6:	0e 94 3e 00 	call	0x7c	; 0x7c <AppInit>
-		//PORTA |= (1<<0);
-		//DIO_write(PORT_A,PIN4,HIGH);
-		//DIO_write(PORT_B,PIN3,LOW);
-		//LED_on(PORT_A,PIN4);
+    while (1) 
+	{
 		
 		AppStart();
  1aa:	0e 94 68 00 	call	0xd0	; 0xd0 <AppStart>
