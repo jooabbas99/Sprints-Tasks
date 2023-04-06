@@ -47,7 +47,7 @@ void AppStart(){
 		}
 		else
 		{	
-			if (counter > 8)
+			if (counter > LED_NO*2)
 			{
 				counter = 0;
 			}else {
