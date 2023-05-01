@@ -12,10 +12,10 @@
 #include "../../MCAL/DIO/DIO.h"
 
 #define BUTTON_1_PORT PORT_C
-#define BUTTON_1_PIN PIN0
+#define BUTTON_1_PIN PIN4
 
-#define BUTTON_2_PORT PORT_D
-#define BUTTON_2_PIN PIN0
+#define BUTTON_2_PORT PORT_B
+#define BUTTON_2_PIN PIN2
 
 #define BUTTON_HIGH 1
 #define BUTTON_LOW 0

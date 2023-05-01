@@ -20,9 +20,9 @@ void AppStart(){
 	BUTTON_status(BUTTON_1_PORT,BUTTON_1_PIN,&btnState);
 	if (btnState == BUTTON_HIGH)
 	{
-		LED_on(PORT_A,PIN4);
+		LED_on(PORT_B,PIN4);
 	} else if  (btnState == BUTTON_LOW) {
-		LED_off(PORT_A,PIN4);
+		LED_off(PORT_B,PIN4);
 	}
 	
 }

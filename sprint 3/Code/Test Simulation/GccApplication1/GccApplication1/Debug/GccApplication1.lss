@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000134  00000000  00000000  00001ccc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000003e3  00000000  00000000  00001e00  2**0
+ 10 .debug_str    00000438  00000000  00000000  00001e00  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000042a  00000000  00000000  000021e3  2**0
+ 11 .debug_loc    0000042a  00000000  00000000  00002238  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  0000260d  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  00002662  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -93,7 +93,7 @@ void AppInit(){
   7e:	81 e4       	ldi	r24, 0x41	; 65
   80:	0e 94 66 00 	call	0xcc	; 0xcc <LED_init>
 	BUTTON_init(BUTTON_1_PORT,BUTTON_1_PIN);
-  84:	60 e0       	ldi	r22, 0x00	; 0
+  84:	64 e0       	ldi	r22, 0x04	; 4
   86:	83 e4       	ldi	r24, 0x43	; 67
   88:	0e 94 5f 00 	call	0xbe	; 0xbe <BUTTON_init>
 	
@@ -109,7 +109,7 @@ void AppStart(){
 	BUTTON_status(BUTTON_1_PORT,BUTTON_1_PIN,&btnState);
   92:	40 e6       	ldi	r20, 0x60	; 96
   94:	50 e0       	ldi	r21, 0x00	; 0
-  96:	60 e0       	ldi	r22, 0x00	; 0
+  96:	64 e0       	ldi	r22, 0x04	; 4
   98:	83 e4       	ldi	r24, 0x43	; 67
   9a:	0e 94 63 00 	call	0xc6	; 0xc6 <BUTTON_status>
 	if (btnState == BUTTON_HIGH)
@@ -117,17 +117,17 @@ void AppStart(){
   a2:	81 30       	cpi	r24, 0x01	; 1
   a4:	29 f4       	brne	.+10     	; 0xb0 <AppStart+0x1e>
 	{
-		LED_on(PORT_A,PIN4);
+		LED_on(PORT_B,PIN4);
   a6:	64 e0       	ldi	r22, 0x04	; 4
-  a8:	81 e4       	ldi	r24, 0x41	; 65
+  a8:	82 e4       	ldi	r24, 0x42	; 66
   aa:	0e 94 6a 00 	call	0xd4	; 0xd4 <LED_on>
   ae:	08 95       	ret
 	} else if  (btnState == BUTTON_LOW) {
   b0:	81 11       	cpse	r24, r1
   b2:	04 c0       	rjmp	.+8      	; 0xbc <AppStart+0x2a>
-		LED_off(PORT_A,PIN4);
+		LED_off(PORT_B,PIN4);
   b4:	64 e0       	ldi	r22, 0x04	; 4
-  b6:	81 e4       	ldi	r24, 0x41	; 65
+  b6:	82 e4       	ldi	r24, 0x42	; 66
   b8:	0e 94 6e 00 	call	0xdc	; 0xdc <LED_off>
   bc:	08 95       	ret
 
@@ -150,28 +150,16 @@ void BUTTON_status(uint8_t button_port , uint8_t button_pin,uint8_t *status){
   ca:	08 95       	ret
 
 000000cc <LED_init>:
- */ 
-#include "led.h"
-
-
-void LED_init(uint8_t led_port,uint8_t led_pin){
-	DIO_init(led_port,led_pin,OUT);
   cc:	41 e0       	ldi	r20, 0x01	; 1
   ce:	0e 94 77 00 	call	0xee	; 0xee <DIO_init>
   d2:	08 95       	ret
 
 000000d4 <LED_on>:
-}
-void LED_on(uint8_t led_port,uint8_t led_pin){
-	DIO_write(led_port,led_pin,HIGH);
   d4:	41 e0       	ldi	r20, 0x01	; 1
   d6:	0e 94 e7 00 	call	0x1ce	; 0x1ce <DIO_write>
   da:	08 95       	ret
 
 000000dc <LED_off>:
-}
-void LED_off(uint8_t led_port,uint8_t led_pin){
-	DIO_write(led_port,led_pin,LOW);
   dc:	40 e0       	ldi	r20, 0x00	; 0
   de:	0e 94 e7 00 	call	0x1ce	; 0x1ce <DIO_write>
   e2:	08 95       	ret
@@ -194,12 +182,6 @@ void LED_off(uint8_t led_port,uint8_t led_pin){
   ec:	fd cf       	rjmp	.-6      	; 0xe8 <main+0x4>
 
 000000ee <DIO_init>:
-		break;
-		case PORT_C:
-		 TOGGLE_BIT(PORTC,pinNumber); 
-		break;
-		case PORT_D:
-		 TOGGLE_BIT(PORTD,pinNumber);
   ee:	82 34       	cpi	r24, 0x42	; 66
   f0:	19 f1       	breq	.+70     	; 0x138 <DIO_init+0x4a>
   f2:	18 f4       	brcc	.+6      	; 0xfa <DIO_init+0xc>
@@ -428,12 +410,6 @@ void LED_off(uint8_t led_port,uint8_t led_pin){
  2ac:	08 95       	ret
 
 000002ae <DIO_read>:
-		break;
-	}
-}
-
-void DIO_read(uint8_t portNumber,uint8_t pinNumber, uint8_t * data){
-	switch(portNumber){
  2ae:	82 34       	cpi	r24, 0x42	; 66
  2b0:	a1 f0       	breq	.+40     	; 0x2da <DIO_read+0x2c>
  2b2:	18 f4       	brcc	.+6      	; 0x2ba <DIO_read+0xc>
@@ -445,8 +421,6 @@ void DIO_read(uint8_t portNumber,uint8_t pinNumber, uint8_t * data){
  2be:	84 34       	cpi	r24, 0x44	; 68
  2c0:	11 f1       	breq	.+68     	; 0x306 <DIO_read+0x58>
  2c2:	08 95       	ret
-		case PORT_A:
-			*data = READ_BIT(PINA,pinNumber);
  2c4:	89 b3       	in	r24, 0x19	; 25
  2c6:	90 e0       	ldi	r25, 0x00	; 0
  2c8:	02 c0       	rjmp	.+4      	; 0x2ce <DIO_read+0x20>
@@ -457,10 +431,7 @@ void DIO_read(uint8_t portNumber,uint8_t pinNumber, uint8_t * data){
  2d2:	81 70       	andi	r24, 0x01	; 1
  2d4:	fa 01       	movw	r30, r20
  2d6:	80 83       	st	Z, r24
-		break;
  2d8:	08 95       	ret
-		case PORT_B:
-			*data =READ_BIT(PINB,pinNumber);
  2da:	86 b3       	in	r24, 0x16	; 22
  2dc:	90 e0       	ldi	r25, 0x00	; 0
  2de:	02 c0       	rjmp	.+4      	; 0x2e4 <DIO_read+0x36>
@@ -471,10 +442,7 @@ void DIO_read(uint8_t portNumber,uint8_t pinNumber, uint8_t * data){
  2e8:	81 70       	andi	r24, 0x01	; 1
  2ea:	fa 01       	movw	r30, r20
  2ec:	80 83       	st	Z, r24
-		break;
  2ee:	08 95       	ret
-		case PORT_C:
-			*data =READ_BIT(PINC,pinNumber);
  2f0:	83 b3       	in	r24, 0x13	; 19
  2f2:	90 e0       	ldi	r25, 0x00	; 0
  2f4:	02 c0       	rjmp	.+4      	; 0x2fa <DIO_read+0x4c>
@@ -485,10 +453,7 @@ void DIO_read(uint8_t portNumber,uint8_t pinNumber, uint8_t * data){
  2fe:	81 70       	andi	r24, 0x01	; 1
  300:	fa 01       	movw	r30, r20
  302:	80 83       	st	Z, r24
-		break;
  304:	08 95       	ret
-		case PORT_D:
-			*data =READ_BIT(PIND,pinNumber);
  306:	80 b3       	in	r24, 0x10	; 16
  308:	90 e0       	ldi	r25, 0x00	; 0
  30a:	02 c0       	rjmp	.+4      	; 0x310 <DIO_read+0x62>
