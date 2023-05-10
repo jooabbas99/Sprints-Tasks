@@ -1,10 +1,19 @@
-ECUAL/BUTTON/button.d ECUAL/BUTTON/button.o: ../ECUAL/BUTTON/button.c \
- ../ECUAL/BUTTON/button.h ../ECUAL/BUTTON/../../MCAL/DIO/DIO.h \
- ../ECUAL/BUTTON/../../MCAL/DIO/DIO_registers.h \
- ../ECUAL/BUTTON/../../MCAL/DIO/../../Utilities/types.h \
- ../ECUAL/BUTTON/../../Utilities/types.h \
- ../ECUAL/BUTTON/../../MCAL/timer0/timer0.h \
- ../ECUAL/BUTTON/../../MCAL/timer0/../../Utilities/types.h \
+Application/application.d Application/application.o: \
+ ../Application/application.c ../Application/application.h \
+ ../Application/../ECUAL/BUTTON/button.h \
+ ../Application/../ECUAL/BUTTON/../../MCAL/DIO/DIO.h \
+ ../Application/../ECUAL/BUTTON/../../MCAL/DIO/DIO_registers.h \
+ ../Application/../ECUAL/BUTTON/../../MCAL/DIO/../../Utilities/types.h \
+ ../Application/../ECUAL/BUTTON/../../Utilities/types.h \
+ ../Application/../ECUAL/BUZZER/buzzer.h \
+ ../Application/../ECUAL/BUZZER/../../MCAL/DIO/DIO.h \
+ ../Application/../ECUAL/BUZZER/../../Utilities/types.h \
+ ../Application/../ECUAL/KEYPAD/keypad.h \
+ ../Application/../ECUAL/KEYPAD/../../Utilities/types.h \
+ ../Application/../ECUAL/LCD/lcd.h \
+ ../Application/../ECUAL/LCD/../../MCAL/DIO/DIO.h \
+ ../Application/../MCAL/timer0/timer0.h \
+ ../Application/../MCAL/timer0/../../Utilities/types.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -16,21 +25,38 @@ ECUAL/BUTTON/button.d ECUAL/BUTTON/button.o: ../ECUAL/BUTTON/button.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
+ ../Application/../Utilities/bit_math.h
 
-../ECUAL/BUTTON/button.h:
+../Application/application.h:
 
-../ECUAL/BUTTON/../../MCAL/DIO/DIO.h:
+../Application/../ECUAL/BUTTON/button.h:
 
-../ECUAL/BUTTON/../../MCAL/DIO/DIO_registers.h:
+../Application/../ECUAL/BUTTON/../../MCAL/DIO/DIO.h:
 
-../ECUAL/BUTTON/../../MCAL/DIO/../../Utilities/types.h:
+../Application/../ECUAL/BUTTON/../../MCAL/DIO/DIO_registers.h:
 
-../ECUAL/BUTTON/../../Utilities/types.h:
+../Application/../ECUAL/BUTTON/../../MCAL/DIO/../../Utilities/types.h:
 
-../ECUAL/BUTTON/../../MCAL/timer0/timer0.h:
+../Application/../ECUAL/BUTTON/../../Utilities/types.h:
 
-../ECUAL/BUTTON/../../MCAL/timer0/../../Utilities/types.h:
+../Application/../ECUAL/BUZZER/buzzer.h:
+
+../Application/../ECUAL/BUZZER/../../MCAL/DIO/DIO.h:
+
+../Application/../ECUAL/BUZZER/../../Utilities/types.h:
+
+../Application/../ECUAL/KEYPAD/keypad.h:
+
+../Application/../ECUAL/KEYPAD/../../Utilities/types.h:
+
+../Application/../ECUAL/LCD/lcd.h:
+
+../Application/../ECUAL/LCD/../../MCAL/DIO/DIO.h:
+
+../Application/../MCAL/timer0/timer0.h:
+
+../Application/../MCAL/timer0/../../Utilities/types.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
@@ -55,3 +81,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
+
+../Application/../Utilities/bit_math.h:

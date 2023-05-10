@@ -11,11 +11,11 @@
 /*============= FUNCTION DEFINITION =============*/
 
 
-void buzzer_init(uint8_t buzzer_port , uint8_t buzzer_pin){
-	dio_init(buzzer_port,buzzer_pin,DIO_LOW);
+void buzzer_init(ST_BUZZER_t buzzer){
+	dio_init(buzzer.buzzer_port,buzzer.buzzer_pin,DIO_LOW);
 }
-void buzzer_digitalwrite(uint8_t buzzer_port , uint8_t buzzer_pin,uint8_t value){
-	dio_write_pin(buzzer_port,buzzer_pin,value);
+void buzzer_digitalwrite(ST_BUZZER_t buzzer,uint8 value){
+	dio_write_pin(buzzer.buzzer_port,buzzer.buzzer_pin,value);
 }
 
 

@@ -17,9 +17,15 @@
 /*============= MACRO DEFINITION =============*/
 #define buzzer_logic 1 //1:positive logic , 2:negative logic
 
+typedef struct {
+	uint8 buzzer_port;
+	uint8 buzzer_pin;
+}ST_BUZZER_t;
+
+
 
 /*============= FUNCTION PROTOTYPE =============*/
 
-void buzzer_init(uint8_t buzzer_port , uint8_t buzzer_pin);
-void buzzer_digitalwrite(uint8_t buzzer_port , uint8_t buzzer_pin,uint8_t value);
+void buzzer_init(ST_BUZZER_t buzzer);
+void buzzer_digitalwrite(ST_BUZZER_t buzzer,uint8 value);
 #endif /* HAL_LED_LED_H_ */

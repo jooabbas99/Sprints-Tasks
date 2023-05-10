@@ -8,7 +8,7 @@
 
 #ifndef TIMER0_H_
 #define TIMER0_H_
-//#include "../../Utilities/types.h"
+#include "../../Utilities/types.h"
 
 
 #define max_count 256
@@ -69,7 +69,7 @@
 
 /*============= FUNCTION PROTOTYPE =============*/
 void Timer0_Delay(float delay);
-void Timer0_event(uint16_t delay,void(*g_ptr)(void));
+void Timer0_event(uint16 delay,void(*g_ptr)(void));
 
 
 #endif /* TIMER0_H_ */

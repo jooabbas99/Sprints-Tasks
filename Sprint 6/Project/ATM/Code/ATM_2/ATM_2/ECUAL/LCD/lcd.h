@@ -34,17 +34,17 @@
  * 2. Setup the LCD Data Mode 4-bits or 8-bits.
  */
 typedef struct {
-	uint8_t RS_port;
-	uint8_t RW_port;
-	uint8_t E_port;
-	uint8_t RS_pin;
-	uint8_t RW_pin;
-	uint8_t E_pin;
-	uint8_t lcd_data_port;
-	uint8_t lcd_data1_pin;
-	uint8_t lcd_data2_pin;
-	uint8_t lcd_data3_pin;
-	uint8_t lcd_data4_pin;
+	uint8 RS_port;
+	uint8 RW_port;
+	uint8 E_port;
+	uint8 RS_pin;
+	uint8 RW_pin;
+	uint8 E_pin;
+	uint8 lcd_data_port;
+	uint8 lcd_data1_pin;
+	uint8 lcd_data2_pin;
+	uint8 lcd_data3_pin;
+	uint8 lcd_data4_pin;
 } ST_LCD_t;
 
 /*
@@ -59,13 +59,13 @@ void LCD_init(ST_LCD_t lcd);
  * Description :
  * Send the required command to the screen
  */
-void LCD_sendCommand(ST_LCD_t lcd,uint8_t command);
+void LCD_sendCommand(ST_LCD_t lcd,uint8 command);
 
 /*
  * Description :
  * Display the required character on the screen
  */
-void LCD_displayCharacter(ST_LCD_t lcd,uint8_t data);
+void LCD_displayCharacter(ST_LCD_t lcd,uint8 data);
 
 /*
  * Description :
@@ -77,13 +77,13 @@ void LCD_displayString(ST_LCD_t lcd,const char *Str);
  * Description :
  * Move the cursor to a specified row and column index on the screen
  */
-void LCD_moveCursor(ST_LCD_t lcd,uint8_t row,uint8_t col);
+void LCD_moveCursor(ST_LCD_t lcd,uint8 row,uint8 col);
 
 /*
  * Description :
  * Display the required string in a specified row and column index on the screen
  */
-void LCD_displayStringRowColumn(ST_LCD_t lcd,uint8_t row,uint8_t col,const char *Str);
+void LCD_displayStringRowColumn(ST_LCD_t lcd,uint8 row,uint8 col,const char *Str);
 
 /*
  * Description :

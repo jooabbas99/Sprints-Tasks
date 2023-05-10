@@ -8,7 +8,7 @@
 #include "../../MCAL/timer0/timer0.h"
 #include "../../Utilities/bit_math.h"
 #include "../../Utilities/types.h"
-#include <stdlib.h>
+
 
 void LCD_init(ST_LCD_t lcd){
 	
@@ -31,8 +31,8 @@ void LCD_init(ST_LCD_t lcd){
  * Description :
  * Send the required command to the screen
  */
-void LCD_sendCommand(ST_LCD_t lcd,uint8_t command){
-	uint8_t lcd_port_value = 0;
+void LCD_sendCommand(ST_LCD_t lcd,uint8 command){
+	uint8 lcd_port_value = 0;
 	dio_write_pin(lcd.RS_port,lcd.RS_pin,DIO_LOW); /* Instruction Mode RS=0 */
 	dio_write_pin(lcd.RW_port,lcd.RW_pin,DIO_LOW); /* write data to LCD so RW=0 */
 	
@@ -66,8 +66,8 @@ void LCD_sendCommand(ST_LCD_t lcd,uint8_t command){
  * Description :
  * Display the required character on the screen
  */
-void LCD_displayCharacter(ST_LCD_t lcd,uint8_t data){
-	uint8_t lcd_port_value = 0;
+void LCD_displayCharacter(ST_LCD_t lcd,uint8 data){
+	uint8 lcd_port_value = 0;
 	dio_write_pin(lcd.RS_port,lcd.RS_pin,DIO_HIGH); /* DATA Mode RS=1 */
 	dio_write_pin(lcd.RW_port,lcd.RW_pin,DIO_LOW); /* write data to LCD so RW=0 */
 
@@ -101,7 +101,7 @@ void LCD_displayCharacter(ST_LCD_t lcd,uint8_t data){
  * Display the required string on the screen
  */
 void LCD_displayString(ST_LCD_t lcd,const char *Str){
-	uint8_t i = 0;
+	uint8 i = 0;
 	while(Str[i] != '\0')
 	{
 		LCD_displayCharacter(lcd,Str[i]);
@@ -113,8 +113,8 @@ void LCD_displayString(ST_LCD_t lcd,const char *Str){
  * Description :
  * Move the cursor to a specified row and column index on the screen
  */
-void LCD_moveCursor(ST_LCD_t lcd,uint8_t row,uint8_t col){
-	uint8_t lcd_memory_address = 0;
+void LCD_moveCursor(ST_LCD_t lcd,uint8 row,uint8 col){
+	uint8 lcd_memory_address = 0;
 	
 	/* Calculate the required address in the LCD DDRAM */
 	switch(row)
@@ -140,7 +140,7 @@ void LCD_moveCursor(ST_LCD_t lcd,uint8_t row,uint8_t col){
  * Description :
  * Display the required string in a specified row and column index on the screen
  */
-void LCD_displayStringRowColumn(ST_LCD_t lcd,uint8_t row,uint8_t col,const char *Str){
+void LCD_displayStringRowColumn(ST_LCD_t lcd,uint8 row,uint8 col,const char *Str){
 	LCD_moveCursor(lcd,row,col); /* go to to the required LCD position */
 	LCD_displayString(lcd,Str); /* display the string */
 }
@@ -161,5 +161,4 @@ void LCD_intgerToString(ST_LCD_t lcd,int data){
  */
 void LCD_clearScreen(ST_LCD_t lcd){
 	LCD_sendCommand(lcd,LCD_CLEAR_COMMAND); /* Send clear display command */
-	
 }

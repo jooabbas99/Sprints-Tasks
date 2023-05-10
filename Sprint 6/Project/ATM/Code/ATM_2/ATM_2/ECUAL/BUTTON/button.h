@@ -18,11 +18,22 @@
 #define EXT_INT_BTN_PORT PORT_D
 #define EXT_INT_BTN_PIN PIN2
 
-#define BTN_2_SECOND_LOOPS 1500 
+#define BTN_2_SECOND 1500
+#define BTN_MIN_SECOND 50
 
-void BUTTON_init(uint8_t button_port , uint8_t button_pin);
-void BUTTON_status(uint8_t button_port , uint8_t button_pin,uint8_t *status);
-void BUTTON_read_zero_enter(uint8_t button_port , uint8_t button_pin,uint8_t *status);
+#define BTN_ZERO_PRESSED 10
+#define BTN_ENTER_PRESSED 11
+#define BTN_NO_PRESS	12
+
+typedef struct {
+	uint8 button_port;
+	uint8 button_pin;
+}ST_PBTN_t;
+
+
+void BUTTON_init(ST_PBTN_t button);
+void BUTTON_status(ST_PBTN_t button,uint8 *status);
+void BUTTON_read_zero_enter(ST_PBTN_t button,uint8 * value);
 
 void BUTTON_enter(void);
 

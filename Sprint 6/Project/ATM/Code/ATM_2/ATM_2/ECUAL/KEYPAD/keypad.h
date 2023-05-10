@@ -11,18 +11,18 @@
 #include "../../Utilities/types.h"
 
 typedef struct {
-	uint8_t number_of_cols;
-	uint8_t number_of_rows;
-	uint8_t cols_first_pin;
-	uint8_t rows_first_pin;
-	uint8_t cols_port;
-	uint8_t rows_port;
+	uint8 number_of_cols;
+	uint8 number_of_rows;
+	uint8 cols_first_pin;
+	uint8 rows_first_pin;
+	uint8 cols_port;
+	uint8 rows_port;
 }ST_KPD_t;
 
 
-#define NO_KEY_PRESSED 0
+#define KPD_NO_KEY_PRESSED 12
 void KPD_init(ST_KPD_t kpd);
 
-uint8_t KPD_get_pressed_key(ST_KPD_t kpd);
+void KPD_get_pressed_key(ST_KPD_t kpd,uint8*key);
   
 #endif /* KEYPAD_H_ */

@@ -133,6 +133,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Application\application.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Application\application.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="ECUAL\BUTTON\button.c">
       <SubType>compile</SubType>
     </Compile>

@@ -4,30 +4,31 @@
  * Created: 5/2/2023 8:49:48 PM
  *  Author: Youssef Abbas
  */ 
-#include <avr/interrupt.h>
+
 
 #include "./timer0_registers.h"
 #include "./timer0.h"
-//#include "../../Utilities/types.h"
-#include <math.h>
+#include "../../Utilities/types.h"
+//#include "../INT/INT.h"
+#include <avr/interrupt.h>
 
 
 static volatile void (*g_callBackPtr_0)(void) =  ((void*)0);
-static volatile uint8_t NO_OF_OVERFLOWS=0;
-static volatile uint8_t g_tick=0;
-static uint8_t init_value=0;
+static volatile uint8 NO_OF_OVERFLOWS=0;
+static volatile uint8 g_tick=0;
+static uint8 init_value=0;
 
 /*============= TYPE DEFINITION =============*/
 typedef struct{
-	uint16_t prescaler;
-	uint8_t init_value;
+	uint16 prescaler;
+	uint8 init_value;
 	float NO_OF_OV;
 }ST_timer0_config;
 
 /*============= PRIVATE FUNCTIONS =============*/
-static uint8_t calc_prescaler(float delay,uint16_t* prescale);
-static void  calc_initialValue(uint16_t prescaler,uint8_t* init_value,float delay);
-static void  set_prescale(uint16_t prescaler);
+static uint8 calc_prescaler(float delay,uint16* prescale);
+static void  calc_initialValue(uint16 prescaler,uint8* init_value,float delay);
+static void  set_prescale(uint16 prescaler);
 
 /*============= FUNCTION DEFINITIONS =============*/
 /*
@@ -41,7 +42,7 @@ void Timer0_Delay(float delay)
 {
 	//delay-=5;
 	ST_timer0_config Time;
-	uint8_t real_part,reminder,count;
+	uint8 real_part,reminder,count;
 	if(calc_prescaler(delay, &Time.prescaler))
 	{
 		calc_initialValue(Time.prescaler, &Time.init_value,delay);
@@ -120,7 +121,7 @@ void Timer0_Delay(float delay)
 }
 
 
-static uint8_t calc_prescaler(float delay,uint16_t* prescale)
+static uint8 calc_prescaler(float delay,uint16* prescale)
 {
 	if(delay <= Tmax_N1024)
 	{
@@ -142,7 +143,7 @@ static uint8_t calc_prescaler(float delay,uint16_t* prescale)
 		return 0;
 }
 
-static void calc_initialValue(uint16_t prescaler,uint8_t* init_value,float delay)
+static void calc_initialValue(uint16 prescaler,uint8* init_value,float delay)
 {
 	switch(prescaler)
 	{
@@ -167,7 +168,7 @@ static void calc_initialValue(uint16_t prescaler,uint8_t* init_value,float delay
 	}
 }
 
-static void set_prescale(uint16_t prescaler)
+static void set_prescale(uint16 prescaler)
 {
 	switch(prescaler)
 	{
@@ -192,7 +193,7 @@ static void set_prescale(uint16_t prescaler)
 	}
 }
 
-void Timer0_event(uint16_t delay,volatile void(*g_ptr)(void))
+void Timer0_event(uint16 delay,void(*g_ptr)(void))
 {
 	TIMSK |= (1<<TOIE0);
 	if(delay < 262)

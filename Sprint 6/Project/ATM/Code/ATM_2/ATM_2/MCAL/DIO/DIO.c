@@ -21,7 +21,7 @@
 
     The dio_init function initializes the specified pin as an input or output pin.
  */
-EN_DIO_ERROR_t dio_init(uint8_t port,uint8_t pin,uint8_t dir){
+EN_DIO_ERROR_t dio_init(uint8 port,uint8 pin,uint8 dir){
     switch(port){
         case PORT_A:
             (dir == DIO_IN) ? CLEAR_BIT(DDRA,pin) :SET_BIT(DDRA,pin);
@@ -42,7 +42,7 @@ EN_DIO_ERROR_t dio_init(uint8_t port,uint8_t pin,uint8_t dir){
     return DIO_SUCCESS;
 }
 
-EN_DIO_ERROR_t dio_write_pin(uint8_t port, uint8_t pin, uint8_t value)
+EN_DIO_ERROR_t dio_write_pin(uint8 port, uint8 pin, uint8 value)
 {
     switch(port){
         case PORT_A:
@@ -64,7 +64,7 @@ EN_DIO_ERROR_t dio_write_pin(uint8_t port, uint8_t pin, uint8_t value)
     return DIO_SUCCESS;
 }
 
-EN_DIO_ERROR_t dio_toggle(uint8_t port,uint8_t pin){
+EN_DIO_ERROR_t dio_toggle(uint8 port,uint8 pin){
     switch(port){
         case PORT_A:
             TOGGLE_BIT(PORTA,pin);
@@ -86,7 +86,7 @@ EN_DIO_ERROR_t dio_toggle(uint8_t port,uint8_t pin){
 
 }
 
-EN_DIO_ERROR_t dio_read_pin(uint8_t port, uint8_t pin,uint8_t *data)
+EN_DIO_ERROR_t dio_read_pin(uint8 port, uint8 pin,uint8 *data)
 {
     switch(port){
         case PORT_A:
@@ -108,7 +108,7 @@ EN_DIO_ERROR_t dio_read_pin(uint8_t port, uint8_t pin,uint8_t *data)
     return DIO_SUCCESS;
 }
 
-EN_DIO_ERROR_t dio_read_port(uint8_t port,uint8_t *data)
+EN_DIO_ERROR_t dio_read_port(uint8 port,uint8 *data)
 {
 	switch(port){
 		case PORT_A:
@@ -131,7 +131,7 @@ EN_DIO_ERROR_t dio_read_port(uint8_t port,uint8_t *data)
 }
 
 
-EN_DIO_ERROR_t dio_write_port(uint8_t port,uint8_t value)
+EN_DIO_ERROR_t dio_write_port(uint8 port,uint8 value)
 {
 	switch(port){
 		case PORT_A:

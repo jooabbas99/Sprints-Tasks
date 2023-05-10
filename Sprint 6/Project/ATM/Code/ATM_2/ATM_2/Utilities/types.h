@@ -5,9 +5,9 @@
 #ifndef ATMEGA32A_TYPES_H
 #define ATMEGA32A_TYPES_H
 
-typedef unsigned char uint8_t;
-typedef unsigned int uint32_t;
-typedef unsigned short uint16_t;
+typedef unsigned char uint8;
+typedef unsigned int uint32;
+typedef unsigned short uint16;
 #define NULL_PTR    ((void*)0)
 
 #endif //ATMEGA32A_TYPES_H

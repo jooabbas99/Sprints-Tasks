@@ -48,6 +48,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../Application/application.c \
 ../ECUAL/BUTTON/button.c \
 ../ECUAL/BUZZER/buzzer.c \
 ../ECUAL/KEYPAD/keypad.c \
@@ -65,6 +66,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+Application/application.o \
 ECUAL/BUTTON/button.o \
 ECUAL/BUZZER/buzzer.o \
 ECUAL/KEYPAD/keypad.o \
@@ -75,6 +77,7 @@ MCAL/INT/INT.o \
 MCAL/timer0/timer0.o
 
 OBJS_AS_ARGS +=  \
+Application/application.o \
 ECUAL/BUTTON/button.o \
 ECUAL/BUZZER/buzzer.o \
 ECUAL/KEYPAD/keypad.o \
@@ -85,6 +88,7 @@ MCAL/INT/INT.o \
 MCAL/timer0/timer0.o
 
 C_DEPS +=  \
+Application/application.d \
 ECUAL/BUTTON/button.d \
 ECUAL/BUZZER/buzzer.d \
 ECUAL/KEYPAD/keypad.d \
@@ -95,6 +99,7 @@ MCAL/INT/INT.d \
 MCAL/timer0/timer0.d
 
 C_DEPS_AS_ARGS +=  \
+Application/application.d \
 ECUAL/BUTTON/button.d \
 ECUAL/BUZZER/buzzer.d \
 ECUAL/KEYPAD/keypad.d \
@@ -118,6 +123,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+Application/application.o: ../Application/application.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\2.0.401\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\2.0.401\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ECUAL/BUTTON/button.o: ../ECUAL/BUTTON/button.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0

@@ -8,49 +8,41 @@
 
 #include "../../MCAL/DIO/DIO.h"
 #include "../../MCAL/timer0/timer0.h"
+#include <avr/interrupt.h>
 
-volatile uint8_t buttonEnterState = 0 ;
 
-void BUTTON_init(uint8_t button_port , uint8_t button_pin){
-	dio_init(button_port,button_pin,DIO_IN);
+
+void BUTTON_init(ST_PBTN_t button){
+	dio_init(button.button_port,button.button_pin,DIO_IN);
 }
-void BUTTON_status(uint8_t button_port , uint8_t button_pin,uint8_t *status){
-	dio_read_pin(button_port,button_pin,status);
-}
-
-static volatile void button_delay_event(void){
-	buttonEnterState = 1;
+void BUTTON_status(ST_PBTN_t button,uint8 *status){
+	dio_read_pin(button.button_port,button.button_pin,status);
 }
 
-void BUTTON_read_zero_enter(uint8_t button_port , uint8_t button_pin,uint8_t *status){
-	uint8_t btn_state , timer_flag = 0;
-	dio_read_pin(button_port,button_pin,&btn_state);
-	if (btn_state == DIO_HIGH)
+
+void BUTTON_read_zero_enter(ST_PBTN_t button,uint8 * value){
+	 uint8 button_state = 0;
+	volatile uint16 timeCounter = 0;
+	dio_read_pin(button.button_port,button.button_pin,&button_state);
+	if (button_state == DIO_HIGH)
 	{
-		while(btn_state == DIO_HIGH){
-			// polling
-			if (timer_flag == 0)
+		while(button_state == DIO_HIGH){
+			Timer0_Delay(BTN_MIN_SECOND);
+			timeCounter += BTN_MIN_SECOND;
+			dio_read_pin(button.button_port,button.button_pin,&button_state);
+			if (button_state == DIO_LOW && timeCounter < BTN_2_SECOND)
 			{
-				Timer0_event(2000,button_delay_event);
-				timer_flag = 1;
+				*value = BTN_ZERO_PRESSED;
 			}
-			dio_read_pin(button_port,button_pin,&btn_state);
-			if (buttonEnterState == 1)
+			else if (timeCounter >= BTN_2_SECOND)
 			{
+				*value = BTN_ENTER_PRESSED;
 				break;
 			}
 		}
-			// check for enter flag 
-		if (buttonEnterState == 1)
-		{
-			*status = 1;
-		}
-		else{
-			*status = 0;
-		}
-	}else{
-		*status = 2;
 	}
-	buttonEnterState = 0;
-
+	else
+	{
+		*value = BTN_NO_PRESS;//NO
+	}
 }

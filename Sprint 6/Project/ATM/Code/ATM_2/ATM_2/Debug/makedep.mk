@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+Application\application.c
+
 ECUAL\BUTTON\button.c
 
 ECUAL\BUZZER\buzzer.c
