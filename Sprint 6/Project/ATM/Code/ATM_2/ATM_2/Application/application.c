@@ -36,6 +36,7 @@ uint8 btn;
 // CARD signal trigger
 volatile uint8 card_trigger_signal ;
 uint8 ATM_STATUS,reset_mode,counter1,btn_value_temp;
+
 uint8 pin[PIN_LENTH];
 uint8 PAN_temp,account_status;
 
@@ -202,10 +203,12 @@ void appStart(void){
 			{
 				LCD_clearScreen(atm_lcd);
 				LCD_displayStringRowColumn(atm_lcd,0,0,"INVALID Retry");
-				}else{
+			}
+			else
+			{
 						
-				LCD_clearScreen(atm_lcd);
-				LCD_displayStringRowColumn(atm_lcd,0,0,"ENTER YOUR PIN");
+			LCD_clearScreen(atm_lcd);
+			LCD_displayStringRowColumn(atm_lcd,0,0,"ENTER YOUR PIN");
 			}
 
 			// read PIN
@@ -223,10 +226,10 @@ void appStart(void){
 			}
 			// check if PIN is correct
 			counter1++;
-			if (counter1 == 1)
-			{
-				is_pin_correct = 0;
-			}
+			//if (counter1 == 1)
+			//{
+				//is_pin_correct = 0;
+			//}
 		}while((counter1<2)&&!is_pin_correct);
 				
 		// check if PIN entered twise wrong
