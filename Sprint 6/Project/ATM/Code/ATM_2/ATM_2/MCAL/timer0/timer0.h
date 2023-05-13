@@ -8,7 +8,7 @@
 
 #ifndef TIMER0_H_
 #define TIMER0_H_
-#include "../../Utilities/types.h"
+#include "../../utilities/types.h"
 
 
 #define max_count 256

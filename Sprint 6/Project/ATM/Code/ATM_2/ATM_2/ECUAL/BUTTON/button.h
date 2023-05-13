@@ -9,8 +9,8 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-#include "../../MCAL/DIO/DIO.h"
-#include "../../Utilities/types.h"
+#include "../../mcal/dio/dio.h"
+#include "../../utilities/types.h"
 
 #define BUTTON_HIGH 1
 #define BUTTON_LOW 0

@@ -1,21 +1,21 @@
-ECUAL/KEYPAD/keypad.d ECUAL/KEYPAD/keypad.o: ../ECUAL/KEYPAD/keypad.c \
- ../ECUAL/KEYPAD/keypad.h ../ECUAL/KEYPAD/../../Utilities/types.h \
- ../ECUAL/KEYPAD/../../MCAL/timer0/timer0.h \
- ../ECUAL/KEYPAD/../../MCAL/timer0/../../Utilities/types.h \
- ../ECUAL/KEYPAD/../../MCAL/DIO/DIO.h \
- ../ECUAL/KEYPAD/../../MCAL/DIO/DIO_registers.h \
- ../ECUAL/KEYPAD/../../MCAL/DIO/../../Utilities/types.h
+ecual/keypad/keypad.d ecual/keypad/keypad.o: ../ecual/keypad/keypad.c \
+ ../ecual/keypad/keypad.h ../ecual/keypad/../../utilities/types.h \
+ ../ecual/keypad/../../mcal/timer0/timer0.h \
+ ../ecual/keypad/../../mcal/timer0/../../utilities/types.h \
+ ../ecual/keypad/../../mcal/dio/dio.h \
+ ../ecual/keypad/../../mcal/dio/dio_registers.h \
+ ../ecual/keypad/../../mcal/dio/../../utilities/types.h
 
-../ECUAL/KEYPAD/keypad.h:
+../ecual/keypad/keypad.h:
 
-../ECUAL/KEYPAD/../../Utilities/types.h:
+../ecual/keypad/../../utilities/types.h:
 
-../ECUAL/KEYPAD/../../MCAL/timer0/timer0.h:
+../ecual/keypad/../../mcal/timer0/timer0.h:
 
-../ECUAL/KEYPAD/../../MCAL/timer0/../../Utilities/types.h:
+../ecual/keypad/../../mcal/timer0/../../utilities/types.h:
 
-../ECUAL/KEYPAD/../../MCAL/DIO/DIO.h:
+../ecual/keypad/../../mcal/dio/dio.h:
 
-../ECUAL/KEYPAD/../../MCAL/DIO/DIO_registers.h:
+../ecual/keypad/../../mcal/dio/dio_registers.h:
 
-../ECUAL/KEYPAD/../../MCAL/DIO/../../Utilities/types.h:
+../ecual/keypad/../../mcal/dio/../../utilities/types.h:

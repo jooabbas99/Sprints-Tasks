@@ -1,10 +1,10 @@
-ECUAL/BUTTON/button.d ECUAL/BUTTON/button.o: ../ECUAL/BUTTON/button.c \
- ../ECUAL/BUTTON/button.h ../ECUAL/BUTTON/../../MCAL/DIO/DIO.h \
- ../ECUAL/BUTTON/../../MCAL/DIO/DIO_registers.h \
- ../ECUAL/BUTTON/../../MCAL/DIO/../../Utilities/types.h \
- ../ECUAL/BUTTON/../../Utilities/types.h \
- ../ECUAL/BUTTON/../../MCAL/timer0/timer0.h \
- ../ECUAL/BUTTON/../../MCAL/timer0/../../Utilities/types.h \
+ecual/button/button.d ecual/button/button.o: ../ecual/button/button.c \
+ ../ecual/button/button.h ../ecual/button/../../mcal/dio/dio.h \
+ ../ecual/button/../../mcal/dio/dio_registers.h \
+ ../ecual/button/../../mcal/dio/../../utilities/types.h \
+ ../ecual/button/../../utilities/types.h \
+ ../ecual/button/../../mcal/timer0/timer0.h \
+ ../ecual/button/../../mcal/timer0/../../utilities/types.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -18,19 +18,19 @@ ECUAL/BUTTON/button.d ECUAL/BUTTON/button.o: ../ECUAL/BUTTON/button.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
 
-../ECUAL/BUTTON/button.h:
+../ecual/button/button.h:
 
-../ECUAL/BUTTON/../../MCAL/DIO/DIO.h:
+../ecual/button/../../mcal/dio/dio.h:
 
-../ECUAL/BUTTON/../../MCAL/DIO/DIO_registers.h:
+../ecual/button/../../mcal/dio/dio_registers.h:
 
-../ECUAL/BUTTON/../../MCAL/DIO/../../Utilities/types.h:
+../ecual/button/../../mcal/dio/../../utilities/types.h:
 
-../ECUAL/BUTTON/../../Utilities/types.h:
+../ecual/button/../../utilities/types.h:
 
-../ECUAL/BUTTON/../../MCAL/timer0/timer0.h:
+../ecual/button/../../mcal/timer0/timer0.h:
 
-../ECUAL/BUTTON/../../MCAL/timer0/../../Utilities/types.h:
+../ecual/button/../../mcal/timer0/../../utilities/types.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 

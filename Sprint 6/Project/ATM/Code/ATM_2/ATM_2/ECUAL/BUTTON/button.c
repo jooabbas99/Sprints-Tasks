@@ -6,10 +6,10 @@
  */ 
 #include "button.h"
 
-#include "../../MCAL/DIO/DIO.h"
-#include "../../MCAL/timer0/timer0.h"
-#include <avr/interrupt.h>
+#include "../../mcal/dio/dio.h"
 
+#include "../../mcal/timer0/timer0.h"
+#include <avr/interrupt.h>
 
 
 void BUTTON_init(ST_PBTN_t button){

@@ -1,15 +1,15 @@
-ECUAL/BUZZER/buzzer.d ECUAL/BUZZER/buzzer.o: ../ECUAL/BUZZER/buzzer.c \
- ../ECUAL/BUZZER/buzzer.h ../ECUAL/BUZZER/../../MCAL/DIO/DIO.h \
- ../ECUAL/BUZZER/../../MCAL/DIO/DIO_registers.h \
- ../ECUAL/BUZZER/../../MCAL/DIO/../../Utilities/types.h \
- ../ECUAL/BUZZER/../../Utilities/types.h
+ecual/buzzer/buzzer.d ecual/buzzer/buzzer.o: ../ecual/buzzer/buzzer.c \
+ ../ecual/buzzer/buzzer.h ../ecual/buzzer/../../mcal/dio/dio.h \
+ ../ecual/buzzer/../../mcal/dio/dio_registers.h \
+ ../ecual/buzzer/../../mcal/dio/../../utilities/types.h \
+ ../ecual/buzzer/../../utilities/types.h
 
-../ECUAL/BUZZER/buzzer.h:
+../ecual/buzzer/buzzer.h:
 
-../ECUAL/BUZZER/../../MCAL/DIO/DIO.h:
+../ecual/buzzer/../../mcal/dio/dio.h:
 
-../ECUAL/BUZZER/../../MCAL/DIO/DIO_registers.h:
+../ecual/buzzer/../../mcal/dio/dio_registers.h:
 
-../ECUAL/BUZZER/../../MCAL/DIO/../../Utilities/types.h:
+../ecual/buzzer/../../mcal/dio/../../utilities/types.h:
 
-../ECUAL/BUZZER/../../Utilities/types.h:
+../ecual/buzzer/../../utilities/types.h:

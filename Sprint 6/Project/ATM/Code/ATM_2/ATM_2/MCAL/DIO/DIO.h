@@ -4,8 +4,8 @@
 
 #ifndef ATMEGA32A_DIO_H
 #define ATMEGA32A_DIO_H
-#include "DIO_registers.h"
-#include "../../Utilities/types.h"
+#include "dio_registers.h"
+#include "../../utilities/types.h"
 // DIO pin configuration
 #define DIO_IN      0
 #define DIO_OUT     1

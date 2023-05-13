@@ -2,21 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Application\application.c
+application\application.c
 
-ECUAL\BUTTON\button.c
+ecual\button\button.c
 
-ECUAL\BUZZER\buzzer.c
+ecual\buzzer\buzzer.c
 
-ECUAL\KEYPAD\keypad.c
+ecual\keypad\keypad.c
 
-ECUAL\LCD\lcd.c
+ecual\lcd\lcd.c
 
 main.c
 
-MCAL\DIO\DIO.c
+mcal\dio\dio.c
 
-MCAL\INT\INT.c
+mcal\spi\spi.c
 
-MCAL\timer0\timer0.c
+mcal\timer0\timer0.c
 

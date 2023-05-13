@@ -8,7 +8,7 @@
 
 #include "./timer0_registers.h"
 #include "./timer0.h"
-#include "../../Utilities/types.h"
+#include "../../utilities/types.h"
 //#include "../INT/INT.h"
 #include <avr/interrupt.h>
 

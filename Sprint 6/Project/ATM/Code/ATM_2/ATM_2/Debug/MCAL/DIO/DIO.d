@@ -1,11 +1,11 @@
-MCAL/DIO/DIO.d MCAL/DIO/DIO.o: ../MCAL/DIO/DIO.c ../MCAL/DIO/./DIO.h \
- ../MCAL/DIO/./DIO_registers.h ../MCAL/DIO/./../../Utilities/types.h \
- ../MCAL/DIO/../../Utilities/bit_math.h
+mcal/dio/dio.d mcal/dio/dio.o: ../mcal/dio/dio.c ../mcal/dio/./DIO.h \
+ ../mcal/dio/./dio_registers.h ../mcal/dio/./../../utilities/types.h \
+ ../mcal/dio/../../utilities/bit_math.h
 
-../MCAL/DIO/./DIO.h:
+../mcal/dio/./DIO.h:
 
-../MCAL/DIO/./DIO_registers.h:
+../mcal/dio/./dio_registers.h:
 
-../MCAL/DIO/./../../Utilities/types.h:
+../mcal/dio/./../../utilities/types.h:
 
-../MCAL/DIO/../../Utilities/bit_math.h:
+../mcal/dio/../../utilities/bit_math.h:

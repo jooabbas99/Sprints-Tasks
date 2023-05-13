@@ -8,7 +8,7 @@
 
 #ifndef KEYPAD_H_
 #define KEYPAD_H_
-#include "../../Utilities/types.h"
+#include "../../utilities/types.h"
 
 typedef struct {
 	uint8 number_of_cols;

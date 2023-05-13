@@ -10,7 +10,7 @@
 #define LCD_H_
 
 
-#include "../../MCAL/DIO/DIO.h"
+#include "../../mcal/dio/dio.h"
 
 /* LCD Commands */
 #define LCD_CLEAR_COMMAND              0x01

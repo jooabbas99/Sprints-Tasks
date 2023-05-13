@@ -9,8 +9,8 @@
 #define HAL_buzzer_H_
 
 /*============= FILE INCLUSION =============*/
-#include "../../MCAL/DIO/DIO.h"
-#include "../../Utilities/types.h"
+#include "../../mcal/dio/dio.h"
+#include "../../utilities/types.h"
 
 
 

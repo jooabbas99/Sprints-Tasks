@@ -5,8 +5,8 @@
  *  Author: Youssef Abbas
  */ 
 #include "keypad.h"
-#include "../../MCAL/timer0/timer0.h"
-#include "../../MCAL/DIO/DIO.h"
+#include "../../mcal/timer0/timer0.h"
+#include "../../mcal/dio/dio.h"
 
 
 void KPD_init(ST_KPD_t kpd){
@@ -36,19 +36,22 @@ void KPD_get_pressed_key(ST_KPD_t kpd,uint8*key){
 		for (uint8 row = 0;row<kpd.number_of_rows;row++)
 		{
 			// get read 
+			Timer0_Delay(30);
 			dio_read_pin(kpd.rows_port,(kpd.rows_first_pin+row),&value);
 			// check if button is pressed
 			if (value == DIO_HIGH)
 			{
 				// return key (row_number * numbers_of_cols) + (column number +1)
+				
 				*key =  ((row * kpd.number_of_cols) + col + 1);
+				Timer0_Delay(50);
 				return;
 			}
-			Timer0_Delay(10);
-		}
 		
+		}
+		Timer0_Delay(30);
 		dio_write_pin(kpd.cols_port,(kpd.cols_first_pin+col),DIO_LOW);
-		Timer0_Delay(10);
+		
 	}
 	
 	

@@ -3,7 +3,7 @@
 //
 
 #include "./DIO.h"
-#include "../../Utilities/bit_math.h"
+#include "../../utilities/bit_math.h"
 
 /*
  *

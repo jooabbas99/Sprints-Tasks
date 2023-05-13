@@ -5,9 +5,9 @@
  *  Author: Youssef Abbas
  */ 
 #include "lcd.h"
-#include "../../MCAL/timer0/timer0.h"
-#include "../../Utilities/bit_math.h"
-#include "../../Utilities/types.h"
+#include "../../mcal/timer0/timer0.h"
+#include "../../utilities/bit_math.h"
+#include "../../utilities/types.h"
 
 
 void LCD_init(ST_LCD_t lcd){

@@ -133,85 +133,85 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Application\application.c">
+    <Compile Include="application\application.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Application\application.h">
+    <Compile Include="application\application.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\BUTTON\button.c">
+    <Compile Include="ecual\button\button.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\BUTTON\button.h">
+    <Compile Include="ecual\button\button.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\BUZZER\buzzer.c">
+    <Compile Include="ecual\buzzer\buzzer.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\BUZZER\buzzer.h">
+    <Compile Include="ecual\buzzer\buzzer.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\KEYPAD\keypad.c">
+    <Compile Include="ecual\keypad\keypad.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\KEYPAD\keypad.h">
+    <Compile Include="ecual\keypad\keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\LCD\lcd.c">
+    <Compile Include="ecual\lcd\lcd.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\LCD\lcd.h">
+    <Compile Include="ecual\lcd\lcd.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO.c">
+    <Compile Include="mcal\dio\dio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO.h">
+    <Compile Include="mcal\dio\dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO_registers.h">
+    <Compile Include="mcal\dio\dio_registers.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\INT\INT.c">
+    <Compile Include="mcal\spi\spi.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\INT\INT.h">
+    <Compile Include="mcal\spi\spi.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\INT\INT_registers.h">
+    <Compile Include="mcal\spi\spi_registers.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\timer0\timer0.c">
+    <Compile Include="mcal\timer0\timer0.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\timer0\timer0.h">
+    <Compile Include="mcal\timer0\timer0.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\timer0\timer0_registers.h">
+    <Compile Include="mcal\timer0\timer0_registers.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utilities\bit_math.h">
+    <Compile Include="utilities\bit_math.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utilities\types.h">
+    <Compile Include="utilities\types.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="ECUAL\" />
-    <Folder Include="ECUAL\BUTTON\" />
-    <Folder Include="ECUAL\BUZZER\" />
-    <Folder Include="ECUAL\KEYPAD\" />
-    <Folder Include="ECUAL\LCD\" />
-    <Folder Include="MCAL\" />
-    <Folder Include="MCAL\DIO\" />
-    <Folder Include="MCAL\INT\" />
-    <Folder Include="MCAL\timer0\" />
-    <Folder Include="Utilities\" />
+    <Folder Include="application" />
+    <Folder Include="ecual" />
+    <Folder Include="ecual\button" />
+    <Folder Include="ecual\buzzer" />
+    <Folder Include="ecual\keypad" />
+    <Folder Include="ecual\lcd" />
+    <Folder Include="mcal" />
+    <Folder Include="mcal\dio" />
+    <Folder Include="mcal\spi" />
+    <Folder Include="mcal\timer0" />
+    <Folder Include="utilities" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
