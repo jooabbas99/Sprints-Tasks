@@ -57,6 +57,8 @@ ST_accountsDB_t accountsDB[ACCOUNTS_DB_SIZE]={
 	{100000.0,BLOCKED,"8956302301546840"}
 };
 
+#define MAX_AMOUNT 5000
+
 ST_accountsDB_t accountRefrence;
 void appInit(void){
 	 atm_mode = FRIST_RUN;
@@ -169,9 +171,9 @@ void readPIN(uint8 *pin[]){
 uint8 checkCardInfo(ST_transaction_t card,ST_accountsDB_t *accRef){
 	uint8 count=0;
 	uint8 length;
-// 	if(strcmp((const char *)card.pin ,(const char *)pin) != 0){
-// 		return INVALID_PIN;
-// 	}
+	if(strcmp((const char *)card.pin ,(const char *)pin) != 0){
+		return INVALID_PIN;
+	}
 	
 	length=strlen((const char *)card.PAN);
 	for(int x=0; x < ACCOUNTS_DB_SIZE; x++)
@@ -191,15 +193,7 @@ void readCardInfo(ST_transaction_t *card){
 	*card->pin = "1122";
 
 }
-// void appStart(){
-// 	ST_transaction_t card;
-// 	uint8 pin[];
-// 	ST_accountsDB_t *accRef;
-// 	readCardInfo(&card);
-// 	pin = "1234";
-// 	checkCardInfo()
-// 	
-}
+
 
 void readAmount(float *amount){
 	uint8 amount_display[8] = "0000.00",num;
@@ -246,9 +240,9 @@ void appStart(void){
 		
 		// READ PIN
 		counter1 = 0;
-		uint8 is_pin_correct = 1;
+		card_status = VALID_PIN;
 		do{
-			if (is_pin_correct == INVALID_PIN && counter1 != 0)
+			if (card_status == INVALID_PIN && counter1 != 0)
 			{
 				LCD_clearScreen(atm_lcd);
 				LCD_displayStringRowColumn(atm_lcd,0,0,"INVALID PIN");
@@ -266,7 +260,7 @@ void appStart(void){
 			//{
 				//is_pin_correct = 0;
 			//}
-		}while((counter1<2)&&!is_pin_correct);
+		}while((counter1<2)&&!card_status);
 				
 		// check if PIN entered twise wrong
 		if (counter1>=2)
@@ -291,7 +285,7 @@ void appStart(void){
 			ATM_STATUS = ATM_BLOKED_MODE;
 			return;
 		}
-		if(accountRefrence == BLOCKED){
+		if(accountRefrence.en_state == BLOCKED){
 			LCD_clearScreen(atm_lcd);
 			LCD_displayStringRowColumn(atm_lcd,0,0,"This card is stolen");
 			// start ALARM
@@ -304,40 +298,27 @@ void appStart(void){
 		float amount;
 		// read amounts 
 		readAmount(&amount);
+		// if amount 
+		if(accountRefrence.balance > amount){
+			LCD_clearScreen(atm_lcd);
+			LCD_displayStringRowColumn(atm_lcd,0,0,"Insufficient fund");
+			return;
+		}
+		if(amount > MAX_AMOUNT){
+			LCD_clearScreen(atm_lcd);
+			LCD_displayStringRowColumn(atm_lcd,0,0,"Maximum limit is exceeded");
+			return;
+		}
+		
+		accountRefrence.balance -= amount;
 		LCD_clearScreen(atm_lcd);
-		LCD_intgerToString(atm_lcd,amount);
-		Timer0_Delay(1000);
-		
-		// check PAN 
-		//account_status = checkPAN(PAN_temp,&accountRefrence);
-		//if(account_status == ACC_NOT_FOUNT){
-			//LCD_clearScreen(atm_lcd);
-			//LCD_displayStringRowColumn(atm_lcd,0,0,"This is a fraud card");
-			//// start ALARM
-			//buzzer_digitalwrite(buzzer,DIO_HIGH);
-			//ATM_STATUS = ATM_BLOKED_MODE;
-			//return;
-		//}
-		//if(accountRefrence.en_state == BLOCKED){
-			//LCD_clearScreen(atm_lcd);
-			//LCD_displayStringRowColumn(atm_lcd,0,0,"This card is stolen");
-			//// start ALARM
-			//buzzer_digitalwrite(buzzer,DIO_HIGH);
-			//ATM_STATUS = ATM_BLOKED_MODE;
-			//return;
-		//}
-		//
-		
-		// every think is good 
-		
-		
-		
-		
+		LCD_displayStringRowColumn(atm_lcd,0,0,"Approved Transaction");
 
-		// if it true
-		LCD_clearScreen(atm_lcd);
-		LCD_displayStringRowColumn(atm_lcd,0,3,"OK");
 		Timer0_Delay(1000);
+		LCD_clearScreen(atm_lcd);
+		LCD_displayStringRowColumn(atm_lcd,0,0,"Ejecting Card");
+		Timer0_Delay(1000);
+		card_trigger_signal = CARD_REMOVED;
 	}
 }
 
