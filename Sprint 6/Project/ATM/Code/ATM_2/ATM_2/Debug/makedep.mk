@@ -16,6 +16,8 @@ main.c
 
 mcal\dio\dio.c
 
+mcal\eint\eint.c
+
 mcal\spi\spi.c
 
 mcal\timer0\timer0.c
