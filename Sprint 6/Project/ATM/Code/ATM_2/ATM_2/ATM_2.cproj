@@ -175,6 +175,15 @@
     <Compile Include="mcal\dio\dio_registers.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="mcal\eint\eint.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mcal\eint\eint.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mcal\eint\eint_registers.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="mcal\spi\spi.c">
       <SubType>compile</SubType>
     </Compile>
@@ -209,6 +218,7 @@
     <Folder Include="ecual\lcd" />
     <Folder Include="mcal" />
     <Folder Include="mcal\dio" />
+    <Folder Include="mcal\eint" />
     <Folder Include="mcal\spi" />
     <Folder Include="mcal\timer0" />
     <Folder Include="utilities" />

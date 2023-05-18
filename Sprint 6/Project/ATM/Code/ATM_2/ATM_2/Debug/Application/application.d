@@ -13,6 +13,8 @@ application/application.d application/application.o: \
  ../application/../ecual/keypad/../../utilities/types.h \
  ../application/../ecual/lcd/lcd.h \
  ../application/../ecual/lcd/../../mcal/dio/dio.h \
+ ../application/../mcal/spi/spi.h \
+ ../application/../mcal/spi/../../utilities/types.h \
  ../application/../mcal/timer0/timer0.h \
  ../application/../mcal/timer0/../../utilities/types.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
@@ -29,6 +31,7 @@ application/application.d application/application.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  ../application/../utilities/bit_math.h
 
 ../application/application.h:
@@ -58,6 +61,10 @@ application/application.d application/application.o: \
 ../application/../ecual/lcd/lcd.h:
 
 ../application/../ecual/lcd/../../mcal/dio/dio.h:
+
+../application/../mcal/spi/spi.h:
+
+../application/../mcal/spi/../../utilities/types.h:
 
 ../application/../mcal/timer0/timer0.h:
 
@@ -90,5 +97,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
 ../application/../utilities/bit_math.h:

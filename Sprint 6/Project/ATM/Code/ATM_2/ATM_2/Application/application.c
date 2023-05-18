@@ -14,11 +14,12 @@
 #include "../ecual/buzzer/buzzer.h"
 #include "../ecual/keypad/keypad.h"
 #include "../ecual/lcd/lcd.h"
-
+#include "../mcal/spi/spi.h"
 #include "../mcal/timer0/timer0.h"
 //#include "../MCAL/INT/INT.h"
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../utilities/bit_math.h"
 
@@ -99,6 +100,14 @@ void appInit(void){
 	dio_init(PORT_B,PINB2,DIO_IN);
 	
 	
+	
+	// init SPI
+	SPI_initSlave();
+	
+	
+	
+	// TODO: MOVE REGISTERS TO EINT FILE
+	
 	// enable INTERRRUPT 
 	// enable interrupt mode 
 	SET_BIT(MCUCSR,ISC2);
@@ -167,30 +176,67 @@ void readPIN(uint8 *pin[]){
 	}
 	*pin = pin_temp;
 }
-// check PAN IN DB
-uint8 checkCardInfo(ST_transaction_t card,ST_accountsDB_t *accRef){
-	uint8 count=0;
+
+uint8 checkCardInfo(ST_transaction_t *card, uint8 *pin, ST_accountsDB_t *accRef) {
+	uint8 count = 0;
 	uint8 length;
-	if(strcmp((const char *)card.pin ,(const char *)pin) != 0){
+	
+	if (strcmp((const char *)card->pin, (const char *)pin) != 0) {
 		return INVALID_PIN;
 	}
 	
-	length=strlen((const char *)card.PAN);
-	for(int x=0; x < ACCOUNTS_DB_SIZE; x++)
-	{
-		if(strcmp((const char *)card.PAN ,(const char *)accountsDB[x].primaryAccountNumber) == 0){
-			*accRef=accountsDB[x];
+	length = strlen((const char *)card->PAN);
+	for (int x = 0; x < ACCOUNTS_DB_SIZE; x++) {
+		if (strcmp((const char *)card->PAN, (const char *)accRef[x].primaryAccountNumber) == 0) {
+			*accRef = accRef[x];
 			return ACC_FOUND;
 		}
 	}
+	
 	return ACC_NOT_FOUNT;
 }
 
 
 
 void readCardInfo(ST_transaction_t *card){
-	*card->PAN ="8989374615436850";
-	*card->pin = "1122";
+	//////////////////////////////////////////////////////////////////////////
+	// recive PAN 
+	// recive PIN 
+	uint8 str_pan[PAN_size]={0},str_pin[PIN_LENTH] = {0};
+	uint8 str_length=0;
+	uint8 i=0;
+	uint8 key=0;
+	// recive PAN 
+	while(!str_length)
+	{
+		str_length = SPI_sendReceiveByte(0xAA);
+	}
+	
+	for(i=0; i<str_length;i++)
+	{
+		str_pan[i] = SPI_SlaveReceive();
+		Timer0_Delay(10);
+	}
+	
+	str_pan[i]='\0';
+	
+	while(key != 0xBB)
+	{
+		key = SPI_sendReceiveByte(0xFF);
+		Timer0_Delay(10);
+	}
+	
+	for(i=0;i<PIN_LENTH;i++)
+	{
+		str_pin[i] = SPI_SlaveReceive();
+		Timer0_Delay(10);
+	}
+	str_pin[i]='\0';
+	strncpy(*card->PAN, str_pan, str_length);
+	strncpy(*card->pin, str_pin, PIN_LENTH);
+// 
+// 	*card->PAN = str_pan;
+// 	*card->pin = str_pin;
 
 }
 
@@ -237,7 +283,9 @@ void appStart(void){
 		LCD_displayStringRowColumn(atm_lcd,1,0,"READING ...");
 		// read Card info
 		readCardInfo(&card);
-		
+		LCD_clearScreen(atm_lcd);
+		LCD_displayStringRowColumn(atm_lcd,0,3,"OK...");
+		Timer0_Delay(1000);
 		// READ PIN
 		counter1 = 0;
 		card_status = VALID_PIN;
@@ -254,7 +302,7 @@ void appStart(void){
 			
 			
 			// check if PIN is correct
-			card_status = checkCardInfo(card,pin_temp,&accountRefrence);
+			card_status = checkCardInfo(&card,pin_temp,&accountRefrence);
 			counter1++;
 			//if (counter1 == 1)
 			//{

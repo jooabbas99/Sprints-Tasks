@@ -14,6 +14,15 @@
 #define SPI_DEFAULT_DATA_VALUE 0xFF
 
 /*******************************************************************************
+ *                                Definitions                                  *
+ *******************************************************************************/
+/*
+ * Default SPI data value used in case we need to receive a byte from the other device,
+ * without need to send a data to it
+ */
+#define SPI_DEFAULT_DATA_VALUE 0xFF
+
+/*******************************************************************************
  *                      Functions Prototypes                                   *
  *******************************************************************************/
 
@@ -47,5 +56,6 @@ void SPI_sendString(const uint8 *str);
  * Receive the required string until the '#' symbol through SPI from the other SPI device.
  */
 void SPI_receiveString(uint8 *str);
-
+uint8 SPI_SlaveReceive(void);
+void SPI_MasterTransmit(uint8 cData);
 #endif

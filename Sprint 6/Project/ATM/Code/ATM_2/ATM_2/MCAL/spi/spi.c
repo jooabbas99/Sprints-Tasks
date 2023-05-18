@@ -134,3 +134,18 @@ void SPI_receiveString(uint8 *str)
 	/* After receiving the whole string plus the '#', replace the '#' with '\0' */
 	str[i] = '\0';
 }
+void SPI_MasterTransmit(uint8 cData)
+{
+	/* Start transmission */
+	SPDR = cData;
+	/* Wait for transmission complete */
+	while(!(SPSR & (1<<SPIF)));
+}
+
+uint8 SPI_SlaveReceive(void)
+{
+	/* Wait for reception complete */
+	while(!(SPSR & (1<<SPIF)));
+	/* Return data register */
+	return SPDR;
+}
