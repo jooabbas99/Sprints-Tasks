@@ -104,10 +104,6 @@ void appInit(void){
 	// init SPI
 	SPI_initSlave();
 	
-	
-	
-	// TODO: MOVE REGISTERS TO EINT FILE
-	
 	// enable INTERRRUPT 
 	// enable interrupt mode 
 	SET_BIT(MCUCSR,ISC2);
@@ -117,6 +113,7 @@ void appInit(void){
 	SET_BIT(SREG,1);
 	sei();
 	
+
 }
 
 void idelMenu(void){
@@ -148,7 +145,8 @@ void readNumber(ST_KPD_t a_kpd,ST_PBTN_t a_zero_enter_btn,uint8 *a_key){
 	} 
 	else if (btn_value != BTN_NO_PRESS)
 	{
-		*a_key = btn_value;
+		
+		*a_key = (btn_value == BTN_ZERO_PRESSED ? 0 : BTN_ENTER_PRESSED);
 	}
 }
 
@@ -164,9 +162,8 @@ void readPIN(uint8 *pin[]){
 	// read PIN
 	for (uint8 i = 0;i<PIN_LENTH;i++ )
 	{
-		readNumber(kpd,zero_enter_btn,&pin_temp[0]);
+		readNumber(kpd,zero_enter_btn,&pin_temp[i]);
 		LCD_displayStringRowColumn(atm_lcd,1,(5+i),"X");
-		Timer0_Delay(50);
 	}
 	
 	// wait for enter

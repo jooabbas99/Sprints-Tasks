@@ -14,6 +14,7 @@ void KPD_init(ST_KPD_t kpd){
 	for (uint8 i = 0 ; i<kpd.number_of_rows;i++)
 	{
 		dio_init(kpd.rows_port,(kpd.rows_first_pin+i),DIO_IN);
+		dio_write_pin(kpd.rows_port,(kpd.rows_first_pin+i),DIO_HIGH);
 	}
 	// set rows as input 
 	for (uint8 i = 0 ; i<kpd.number_of_cols;i++)
@@ -26,31 +27,35 @@ void KPD_get_pressed_key(ST_KPD_t kpd,uint8*key){
 	uint8 value; // counters
 	// cols loops
 	*key= KPD_NO_KEY_PRESSED;
+	
+	for (uint8 i = 0 ; i<kpd.number_of_cols;i++)
+	{
+		dio_write_pin(kpd.cols_port,(kpd.cols_first_pin+i),DIO_HIGH);
+	}
 	for (uint8 col = 0 ; col < kpd.number_of_cols;col++)
 	{
 		// activate cols
 		
-		dio_write_pin(kpd.cols_port,(kpd.cols_first_pin+col),DIO_HIGH);
+		dio_write_pin(kpd.cols_port,(kpd.cols_first_pin+col),DIO_LOW);
 		// rows loops
 		
 		for (uint8 row = 0;row<kpd.number_of_rows;row++)
 		{
-			// get read 
-			Timer0_Delay(30);
 			dio_read_pin(kpd.rows_port,(kpd.rows_first_pin+row),&value);
 			// check if button is pressed
-			if (value == DIO_HIGH)
+			if (value == DIO_LOW)
 			{
 				// return key (row_number * numbers_of_cols) + (column number +1)
-				
+				while(value == DIO_LOW){
+					dio_read_pin(kpd.rows_port,(kpd.rows_first_pin+row),&value);
+				}
 				*key =  ((row * kpd.number_of_cols) + col + 1);
-				Timer0_Delay(50);
-				return;
+				break;
 			}
 		
 		}
-		Timer0_Delay(30);
-		dio_write_pin(kpd.cols_port,(kpd.cols_first_pin+col),DIO_LOW);
+		
+		dio_write_pin(kpd.cols_port,(kpd.cols_first_pin+col),DIO_HIGH);
 		
 	}
 	
