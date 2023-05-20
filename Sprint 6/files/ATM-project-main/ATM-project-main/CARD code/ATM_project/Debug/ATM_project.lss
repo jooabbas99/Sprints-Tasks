@@ -1,0 +1,2705 @@
+
+ATM_project.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000d6a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000c2  00800060  00000d6a  00000dfe  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000005  00800122  00800122  00000ec0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000ec0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000ef0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000228  00000000  00000000  00000f2c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000027cf  00000000  00000000  00001154  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000e2b  00000000  00000000  00003923  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001be1  00000000  00000000  0000474e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000598  00000000  00000000  00006330  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000905  00000000  00000000  000068c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001f24  00000000  00000000  000071cd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000001a8  00000000  00000000  000090f1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 d4 05 	jmp	0xba8	; 0xba8 <__vector_11>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	11 e0       	ldi	r17, 0x01	; 1
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea e6       	ldi	r30, 0x6A	; 106
+  68:	fd e0       	ldi	r31, 0x0D	; 13
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 32       	cpi	r26, 0x22	; 34
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	a2 e2       	ldi	r26, 0x22	; 34
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a7 32       	cpi	r26, 0x27	; 39
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 cc 02 	call	0x598	; 0x598 <main>
+  8a:	0c 94 b3 06 	jmp	0xd66	; 0xd66 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <APP_check_PAN_number>:
+str: string to display into terminal using UART_sendString
+min: minimum size of the PAN number
+max maximum size of the PAN number
+*/
+void APP_check_PAN_number(uint8 arr[],uint8* a_size,uint8* str,uint8 min,uint8 max)
+{
+  92:	af 92       	push	r10
+  94:	bf 92       	push	r11
+  96:	cf 92       	push	r12
+  98:	df 92       	push	r13
+  9a:	ef 92       	push	r14
+  9c:	ff 92       	push	r15
+  9e:	0f 93       	push	r16
+  a0:	1f 93       	push	r17
+  a2:	cf 93       	push	r28
+  a4:	df 93       	push	r29
+  a6:	7c 01       	movw	r14, r24
+  a8:	5b 01       	movw	r10, r22
+  aa:	6a 01       	movw	r12, r20
+  ac:	12 2f       	mov	r17, r18
+	uint8 P_flag=FALSE;										//PAN flag
+  ae:	d0 e0       	ldi	r29, 0x00	; 0
+	uint8 i,j;
+	while(!P_flag)
+  b0:	3e c0       	rjmp	.+124    	; 0x12e <APP_check_PAN_number+0x9c>
+	{
+		UART_sendString(str);        						/* Re-send the string to Terminal2 */
+  b2:	c6 01       	movw	r24, r12
+  b4:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+		UART_receiveString(arr);   							/* Receive String from Terminal */
+  b8:	c7 01       	movw	r24, r14
+  ba:	0e 94 70 06 	call	0xce0	; 0xce0 <UART_receiveString>
+		UART_sendByte(NEW_LINE);							//enter ASCII value
+  be:	8d e0       	ldi	r24, 0x0D	; 13
+  c0:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		UART_sendString(arr);
+  c4:	c7 01       	movw	r24, r14
+  c6:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+		UART_sendByte(NEW_LINE);
+  ca:	8d e0       	ldi	r24, 0x0D	; 13
+  cc:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		for(j=0;arr[j] != '\0';j++);						//calculate size of the string
+  d0:	c0 e0       	ldi	r28, 0x00	; 0
+  d2:	01 c0       	rjmp	.+2      	; 0xd6 <APP_check_PAN_number+0x44>
+  d4:	cf 5f       	subi	r28, 0xFF	; 255
+  d6:	f7 01       	movw	r30, r14
+  d8:	ec 0f       	add	r30, r28
+  da:	f1 1d       	adc	r31, r1
+  dc:	80 81       	ld	r24, Z
+  de:	81 11       	cpse	r24, r1
+  e0:	f9 cf       	rjmp	.-14     	; 0xd4 <APP_check_PAN_number+0x42>
+  e2:	9d 2f       	mov	r25, r29
+  e4:	13 c0       	rjmp	.+38     	; 0x10c <APP_check_PAN_number+0x7a>
+		for(i=0;i<j;i++)									//check for numeric numbers only
+		{
+			if(arr[i] >= '0' && arr[i] <= '9')
+  e6:	f7 01       	movw	r30, r14
+  e8:	e8 0f       	add	r30, r24
+  ea:	f1 1d       	adc	r31, r1
+  ec:	90 81       	ld	r25, Z
+  ee:	90 53       	subi	r25, 0x30	; 48
+  f0:	9a 30       	cpi	r25, 0x0A	; 10
+  f2:	18 f4       	brcc	.+6      	; 0xfa <APP_check_PAN_number+0x68>
+		UART_receiveString(arr);   							/* Receive String from Terminal */
+		UART_sendByte(NEW_LINE);							//enter ASCII value
+		UART_sendString(arr);
+		UART_sendByte(NEW_LINE);
+		for(j=0;arr[j] != '\0';j++);						//calculate size of the string
+		for(i=0;i<j;i++)									//check for numeric numbers only
+  f4:	8f 5f       	subi	r24, 0xFF	; 255
+		{
+			if(arr[i] >= '0' && arr[i] <= '9')
+			P_flag=TRUE;
+  f6:	91 e0       	ldi	r25, 0x01	; 1
+  f8:	09 c0       	rjmp	.+18     	; 0x10c <APP_check_PAN_number+0x7a>
+			else
+			{
+				P_flag=FALSE;
+				UART_sendString("enter numeric number");
+  fa:	80 e6       	ldi	r24, 0x60	; 96
+  fc:	90 e0       	ldi	r25, 0x00	; 0
+  fe:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+				UART_sendByte(NEW_LINE);
+ 102:	8d e0       	ldi	r24, 0x0D	; 13
+ 104:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		{
+			if(arr[i] >= '0' && arr[i] <= '9')
+			P_flag=TRUE;
+			else
+			{
+				P_flag=FALSE;
+ 108:	9d 2f       	mov	r25, r29
+				UART_sendString("enter numeric number");
+				UART_sendByte(NEW_LINE);
+				break;
+ 10a:	02 c0       	rjmp	.+4      	; 0x110 <APP_check_PAN_number+0x7e>
+		UART_receiveString(arr);   							/* Receive String from Terminal */
+		UART_sendByte(NEW_LINE);							//enter ASCII value
+		UART_sendString(arr);
+		UART_sendByte(NEW_LINE);
+		for(j=0;arr[j] != '\0';j++);						//calculate size of the string
+		for(i=0;i<j;i++)									//check for numeric numbers only
+ 10c:	8c 17       	cp	r24, r28
+ 10e:	58 f3       	brcs	.-42     	; 0xe6 <APP_check_PAN_number+0x54>
+				UART_sendString("enter numeric number");
+				UART_sendByte(NEW_LINE);
+				break;
+			}
+		}
+		if(j >= min && j <= max && P_flag)					//check for input size
+ 110:	c1 17       	cp	r28, r17
+ 112:	20 f0       	brcs	.+8      	; 0x11c <APP_check_PAN_number+0x8a>
+ 114:	0c 17       	cp	r16, r28
+ 116:	10 f0       	brcs	.+4      	; 0x11c <APP_check_PAN_number+0x8a>
+ 118:	91 11       	cpse	r25, r1
+ 11a:	08 c0       	rjmp	.+16     	; 0x12c <APP_check_PAN_number+0x9a>
+			P_flag=TRUE;
+		}
+		else
+		{
+			P_flag=FALSE;
+			UART_sendString("enter 16-19 digit number");
+ 11c:	85 e7       	ldi	r24, 0x75	; 117
+ 11e:	90 e0       	ldi	r25, 0x00	; 0
+ 120:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+			UART_sendByte(NEW_LINE);
+ 124:	8d e0       	ldi	r24, 0x0D	; 13
+ 126:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+ 12a:	01 c0       	rjmp	.+2      	; 0x12e <APP_check_PAN_number+0x9c>
+				break;
+			}
+		}
+		if(j >= min && j <= max && P_flag)					//check for input size
+		{
+			P_flag=TRUE;
+ 12c:	d1 e0       	ldi	r29, 0x01	; 1
+*/
+void APP_check_PAN_number(uint8 arr[],uint8* a_size,uint8* str,uint8 min,uint8 max)
+{
+	uint8 P_flag=FALSE;										//PAN flag
+	uint8 i,j;
+	while(!P_flag)
+ 12e:	dd 23       	and	r29, r29
+ 130:	09 f4       	brne	.+2      	; 0x134 <APP_check_PAN_number+0xa2>
+ 132:	bf cf       	rjmp	.-130    	; 0xb2 <APP_check_PAN_number+0x20>
+			P_flag=FALSE;
+			UART_sendString("enter 16-19 digit number");
+			UART_sendByte(NEW_LINE);
+		}
+	}
+	*a_size=j;
+ 134:	f5 01       	movw	r30, r10
+ 136:	c0 83       	st	Z, r28
+}
+ 138:	df 91       	pop	r29
+ 13a:	cf 91       	pop	r28
+ 13c:	1f 91       	pop	r17
+ 13e:	0f 91       	pop	r16
+ 140:	ff 90       	pop	r15
+ 142:	ef 90       	pop	r14
+ 144:	df 90       	pop	r13
+ 146:	cf 90       	pop	r12
+ 148:	bf 90       	pop	r11
+ 14a:	af 90       	pop	r10
+ 14c:	08 95       	ret
+
+0000014e <APP_check_PIN_number>:
+a_size: size of the array
+str: string to display into terminal using UART_sendString
+max maximum size of the PIN number
+*/
+void APP_check_PIN_number(uint8 arr[],uint8* a_size,uint8* str,uint8 max)
+{
+ 14e:	bf 92       	push	r11
+ 150:	cf 92       	push	r12
+ 152:	df 92       	push	r13
+ 154:	ef 92       	push	r14
+ 156:	ff 92       	push	r15
+ 158:	0f 93       	push	r16
+ 15a:	1f 93       	push	r17
+ 15c:	cf 93       	push	r28
+ 15e:	df 93       	push	r29
+ 160:	8c 01       	movw	r16, r24
+ 162:	6b 01       	movw	r12, r22
+ 164:	7a 01       	movw	r14, r20
+ 166:	b2 2e       	mov	r11, r18
+	uint8 P_flag=FALSE;										//PIN flag
+ 168:	d0 e0       	ldi	r29, 0x00	; 0
+	uint8 i,j;
+	while(!P_flag)
+ 16a:	3c c0       	rjmp	.+120    	; 0x1e4 <APP_check_PIN_number+0x96>
+	{
+		UART_sendString(str);        						/* Re-send the string to Terminal2 */
+ 16c:	c7 01       	movw	r24, r14
+ 16e:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+		UART_receiveString(arr);   							/* Receive String from Terminal */
+ 172:	c8 01       	movw	r24, r16
+ 174:	0e 94 70 06 	call	0xce0	; 0xce0 <UART_receiveString>
+		UART_sendByte(NEW_LINE);								//enter ASCII value
+ 178:	8d e0       	ldi	r24, 0x0D	; 13
+ 17a:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		UART_sendString(arr);
+ 17e:	c8 01       	movw	r24, r16
+ 180:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+		UART_sendByte(NEW_LINE);
+ 184:	8d e0       	ldi	r24, 0x0D	; 13
+ 186:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		for(j=0;arr[j] != '\0';j++);						//calculate size of the string
+ 18a:	c0 e0       	ldi	r28, 0x00	; 0
+ 18c:	01 c0       	rjmp	.+2      	; 0x190 <APP_check_PIN_number+0x42>
+ 18e:	cf 5f       	subi	r28, 0xFF	; 255
+ 190:	f8 01       	movw	r30, r16
+ 192:	ec 0f       	add	r30, r28
+ 194:	f1 1d       	adc	r31, r1
+ 196:	80 81       	ld	r24, Z
+ 198:	81 11       	cpse	r24, r1
+ 19a:	f9 cf       	rjmp	.-14     	; 0x18e <APP_check_PIN_number+0x40>
+ 19c:	9d 2f       	mov	r25, r29
+ 19e:	13 c0       	rjmp	.+38     	; 0x1c6 <APP_check_PIN_number+0x78>
+		for(i=0;i<j;i++)									//check for numeric numbers only
+		{
+			if(arr[i] >= '0' && arr[i] <= '9')
+ 1a0:	f8 01       	movw	r30, r16
+ 1a2:	e8 0f       	add	r30, r24
+ 1a4:	f1 1d       	adc	r31, r1
+ 1a6:	90 81       	ld	r25, Z
+ 1a8:	90 53       	subi	r25, 0x30	; 48
+ 1aa:	9a 30       	cpi	r25, 0x0A	; 10
+ 1ac:	18 f4       	brcc	.+6      	; 0x1b4 <APP_check_PIN_number+0x66>
+		UART_receiveString(arr);   							/* Receive String from Terminal */
+		UART_sendByte(NEW_LINE);								//enter ASCII value
+		UART_sendString(arr);
+		UART_sendByte(NEW_LINE);
+		for(j=0;arr[j] != '\0';j++);						//calculate size of the string
+		for(i=0;i<j;i++)									//check for numeric numbers only
+ 1ae:	8f 5f       	subi	r24, 0xFF	; 255
+		{
+			if(arr[i] >= '0' && arr[i] <= '9')
+			P_flag=TRUE;
+ 1b0:	91 e0       	ldi	r25, 0x01	; 1
+ 1b2:	09 c0       	rjmp	.+18     	; 0x1c6 <APP_check_PIN_number+0x78>
+			else
+			{
+				P_flag=FALSE;
+				UART_sendString("enter numeric number");
+ 1b4:	80 e6       	ldi	r24, 0x60	; 96
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+				UART_sendByte(NEW_LINE);
+ 1bc:	8d e0       	ldi	r24, 0x0D	; 13
+ 1be:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		{
+			if(arr[i] >= '0' && arr[i] <= '9')
+			P_flag=TRUE;
+			else
+			{
+				P_flag=FALSE;
+ 1c2:	9d 2f       	mov	r25, r29
+				UART_sendString("enter numeric number");
+				UART_sendByte(NEW_LINE);
+				break;
+ 1c4:	02 c0       	rjmp	.+4      	; 0x1ca <APP_check_PIN_number+0x7c>
+		UART_receiveString(arr);   							/* Receive String from Terminal */
+		UART_sendByte(NEW_LINE);								//enter ASCII value
+		UART_sendString(arr);
+		UART_sendByte(NEW_LINE);
+		for(j=0;arr[j] != '\0';j++);						//calculate size of the string
+		for(i=0;i<j;i++)									//check for numeric numbers only
+ 1c6:	8c 17       	cp	r24, r28
+ 1c8:	58 f3       	brcs	.-42     	; 0x1a0 <APP_check_PIN_number+0x52>
+				UART_sendString("enter numeric number");
+				UART_sendByte(NEW_LINE);
+				break;
+			}
+		}
+		if(j == max && P_flag)								//check for input size
+ 1ca:	cb 11       	cpse	r28, r11
+ 1cc:	02 c0       	rjmp	.+4      	; 0x1d2 <APP_check_PIN_number+0x84>
+ 1ce:	91 11       	cpse	r25, r1
+ 1d0:	08 c0       	rjmp	.+16     	; 0x1e2 <APP_check_PIN_number+0x94>
+			P_flag=TRUE;
+		}
+		else
+		{
+			P_flag=FALSE;
+			UART_sendString("enter 4 digit number");
+ 1d2:	8e e8       	ldi	r24, 0x8E	; 142
+ 1d4:	90 e0       	ldi	r25, 0x00	; 0
+ 1d6:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+			UART_sendByte(NEW_LINE);
+ 1da:	8d e0       	ldi	r24, 0x0D	; 13
+ 1dc:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+ 1e0:	01 c0       	rjmp	.+2      	; 0x1e4 <APP_check_PIN_number+0x96>
+				break;
+			}
+		}
+		if(j == max && P_flag)								//check for input size
+		{
+			P_flag=TRUE;
+ 1e2:	d1 e0       	ldi	r29, 0x01	; 1
+*/
+void APP_check_PIN_number(uint8 arr[],uint8* a_size,uint8* str,uint8 max)
+{
+	uint8 P_flag=FALSE;										//PIN flag
+	uint8 i,j;
+	while(!P_flag)
+ 1e4:	dd 23       	and	r29, r29
+ 1e6:	11 f2       	breq	.-124    	; 0x16c <APP_check_PIN_number+0x1e>
+			P_flag=FALSE;
+			UART_sendString("enter 4 digit number");
+			UART_sendByte(NEW_LINE);
+		}
+	}
+	*a_size=j;
+ 1e8:	f6 01       	movw	r30, r12
+ 1ea:	c0 83       	st	Z, r28
+}
+ 1ec:	df 91       	pop	r29
+ 1ee:	cf 91       	pop	r28
+ 1f0:	1f 91       	pop	r17
+ 1f2:	0f 91       	pop	r16
+ 1f4:	ff 90       	pop	r15
+ 1f6:	ef 90       	pop	r14
+ 1f8:	df 90       	pop	r13
+ 1fa:	cf 90       	pop	r12
+ 1fc:	bf 90       	pop	r11
+ 1fe:	08 95       	ret
+
+00000200 <APP_compare_PIN>:
+return:
+TRUE: compare match
+FALSE: compare not match
+*/
+uint8 APP_compare_PIN (uint8* pin_1,uint8* pin_2,uint8 pin_size)
+{
+ 200:	dc 01       	movw	r26, r24
+	uint8 i,flag;
+	for(i=0;i<pin_size;i++)
+ 202:	90 e0       	ldi	r25, 0x00	; 0
+ 204:	0d c0       	rjmp	.+26     	; 0x220 <APP_compare_PIN+0x20>
+	{
+		if(pin_1[i]==pin_2[i])
+ 206:	29 2f       	mov	r18, r25
+ 208:	30 e0       	ldi	r19, 0x00	; 0
+ 20a:	fd 01       	movw	r30, r26
+ 20c:	e2 0f       	add	r30, r18
+ 20e:	f3 1f       	adc	r31, r19
+ 210:	50 81       	ld	r21, Z
+ 212:	fb 01       	movw	r30, r22
+ 214:	e2 0f       	add	r30, r18
+ 216:	f3 1f       	adc	r31, r19
+ 218:	20 81       	ld	r18, Z
+ 21a:	52 13       	cpse	r21, r18
+ 21c:	05 c0       	rjmp	.+10     	; 0x228 <APP_compare_PIN+0x28>
+FALSE: compare not match
+*/
+uint8 APP_compare_PIN (uint8* pin_1,uint8* pin_2,uint8 pin_size)
+{
+	uint8 i,flag;
+	for(i=0;i<pin_size;i++)
+ 21e:	9f 5f       	subi	r25, 0xFF	; 255
+ 220:	94 17       	cp	r25, r20
+ 222:	88 f3       	brcs	.-30     	; 0x206 <APP_compare_PIN+0x6>
+ 224:	81 e0       	ldi	r24, 0x01	; 1
+ 226:	08 95       	ret
+	{
+		if(pin_1[i]==pin_2[i])
+		flag=TRUE;
+		else
+		{
+			flag=FALSE;
+ 228:	80 e0       	ldi	r24, 0x00	; 0
+			break;
+		}
+	}
+	return flag;
+}
+ 22a:	08 95       	ret
+
+0000022c <APP_Trigger_signal>:
+
+//trigger signal low to high (rising edge)
+void APP_Trigger_signal(void)
+{
+	GPIO_writePin(PORTB_ID,PIN0,Low);
+ 22c:	40 e0       	ldi	r20, 0x00	; 0
+ 22e:	60 e0       	ldi	r22, 0x00	; 0
+ 230:	81 e0       	ldi	r24, 0x01	; 1
+ 232:	0e 94 00 05 	call	0xa00	; 0xa00 <GPIO_writePin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 236:	83 ed       	ldi	r24, 0xD3	; 211
+ 238:	90 e3       	ldi	r25, 0x30	; 48
+ 23a:	01 97       	sbiw	r24, 0x01	; 1
+ 23c:	f1 f7       	brne	.-4      	; 0x23a <APP_Trigger_signal+0xe>
+ 23e:	00 c0       	rjmp	.+0      	; 0x240 <APP_Trigger_signal+0x14>
+ 240:	00 00       	nop
+	_delay_ms(50);
+	GPIO_writePin(PORTB_ID,PIN0,High);
+ 242:	41 e0       	ldi	r20, 0x01	; 1
+ 244:	60 e0       	ldi	r22, 0x00	; 0
+ 246:	81 e0       	ldi	r24, 0x01	; 1
+ 248:	0e 94 00 05 	call	0xa00	; 0xa00 <GPIO_writePin>
+ 24c:	08 95       	ret
+
+0000024e <APP_user_mode>:
+}
+
+void APP_user_mode(void)
+{
+ 24e:	1f 93       	push	r17
+ 250:	cf 93       	push	r28
+ 252:	df 93       	push	r29
+ 254:	cd b7       	in	r28, 0x3d	; 61
+ 256:	de b7       	in	r29, 0x3e	; 62
+ 258:	a0 97       	sbiw	r28, 0x20	; 32
+ 25a:	0f b6       	in	r0, 0x3f	; 63
+ 25c:	f8 94       	cli
+ 25e:	de bf       	out	0x3e, r29	; 62
+ 260:	0f be       	out	0x3f, r0	; 63
+ 262:	cd bf       	out	0x3d, r28	; 61
+	uint8 PAN[PAN_SIZE];
+	uint8 PIN_1[PIN_SIZE];
+	uint8 PIN_2[PIN_SIZE];
+	uint8 key=0,i;
+	uint8 size_PAN=0;		//hold actual PAN size
+ 264:	1f 8e       	std	Y+31, r1	; 0x1f
+	uint8 size_PIN_1=0;		//hold actual PIN size of first input
+ 266:	18 a2       	std	Y+32, r1	; 0x20
+	uint8 size_PIN_2=0;		//hold actual PIN size of second input
+	
+	EEPROM_readByte(PAN_BASE_ADDRESS-1, &size_PAN);				//read PAN size
+ 268:	ae 01       	movw	r20, r28
+ 26a:	41 5e       	subi	r20, 0xE1	; 225
+ 26c:	5f 4f       	sbci	r21, 0xFF	; 255
+ 26e:	6f ef       	ldi	r22, 0xFF	; 255
+ 270:	70 e0       	ldi	r23, 0x00	; 0
+ 272:	80 e0       	ldi	r24, 0x00	; 0
+ 274:	90 e0       	ldi	r25, 0x00	; 0
+ 276:	0e 94 61 02 	call	0x4c2	; 0x4c2 <EEPROM_readByte>
+ 27a:	83 ec       	ldi	r24, 0xC3	; 195
+ 27c:	99 e0       	ldi	r25, 0x09	; 9
+ 27e:	01 97       	sbiw	r24, 0x01	; 1
+ 280:	f1 f7       	brne	.-4      	; 0x27e <APP_user_mode+0x30>
+ 282:	00 c0       	rjmp	.+0      	; 0x284 <APP_user_mode+0x36>
+ 284:	00 00       	nop
+	_delay_ms(10);
+	for(i=0;i<size_PAN;i++)
+ 286:	10 e0       	ldi	r17, 0x00	; 0
+ 288:	17 c0       	rjmp	.+46     	; 0x2b8 <APP_user_mode+0x6a>
+	{
+		EEPROM_readByte(PAN_BASE_ADDRESS+i, &PAN[i]);
+ 28a:	41 2f       	mov	r20, r17
+ 28c:	50 e0       	ldi	r21, 0x00	; 0
+ 28e:	ba 01       	movw	r22, r20
+ 290:	73 95       	inc	r23
+ 292:	e1 e0       	ldi	r30, 0x01	; 1
+ 294:	f0 e0       	ldi	r31, 0x00	; 0
+ 296:	ec 0f       	add	r30, r28
+ 298:	fd 1f       	adc	r31, r29
+ 29a:	4e 0f       	add	r20, r30
+ 29c:	5f 1f       	adc	r21, r31
+ 29e:	07 2e       	mov	r0, r23
+ 2a0:	00 0c       	add	r0, r0
+ 2a2:	88 0b       	sbc	r24, r24
+ 2a4:	99 0b       	sbc	r25, r25
+ 2a6:	0e 94 61 02 	call	0x4c2	; 0x4c2 <EEPROM_readByte>
+ 2aa:	83 ec       	ldi	r24, 0xC3	; 195
+ 2ac:	99 e0       	ldi	r25, 0x09	; 9
+ 2ae:	01 97       	sbiw	r24, 0x01	; 1
+ 2b0:	f1 f7       	brne	.-4      	; 0x2ae <APP_user_mode+0x60>
+ 2b2:	00 c0       	rjmp	.+0      	; 0x2b4 <APP_user_mode+0x66>
+ 2b4:	00 00       	nop
+	uint8 size_PIN_1=0;		//hold actual PIN size of first input
+	uint8 size_PIN_2=0;		//hold actual PIN size of second input
+	
+	EEPROM_readByte(PAN_BASE_ADDRESS-1, &size_PAN);				//read PAN size
+	_delay_ms(10);
+	for(i=0;i<size_PAN;i++)
+ 2b6:	1f 5f       	subi	r17, 0xFF	; 255
+ 2b8:	8f 8d       	ldd	r24, Y+31	; 0x1f
+ 2ba:	18 17       	cp	r17, r24
+ 2bc:	30 f3       	brcs	.-52     	; 0x28a <APP_user_mode+0x3c>
+	{
+		EEPROM_readByte(PAN_BASE_ADDRESS+i, &PAN[i]);
+		_delay_ms(10);
+	}
+	EEPROM_readByte(PIN_BASE_ADDRESS-1, &size_PIN_1);			//read PIN size
+ 2be:	ae 01       	movw	r20, r28
+ 2c0:	40 5e       	subi	r20, 0xE0	; 224
+ 2c2:	5f 4f       	sbci	r21, 0xFF	; 255
+ 2c4:	64 e2       	ldi	r22, 0x24	; 36
+ 2c6:	71 e0       	ldi	r23, 0x01	; 1
+ 2c8:	80 e0       	ldi	r24, 0x00	; 0
+ 2ca:	90 e0       	ldi	r25, 0x00	; 0
+ 2cc:	0e 94 61 02 	call	0x4c2	; 0x4c2 <EEPROM_readByte>
+ 2d0:	e3 ec       	ldi	r30, 0xC3	; 195
+ 2d2:	f9 e0       	ldi	r31, 0x09	; 9
+ 2d4:	31 97       	sbiw	r30, 0x01	; 1
+ 2d6:	f1 f7       	brne	.-4      	; 0x2d4 <APP_user_mode+0x86>
+ 2d8:	00 c0       	rjmp	.+0      	; 0x2da <APP_user_mode+0x8c>
+ 2da:	00 00       	nop
+	_delay_ms(10);
+	for(i=0;i<size_PIN_1;i++)
+ 2dc:	10 e0       	ldi	r17, 0x00	; 0
+ 2de:	18 c0       	rjmp	.+48     	; 0x310 <APP_user_mode+0xc2>
+	{
+		EEPROM_readByte(PIN_BASE_ADDRESS+i, &PIN_1[i]);
+ 2e0:	41 2f       	mov	r20, r17
+ 2e2:	50 e0       	ldi	r21, 0x00	; 0
+ 2e4:	ba 01       	movw	r22, r20
+ 2e6:	6b 5d       	subi	r22, 0xDB	; 219
+ 2e8:	7e 4f       	sbci	r23, 0xFE	; 254
+ 2ea:	85 e1       	ldi	r24, 0x15	; 21
+ 2ec:	90 e0       	ldi	r25, 0x00	; 0
+ 2ee:	8c 0f       	add	r24, r28
+ 2f0:	9d 1f       	adc	r25, r29
+ 2f2:	48 0f       	add	r20, r24
+ 2f4:	59 1f       	adc	r21, r25
+ 2f6:	07 2e       	mov	r0, r23
+ 2f8:	00 0c       	add	r0, r0
+ 2fa:	88 0b       	sbc	r24, r24
+ 2fc:	99 0b       	sbc	r25, r25
+ 2fe:	0e 94 61 02 	call	0x4c2	; 0x4c2 <EEPROM_readByte>
+ 302:	e3 ec       	ldi	r30, 0xC3	; 195
+ 304:	f9 e0       	ldi	r31, 0x09	; 9
+ 306:	31 97       	sbiw	r30, 0x01	; 1
+ 308:	f1 f7       	brne	.-4      	; 0x306 <APP_user_mode+0xb8>
+ 30a:	00 c0       	rjmp	.+0      	; 0x30c <APP_user_mode+0xbe>
+ 30c:	00 00       	nop
+		EEPROM_readByte(PAN_BASE_ADDRESS+i, &PAN[i]);
+		_delay_ms(10);
+	}
+	EEPROM_readByte(PIN_BASE_ADDRESS-1, &size_PIN_1);			//read PIN size
+	_delay_ms(10);
+	for(i=0;i<size_PIN_1;i++)
+ 30e:	1f 5f       	subi	r17, 0xFF	; 255
+ 310:	88 a1       	ldd	r24, Y+32	; 0x20
+ 312:	18 17       	cp	r17, r24
+ 314:	28 f3       	brcs	.-54     	; 0x2e0 <APP_user_mode+0x92>
+ 316:	80 e0       	ldi	r24, 0x00	; 0
+ 318:	09 c0       	rjmp	.+18     	; 0x32c <APP_user_mode+0xde>
+	
+	/*send PAN & PIN numbers using SPI*/
+	//first send PAN size
+	while(key != 0xAA)
+	{
+		key=SPI_sendReceiveByte(size_PAN);
+ 31a:	8f 8d       	ldd	r24, Y+31	; 0x1f
+ 31c:	0e 94 cf 05 	call	0xb9e	; 0xb9e <SPI_sendReceiveByte>
+ 320:	e3 ec       	ldi	r30, 0xC3	; 195
+ 322:	f9 e0       	ldi	r31, 0x09	; 9
+ 324:	31 97       	sbiw	r30, 0x01	; 1
+ 326:	f1 f7       	brne	.-4      	; 0x324 <APP_user_mode+0xd6>
+ 328:	00 c0       	rjmp	.+0      	; 0x32a <APP_user_mode+0xdc>
+ 32a:	00 00       	nop
+		_delay_ms(10);
+	}
+	
+	/*send PAN & PIN numbers using SPI*/
+	//first send PAN size
+	while(key != 0xAA)
+ 32c:	8a 3a       	cpi	r24, 0xAA	; 170
+ 32e:	a9 f7       	brne	.-22     	; 0x31a <APP_user_mode+0xcc>
+ 330:	10 e0       	ldi	r17, 0x00	; 0
+ 332:	10 c0       	rjmp	.+32     	; 0x354 <APP_user_mode+0x106>
+	//send PAN number
+	key=0;
+	
+	for(i=0;i<size_PAN;i++)
+	{
+		key=SPI_sendReceiveByte(PAN[i]);
+ 334:	e1 e0       	ldi	r30, 0x01	; 1
+ 336:	f0 e0       	ldi	r31, 0x00	; 0
+ 338:	ec 0f       	add	r30, r28
+ 33a:	fd 1f       	adc	r31, r29
+ 33c:	e1 0f       	add	r30, r17
+ 33e:	f1 1d       	adc	r31, r1
+ 340:	80 81       	ld	r24, Z
+ 342:	0e 94 cf 05 	call	0xb9e	; 0xb9e <SPI_sendReceiveByte>
+ 346:	83 ec       	ldi	r24, 0xC3	; 195
+ 348:	99 e0       	ldi	r25, 0x09	; 9
+ 34a:	01 97       	sbiw	r24, 0x01	; 1
+ 34c:	f1 f7       	brne	.-4      	; 0x34a <APP_user_mode+0xfc>
+ 34e:	00 c0       	rjmp	.+0      	; 0x350 <APP_user_mode+0x102>
+ 350:	00 00       	nop
+	}
+	
+	//send PAN number
+	key=0;
+	
+	for(i=0;i<size_PAN;i++)
+ 352:	1f 5f       	subi	r17, 0xFF	; 255
+ 354:	8f 8d       	ldd	r24, Y+31	; 0x1f
+ 356:	18 17       	cp	r17, r24
+ 358:	68 f3       	brcs	.-38     	; 0x334 <APP_user_mode+0xe6>
+ 35a:	9f e3       	ldi	r25, 0x3F	; 63
+ 35c:	ed e0       	ldi	r30, 0x0D	; 13
+ 35e:	f3 e0       	ldi	r31, 0x03	; 3
+ 360:	91 50       	subi	r25, 0x01	; 1
+ 362:	e0 40       	sbci	r30, 0x00	; 0
+ 364:	f0 40       	sbci	r31, 0x00	; 0
+ 366:	e1 f7       	brne	.-8      	; 0x360 <APP_user_mode+0x112>
+ 368:	00 c0       	rjmp	.+0      	; 0x36a <APP_user_mode+0x11c>
+ 36a:	00 00       	nop
+	{
+		key=SPI_sendReceiveByte(PAN[i]);
+		_delay_ms(10);
+	}
+	_delay_ms(1000);
+	key=0;
+ 36c:	80 e0       	ldi	r24, 0x00	; 0
+	//send PIN number
+	while(key != 0xFF)
+ 36e:	09 c0       	rjmp	.+18     	; 0x382 <APP_user_mode+0x134>
+	{
+		key=SPI_sendReceiveByte(0xBB);
+ 370:	8b eb       	ldi	r24, 0xBB	; 187
+ 372:	0e 94 cf 05 	call	0xb9e	; 0xb9e <SPI_sendReceiveByte>
+ 376:	e3 ec       	ldi	r30, 0xC3	; 195
+ 378:	f9 e0       	ldi	r31, 0x09	; 9
+ 37a:	31 97       	sbiw	r30, 0x01	; 1
+ 37c:	f1 f7       	brne	.-4      	; 0x37a <APP_user_mode+0x12c>
+ 37e:	00 c0       	rjmp	.+0      	; 0x380 <APP_user_mode+0x132>
+ 380:	00 00       	nop
+		_delay_ms(10);
+	}
+	_delay_ms(1000);
+	key=0;
+	//send PIN number
+	while(key != 0xFF)
+ 382:	8f 3f       	cpi	r24, 0xFF	; 255
+ 384:	a9 f7       	brne	.-22     	; 0x370 <APP_user_mode+0x122>
+ 386:	10 e0       	ldi	r17, 0x00	; 0
+ 388:	10 c0       	rjmp	.+32     	; 0x3aa <APP_user_mode+0x15c>
+		key=SPI_sendReceiveByte(0xBB);
+		_delay_ms(10);
+	}
+	for(i=0;i<size_PIN_1;i++)
+	{
+		SPI_sendReceiveByte(PIN_1[i]);
+ 38a:	e5 e1       	ldi	r30, 0x15	; 21
+ 38c:	f0 e0       	ldi	r31, 0x00	; 0
+ 38e:	ec 0f       	add	r30, r28
+ 390:	fd 1f       	adc	r31, r29
+ 392:	e1 0f       	add	r30, r17
+ 394:	f1 1d       	adc	r31, r1
+ 396:	80 81       	ld	r24, Z
+ 398:	0e 94 cf 05 	call	0xb9e	; 0xb9e <SPI_sendReceiveByte>
+ 39c:	83 ec       	ldi	r24, 0xC3	; 195
+ 39e:	99 e0       	ldi	r25, 0x09	; 9
+ 3a0:	01 97       	sbiw	r24, 0x01	; 1
+ 3a2:	f1 f7       	brne	.-4      	; 0x3a0 <APP_user_mode+0x152>
+ 3a4:	00 c0       	rjmp	.+0      	; 0x3a6 <APP_user_mode+0x158>
+ 3a6:	00 00       	nop
+	while(key != 0xFF)
+	{
+		key=SPI_sendReceiveByte(0xBB);
+		_delay_ms(10);
+	}
+	for(i=0;i<size_PIN_1;i++)
+ 3a8:	1f 5f       	subi	r17, 0xFF	; 255
+ 3aa:	88 a1       	ldd	r24, Y+32	; 0x20
+ 3ac:	18 17       	cp	r17, r24
+ 3ae:	68 f3       	brcs	.-38     	; 0x38a <APP_user_mode+0x13c>
+	{
+		SPI_sendReceiveByte(PIN_1[i]);
+		_delay_ms(10);
+	}
+
+}
+ 3b0:	a0 96       	adiw	r28, 0x20	; 32
+ 3b2:	0f b6       	in	r0, 0x3f	; 63
+ 3b4:	f8 94       	cli
+ 3b6:	de bf       	out	0x3e, r29	; 62
+ 3b8:	0f be       	out	0x3f, r0	; 63
+ 3ba:	cd bf       	out	0x3d, r28	; 61
+ 3bc:	df 91       	pop	r29
+ 3be:	cf 91       	pop	r28
+ 3c0:	1f 91       	pop	r17
+ 3c2:	08 95       	ret
+
+000003c4 <APP_system_menu>:
+
+void APP_system_menu(void)
+{
+	UART_sendString("system menu");
+ 3c4:	83 ea       	ldi	r24, 0xA3	; 163
+ 3c6:	90 e0       	ldi	r25, 0x00	; 0
+ 3c8:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+	UART_sendByte(NEW_LINE);
+ 3cc:	8d e0       	ldi	r24, 0x0D	; 13
+ 3ce:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+	UART_sendString("1-programming mode");
+ 3d2:	8f ea       	ldi	r24, 0xAF	; 175
+ 3d4:	90 e0       	ldi	r25, 0x00	; 0
+ 3d6:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+	UART_sendByte(NEW_LINE);
+ 3da:	8d e0       	ldi	r24, 0x0D	; 13
+ 3dc:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+	UART_sendString("2-user mode");
+ 3e0:	82 ec       	ldi	r24, 0xC2	; 194
+ 3e2:	90 e0       	ldi	r25, 0x00	; 0
+ 3e4:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+	UART_sendByte(NEW_LINE);
+ 3e8:	8d e0       	ldi	r24, 0x0D	; 13
+ 3ea:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+ 3ee:	08 95       	ret
+
+000003f0 <APP_system_init>:
+}
+
+void APP_system_init(void)
+{
+	UART_init(9600);								//initialize UART driver with Baud-rate = 9600 bits/sec 
+ 3f0:	60 e8       	ldi	r22, 0x80	; 128
+ 3f2:	75 e2       	ldi	r23, 0x25	; 37
+ 3f4:	80 e0       	ldi	r24, 0x00	; 0
+ 3f6:	90 e0       	ldi	r25, 0x00	; 0
+ 3f8:	0e 94 34 06 	call	0xc68	; 0xc68 <UART_init>
+	TWI_init();										//initialize I2C driver
+ 3fc:	0e 94 13 06 	call	0xc26	; 0xc26 <TWI_init>
+	SPI_initMaster();								//initialize SPI driver
+ 400:	0e 94 b5 05 	call	0xb6a	; 0xb6a <SPI_initMaster>
+		
+	GPIO_setPortDirection(PORTA_ID,PORT_OUTPUT); 	// All PORTD pins are o/p pins used for LED as indication
+ 404:	6f ef       	ldi	r22, 0xFF	; 255
+ 406:	80 e0       	ldi	r24, 0x00	; 0
+ 408:	0e 94 81 05 	call	0xb02	; 0xb02 <GPIO_setPortDirection>
+	GPIO_writePort(PORTA_ID,SYSTEM_INIT);
+ 40c:	60 e0       	ldi	r22, 0x00	; 0
+ 40e:	80 e0       	ldi	r24, 0x00	; 0
+ 410:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+		
+	GPIO_setPinDirection(PORTB_ID,PIN0,PIN_OUTPUT);	//trigger pin direction initialize to output
+ 414:	41 e0       	ldi	r20, 0x01	; 1
+ 416:	60 e0       	ldi	r22, 0x00	; 0
+ 418:	81 e0       	ldi	r24, 0x01	; 1
+ 41a:	0e 94 7f 04 	call	0x8fe	; 0x8fe <GPIO_setPinDirection>
+	GPIO_writePin(PORTB_ID,PIN0,Low);				//trigger pin value initialize to LOW
+ 41e:	40 e0       	ldi	r20, 0x00	; 0
+ 420:	60 e0       	ldi	r22, 0x00	; 0
+ 422:	81 e0       	ldi	r24, 0x01	; 1
+ 424:	0e 94 00 05 	call	0xa00	; 0xa00 <GPIO_writePin>
+ 428:	08 95       	ret
+
+0000042a <EEPROM_writeByte>:
+#include "EEPROM.h"
+#include "../../MCAL/TWI/twi.h"
+
+
+uint8 EEPROM_writeByte(uint32 u16addr, uint8 u8data)
+{
+ 42a:	cf 92       	push	r12
+ 42c:	df 92       	push	r13
+ 42e:	ef 92       	push	r14
+ 430:	ff 92       	push	r15
+ 432:	cf 93       	push	r28
+ 434:	6b 01       	movw	r12, r22
+ 436:	7c 01       	movw	r14, r24
+ 438:	c4 2f       	mov	r28, r20
+	/* Send the Start Bit */
+    TWI_start();
+ 43a:	0e 94 1a 06 	call	0xc34	; 0xc34 <TWI_start>
+    if (TWI_getStatus() != TWI_START)
+ 43e:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 442:	88 30       	cpi	r24, 0x08	; 8
+ 444:	79 f5       	brne	.+94     	; 0x4a4 <EEPROM_writeByte+0x7a>
+        return ERROR;
+		
+    /* Send the device address, we need to get A8 A9 address bits from the
+     * memory location address and R/W=0 (write) */
+    TWI_writeByte((uint8)(0xA0 | ((u16addr & 0x00600000)>>15)));
+ 446:	d7 01       	movw	r26, r14
+ 448:	c6 01       	movw	r24, r12
+ 44a:	88 27       	eor	r24, r24
+ 44c:	99 27       	eor	r25, r25
+ 44e:	a0 76       	andi	r26, 0x60	; 96
+ 450:	bb 27       	eor	r27, r27
+ 452:	07 2e       	mov	r0, r23
+ 454:	7f e0       	ldi	r23, 0x0F	; 15
+ 456:	b6 95       	lsr	r27
+ 458:	a7 95       	ror	r26
+ 45a:	97 95       	ror	r25
+ 45c:	87 95       	ror	r24
+ 45e:	7a 95       	dec	r23
+ 460:	d1 f7       	brne	.-12     	; 0x456 <EEPROM_writeByte+0x2c>
+ 462:	70 2d       	mov	r23, r0
+ 464:	80 6a       	ori	r24, 0xA0	; 160
+ 466:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+
+    if (TWI_getStatus() != TWI_MT_SLA_W_ACK)
+ 46a:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 46e:	88 31       	cpi	r24, 0x18	; 24
+ 470:	d9 f4       	brne	.+54     	; 0x4a8 <EEPROM_writeByte+0x7e>
+        return ERROR; 
+		 
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr>>8));
+ 472:	8d 2d       	mov	r24, r13
+ 474:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+ 478:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 47c:	88 32       	cpi	r24, 0x28	; 40
+ 47e:	b1 f4       	brne	.+44     	; 0x4ac <EEPROM_writeByte+0x82>
+        return ERROR;
+
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr));
+ 480:	8c 2d       	mov	r24, r12
+ 482:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+ 486:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 48a:	88 32       	cpi	r24, 0x28	; 40
+ 48c:	89 f4       	brne	.+34     	; 0x4b0 <EEPROM_writeByte+0x86>
+        return ERROR;
+		
+    /* write byte to eeprom */
+    TWI_writeByte(u8data);
+ 48e:	8c 2f       	mov	r24, r28
+ 490:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+ 494:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 498:	88 32       	cpi	r24, 0x28	; 40
+ 49a:	61 f4       	brne	.+24     	; 0x4b4 <EEPROM_writeByte+0x8a>
+        return ERROR;
+
+    /* Send the Stop Bit */
+    TWI_stop();
+ 49c:	0e 94 20 06 	call	0xc40	; 0xc40 <TWI_stop>
+	
+    return E_SUCCESS;
+ 4a0:	81 e0       	ldi	r24, 0x01	; 1
+ 4a2:	09 c0       	rjmp	.+18     	; 0x4b6 <EEPROM_writeByte+0x8c>
+uint8 EEPROM_writeByte(uint32 u16addr, uint8 u8data)
+{
+	/* Send the Start Bit */
+    TWI_start();
+    if (TWI_getStatus() != TWI_START)
+        return ERROR;
+ 4a4:	80 e0       	ldi	r24, 0x00	; 0
+ 4a6:	07 c0       	rjmp	.+14     	; 0x4b6 <EEPROM_writeByte+0x8c>
+    /* Send the device address, we need to get A8 A9 address bits from the
+     * memory location address and R/W=0 (write) */
+    TWI_writeByte((uint8)(0xA0 | ((u16addr & 0x00600000)>>15)));
+
+    if (TWI_getStatus() != TWI_MT_SLA_W_ACK)
+        return ERROR; 
+ 4a8:	80 e0       	ldi	r24, 0x00	; 0
+ 4aa:	05 c0       	rjmp	.+10     	; 0x4b6 <EEPROM_writeByte+0x8c>
+		 
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr>>8));
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+        return ERROR;
+ 4ac:	80 e0       	ldi	r24, 0x00	; 0
+ 4ae:	03 c0       	rjmp	.+6      	; 0x4b6 <EEPROM_writeByte+0x8c>
+
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr));
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+        return ERROR;
+ 4b0:	80 e0       	ldi	r24, 0x00	; 0
+ 4b2:	01 c0       	rjmp	.+2      	; 0x4b6 <EEPROM_writeByte+0x8c>
+		
+    /* write byte to eeprom */
+    TWI_writeByte(u8data);
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+        return ERROR;
+ 4b4:	80 e0       	ldi	r24, 0x00	; 0
+
+    /* Send the Stop Bit */
+    TWI_stop();
+	
+    return E_SUCCESS;
+}
+ 4b6:	cf 91       	pop	r28
+ 4b8:	ff 90       	pop	r15
+ 4ba:	ef 90       	pop	r14
+ 4bc:	df 90       	pop	r13
+ 4be:	cf 90       	pop	r12
+ 4c0:	08 95       	ret
+
+000004c2 <EEPROM_readByte>:
+
+uint8 EEPROM_readByte(uint32 u16addr, uint8 *u8data)
+{
+ 4c2:	8f 92       	push	r8
+ 4c4:	9f 92       	push	r9
+ 4c6:	af 92       	push	r10
+ 4c8:	bf 92       	push	r11
+ 4ca:	cf 92       	push	r12
+ 4cc:	df 92       	push	r13
+ 4ce:	ef 92       	push	r14
+ 4d0:	ff 92       	push	r15
+ 4d2:	cf 93       	push	r28
+ 4d4:	df 93       	push	r29
+ 4d6:	6b 01       	movw	r12, r22
+ 4d8:	7c 01       	movw	r14, r24
+ 4da:	ea 01       	movw	r28, r20
+	/* Send the Start Bit */
+    TWI_start();
+ 4dc:	0e 94 1a 06 	call	0xc34	; 0xc34 <TWI_start>
+    if (TWI_getStatus() != TWI_START)
+ 4e0:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 4e4:	88 30       	cpi	r24, 0x08	; 8
+ 4e6:	09 f0       	breq	.+2      	; 0x4ea <EEPROM_readByte+0x28>
+ 4e8:	3f c0       	rjmp	.+126    	; 0x568 <EEPROM_readByte+0xa6>
+        return ERROR;
+		
+    /* Send the device address, we need to get A8 A9 A10 address bits from the
+     * memory location address and R/W=0 (write) */
+    TWI_writeByte((uint8)(0xA0 | ((u16addr & 0x00600000)>>15)));
+ 4ea:	46 01       	movw	r8, r12
+ 4ec:	57 01       	movw	r10, r14
+ 4ee:	88 24       	eor	r8, r8
+ 4f0:	99 24       	eor	r9, r9
+ 4f2:	80 e6       	ldi	r24, 0x60	; 96
+ 4f4:	a8 22       	and	r10, r24
+ 4f6:	bb 24       	eor	r11, r11
+ 4f8:	07 2e       	mov	r0, r23
+ 4fa:	7f e0       	ldi	r23, 0x0F	; 15
+ 4fc:	b6 94       	lsr	r11
+ 4fe:	a7 94       	ror	r10
+ 500:	97 94       	ror	r9
+ 502:	87 94       	ror	r8
+ 504:	7a 95       	dec	r23
+ 506:	d1 f7       	brne	.-12     	; 0x4fc <EEPROM_readByte+0x3a>
+ 508:	70 2d       	mov	r23, r0
+ 50a:	88 2d       	mov	r24, r8
+ 50c:	80 6a       	ori	r24, 0xA0	; 160
+ 50e:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+
+    if (TWI_getStatus() != TWI_MT_SLA_W_ACK)
+ 512:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 516:	88 31       	cpi	r24, 0x18	; 24
+ 518:	49 f5       	brne	.+82     	; 0x56c <EEPROM_readByte+0xaa>
+        return ERROR;
+		
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr>>8));
+ 51a:	8d 2d       	mov	r24, r13
+ 51c:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+ 520:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 524:	88 32       	cpi	r24, 0x28	; 40
+ 526:	21 f5       	brne	.+72     	; 0x570 <EEPROM_readByte+0xae>
+        return ERROR;
+
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr));
+ 528:	8c 2d       	mov	r24, r12
+ 52a:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+ 52e:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 532:	88 32       	cpi	r24, 0x28	; 40
+ 534:	f9 f4       	brne	.+62     	; 0x574 <EEPROM_readByte+0xb2>
+        return ERROR;
+		
+    /* Send the Repeated Start Bit */
+    TWI_start();
+ 536:	0e 94 1a 06 	call	0xc34	; 0xc34 <TWI_start>
+    if (TWI_getStatus() != TWI_REP_START)
+ 53a:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 53e:	80 31       	cpi	r24, 0x10	; 16
+ 540:	d9 f4       	brne	.+54     	; 0x578 <EEPROM_readByte+0xb6>
+        return ERROR;
+		
+    /* Send the device address, we need to get A8 A9 A10 address bits from the
+     * memory location address and R/W=1 (Read) */
+    TWI_writeByte((uint8)(0xA0 | ((u16addr & 0x00600000)>>15) | 1));
+ 542:	88 2d       	mov	r24, r8
+ 544:	81 6a       	ori	r24, 0xA1	; 161
+ 546:	0e 94 23 06 	call	0xc46	; 0xc46 <TWI_writeByte>
+
+    if (TWI_getStatus() != TWI_MT_SLA_R_ACK)
+ 54a:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 54e:	80 34       	cpi	r24, 0x40	; 64
+ 550:	a9 f4       	brne	.+42     	; 0x57c <EEPROM_readByte+0xba>
+        return ERROR;
+
+    /* Read Byte from Memory without send ACK */
+    *u8data = TWI_readByteWithNACK();
+ 552:	0e 94 2a 06 	call	0xc54	; 0xc54 <TWI_readByteWithNACK>
+ 556:	88 83       	st	Y, r24
+    if (TWI_getStatus() != TWI_MR_DATA_NACK)
+ 558:	0e 94 31 06 	call	0xc62	; 0xc62 <TWI_getStatus>
+ 55c:	88 35       	cpi	r24, 0x58	; 88
+ 55e:	81 f4       	brne	.+32     	; 0x580 <EEPROM_readByte+0xbe>
+        return ERROR;
+
+    /* Send the Stop Bit */
+    TWI_stop();
+ 560:	0e 94 20 06 	call	0xc40	; 0xc40 <TWI_stop>
+
+    return E_SUCCESS;
+ 564:	81 e0       	ldi	r24, 0x01	; 1
+ 566:	0d c0       	rjmp	.+26     	; 0x582 <EEPROM_readByte+0xc0>
+uint8 EEPROM_readByte(uint32 u16addr, uint8 *u8data)
+{
+	/* Send the Start Bit */
+    TWI_start();
+    if (TWI_getStatus() != TWI_START)
+        return ERROR;
+ 568:	80 e0       	ldi	r24, 0x00	; 0
+ 56a:	0b c0       	rjmp	.+22     	; 0x582 <EEPROM_readByte+0xc0>
+    /* Send the device address, we need to get A8 A9 A10 address bits from the
+     * memory location address and R/W=0 (write) */
+    TWI_writeByte((uint8)(0xA0 | ((u16addr & 0x00600000)>>15)));
+
+    if (TWI_getStatus() != TWI_MT_SLA_W_ACK)
+        return ERROR;
+ 56c:	80 e0       	ldi	r24, 0x00	; 0
+ 56e:	09 c0       	rjmp	.+18     	; 0x582 <EEPROM_readByte+0xc0>
+		
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr>>8));
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+        return ERROR;
+ 570:	80 e0       	ldi	r24, 0x00	; 0
+ 572:	07 c0       	rjmp	.+14     	; 0x582 <EEPROM_readByte+0xc0>
+
+    /* Send the required memory location address */
+    TWI_writeByte((uint8)(u16addr));
+    if (TWI_getStatus() != TWI_MT_DATA_ACK)
+        return ERROR;
+ 574:	80 e0       	ldi	r24, 0x00	; 0
+ 576:	05 c0       	rjmp	.+10     	; 0x582 <EEPROM_readByte+0xc0>
+		
+    /* Send the Repeated Start Bit */
+    TWI_start();
+    if (TWI_getStatus() != TWI_REP_START)
+        return ERROR;
+ 578:	80 e0       	ldi	r24, 0x00	; 0
+ 57a:	03 c0       	rjmp	.+6      	; 0x582 <EEPROM_readByte+0xc0>
+    /* Send the device address, we need to get A8 A9 A10 address bits from the
+     * memory location address and R/W=1 (Read) */
+    TWI_writeByte((uint8)(0xA0 | ((u16addr & 0x00600000)>>15) | 1));
+
+    if (TWI_getStatus() != TWI_MT_SLA_R_ACK)
+        return ERROR;
+ 57c:	80 e0       	ldi	r24, 0x00	; 0
+ 57e:	01 c0       	rjmp	.+2      	; 0x582 <EEPROM_readByte+0xc0>
+
+    /* Read Byte from Memory without send ACK */
+    *u8data = TWI_readByteWithNACK();
+    if (TWI_getStatus() != TWI_MR_DATA_NACK)
+        return ERROR;
+ 580:	80 e0       	ldi	r24, 0x00	; 0
+
+    /* Send the Stop Bit */
+    TWI_stop();
+
+    return E_SUCCESS;
+}
+ 582:	df 91       	pop	r29
+ 584:	cf 91       	pop	r28
+ 586:	ff 90       	pop	r15
+ 588:	ef 90       	pop	r14
+ 58a:	df 90       	pop	r13
+ 58c:	cf 90       	pop	r12
+ 58e:	bf 90       	pop	r11
+ 590:	af 90       	pop	r10
+ 592:	9f 90       	pop	r9
+ 594:	8f 90       	pop	r8
+ 596:	08 95       	ret
+
+00000598 <main>:
+#include "Application/app.h"
+
+
+/**********MAIN CODE**********/
+int main(void)
+{
+ 598:	af 92       	push	r10
+ 59a:	bf 92       	push	r11
+ 59c:	cf 92       	push	r12
+ 59e:	df 92       	push	r13
+ 5a0:	ff 92       	push	r15
+ 5a2:	0f 93       	push	r16
+ 5a4:	1f 93       	push	r17
+ 5a6:	cf 93       	push	r28
+ 5a8:	df 93       	push	r29
+ 5aa:	cd b7       	in	r28, 0x3d	; 61
+ 5ac:	de b7       	in	r29, 0x3e	; 62
+ 5ae:	ac 97       	sbiw	r28, 0x2c	; 44
+ 5b0:	0f b6       	in	r0, 0x3f	; 63
+ 5b2:	f8 94       	cli
+ 5b4:	de bf       	out	0x3e, r29	; 62
+ 5b6:	0f be       	out	0x3f, r0	; 63
+ 5b8:	cd bf       	out	0x3d, r28	; 61
+	uint8 u8_iteration_count=0;		//flag indicate Number of iterations for password
+	uint8 u8_cardstate;				//used to store the state value of CARD password
+	uint8 arr_PAN[PAN_SIZE];
+	uint8 arr_PIN1[PIN_SIZE];
+	uint8 arr_PIN2[PIN_SIZE];
+	uint8 u8_sizePAN=0;				//hold actual PAN size
+ 5ba:	1a a6       	std	Y+42, r1	; 0x2a
+	uint8 u8_sizePIN1=0;			//hold actual PIN size of first input
+ 5bc:	1b a6       	std	Y+43, r1	; 0x2b
+	uint8 u8_sizePIN2=0;			//hold actual PIN size of second input
+ 5be:	1c a6       	std	Y+44, r1	; 0x2c
+	uint8 u8_i,u8_system_mode=0;
+
+	APP_system_init();
+ 5c0:	0e 94 f8 01 	call	0x3f0	; 0x3f0 <APP_system_init>
+
+	//check if password_flag set or not
+	EEPROM_readByte(CARD_STATE_ADDRESS, &u8_cardstate);
+ 5c4:	ae 01       	movw	r20, r28
+ 5c6:	4f 5f       	subi	r20, 0xFF	; 255
+ 5c8:	5f 4f       	sbci	r21, 0xFF	; 255
+ 5ca:	60 e5       	ldi	r22, 0x50	; 80
+ 5cc:	70 e0       	ldi	r23, 0x00	; 0
+ 5ce:	80 e0       	ldi	r24, 0x00	; 0
+ 5d0:	90 e0       	ldi	r25, 0x00	; 0
+ 5d2:	0e 94 61 02 	call	0x4c2	; 0x4c2 <EEPROM_readByte>
+	if(u8_cardstate == PASS_NOT_SET)
+ 5d6:	89 81       	ldd	r24, Y+1	; 0x01
+ 5d8:	8f 3f       	cpi	r24, 0xFF	; 255
+ 5da:	09 f0       	breq	.+2      	; 0x5de <main+0x46>
+ 5dc:	af c0       	rjmp	.+350    	; 0x73c <main+0x1a4>
+	{
+		//run programming mode
+		APP_check_PAN_number(arr_PAN, &u8_sizePAN,"enter PAN number",MIN_PAN_SIZE,MAX_PAN_SIZE);
+ 5de:	03 e1       	ldi	r16, 0x13	; 19
+ 5e0:	20 e1       	ldi	r18, 0x10	; 16
+ 5e2:	4e ec       	ldi	r20, 0xCE	; 206
+ 5e4:	50 e0       	ldi	r21, 0x00	; 0
+ 5e6:	be 01       	movw	r22, r28
+ 5e8:	66 5d       	subi	r22, 0xD6	; 214
+ 5ea:	7f 4f       	sbci	r23, 0xFF	; 255
+ 5ec:	ce 01       	movw	r24, r28
+ 5ee:	02 96       	adiw	r24, 0x02	; 2
+ 5f0:	0e 94 49 00 	call	0x92	; 0x92 <APP_check_PAN_number>
+
+
+/**********MAIN CODE**********/
+int main(void)
+{
+	uint8 u8_iteration_count=0;		//flag indicate Number of iterations for password
+ 5f4:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		//run programming mode
+		APP_check_PAN_number(arr_PAN, &u8_sizePAN,"enter PAN number",MIN_PAN_SIZE,MAX_PAN_SIZE);
+		do
+		{
+			APP_check_PIN_number(arr_PIN1, &u8_sizePIN1, "enter PIN number",MAX_PIN_SIZE);
+ 5f6:	24 e0       	ldi	r18, 0x04	; 4
+ 5f8:	42 ee       	ldi	r20, 0xE2	; 226
+ 5fa:	50 e0       	ldi	r21, 0x00	; 0
+ 5fc:	be 01       	movw	r22, r28
+ 5fe:	65 5d       	subi	r22, 0xD5	; 213
+ 600:	7f 4f       	sbci	r23, 0xFF	; 255
+ 602:	ce 01       	movw	r24, r28
+ 604:	46 96       	adiw	r24, 0x16	; 22
+ 606:	0e 94 a7 00 	call	0x14e	; 0x14e <APP_check_PIN_number>
+			APP_check_PIN_number(arr_PIN2, &u8_sizePIN2, "re_enter PIN number",MAX_PIN_SIZE);
+ 60a:	24 e0       	ldi	r18, 0x04	; 4
+ 60c:	4f ed       	ldi	r20, 0xDF	; 223
+ 60e:	50 e0       	ldi	r21, 0x00	; 0
+ 610:	be 01       	movw	r22, r28
+ 612:	64 5d       	subi	r22, 0xD4	; 212
+ 614:	7f 4f       	sbci	r23, 0xFF	; 255
+ 616:	ce 01       	movw	r24, r28
+ 618:	80 96       	adiw	r24, 0x20	; 32
+ 61a:	0e 94 a7 00 	call	0x14e	; 0x14e <APP_check_PIN_number>
+			if(APP_compare_PIN(arr_PIN1, arr_PIN2, u8_sizePIN1))
+ 61e:	4b a5       	ldd	r20, Y+43	; 0x2b
+ 620:	be 01       	movw	r22, r28
+ 622:	60 5e       	subi	r22, 0xE0	; 224
+ 624:	7f 4f       	sbci	r23, 0xFF	; 255
+ 626:	ce 01       	movw	r24, r28
+ 628:	46 96       	adiw	r24, 0x16	; 22
+ 62a:	0e 94 00 01 	call	0x200	; 0x200 <APP_compare_PIN>
+ 62e:	88 23       	and	r24, r24
+ 630:	09 f4       	brne	.+2      	; 0x634 <main+0x9c>
+ 632:	71 c0       	rjmp	.+226    	; 0x716 <main+0x17e>
+			{
+				UART_sendString("password match");
+ 634:	83 ef       	ldi	r24, 0xF3	; 243
+ 636:	90 e0       	ldi	r25, 0x00	; 0
+ 638:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+				/* save to EEPROM */
+				EEPROM_writeByte(PAN_BASE_ADDRESS-1, u8_sizePAN);				//save PAN size
+ 63c:	4a a5       	ldd	r20, Y+42	; 0x2a
+ 63e:	6f ef       	ldi	r22, 0xFF	; 255
+ 640:	70 e0       	ldi	r23, 0x00	; 0
+ 642:	80 e0       	ldi	r24, 0x00	; 0
+ 644:	90 e0       	ldi	r25, 0x00	; 0
+ 646:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 64a:	83 ec       	ldi	r24, 0xC3	; 195
+ 64c:	99 e0       	ldi	r25, 0x09	; 9
+ 64e:	01 97       	sbiw	r24, 0x01	; 1
+ 650:	f1 f7       	brne	.-4      	; 0x64e <main+0xb6>
+ 652:	00 c0       	rjmp	.+0      	; 0x654 <main+0xbc>
+ 654:	00 00       	nop
+				_delay_ms(10);
+				for(u8_i=0;u8_i<u8_sizePAN;u8_i++)								//save PAN number
+ 656:	f1 2c       	mov	r15, r1
+ 658:	18 c0       	rjmp	.+48     	; 0x68a <main+0xf2>
+				{
+					EEPROM_writeByte(PAN_BASE_ADDRESS+u8_i, arr_PAN[u8_i]);	
+ 65a:	8f 2d       	mov	r24, r15
+ 65c:	90 e0       	ldi	r25, 0x00	; 0
+ 65e:	5c 01       	movw	r10, r24
+ 660:	b3 94       	inc	r11
+ 662:	e2 e0       	ldi	r30, 0x02	; 2
+ 664:	f0 e0       	ldi	r31, 0x00	; 0
+ 666:	ec 0f       	add	r30, r28
+ 668:	fd 1f       	adc	r31, r29
+ 66a:	e8 0f       	add	r30, r24
+ 66c:	f9 1f       	adc	r31, r25
+ 66e:	b5 01       	movw	r22, r10
+ 670:	bb 0c       	add	r11, r11
+ 672:	88 0b       	sbc	r24, r24
+ 674:	99 0b       	sbc	r25, r25
+ 676:	40 81       	ld	r20, Z
+ 678:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 67c:	83 ec       	ldi	r24, 0xC3	; 195
+ 67e:	99 e0       	ldi	r25, 0x09	; 9
+ 680:	01 97       	sbiw	r24, 0x01	; 1
+ 682:	f1 f7       	brne	.-4      	; 0x680 <main+0xe8>
+ 684:	00 c0       	rjmp	.+0      	; 0x686 <main+0xee>
+ 686:	00 00       	nop
+			{
+				UART_sendString("password match");
+				/* save to EEPROM */
+				EEPROM_writeByte(PAN_BASE_ADDRESS-1, u8_sizePAN);				//save PAN size
+				_delay_ms(10);
+				for(u8_i=0;u8_i<u8_sizePAN;u8_i++)								//save PAN number
+ 688:	f3 94       	inc	r15
+ 68a:	8a a5       	ldd	r24, Y+42	; 0x2a
+ 68c:	f8 16       	cp	r15, r24
+ 68e:	28 f3       	brcs	.-54     	; 0x65a <main+0xc2>
+				{
+					EEPROM_writeByte(PAN_BASE_ADDRESS+u8_i, arr_PAN[u8_i]);	
+					_delay_ms(10);
+				}
+				EEPROM_writeByte(PIN_BASE_ADDRESS-1, u8_sizePIN1);				//save PIN size
+ 690:	4b a5       	ldd	r20, Y+43	; 0x2b
+ 692:	64 e2       	ldi	r22, 0x24	; 36
+ 694:	71 e0       	ldi	r23, 0x01	; 1
+ 696:	80 e0       	ldi	r24, 0x00	; 0
+ 698:	90 e0       	ldi	r25, 0x00	; 0
+ 69a:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 69e:	83 ec       	ldi	r24, 0xC3	; 195
+ 6a0:	99 e0       	ldi	r25, 0x09	; 9
+ 6a2:	01 97       	sbiw	r24, 0x01	; 1
+ 6a4:	f1 f7       	brne	.-4      	; 0x6a2 <main+0x10a>
+ 6a6:	00 c0       	rjmp	.+0      	; 0x6a8 <main+0x110>
+ 6a8:	00 00       	nop
+				_delay_ms(10);
+				for(u8_i=0;u8_i<u8_sizePIN1;u8_i++)								//save PIN number
+ 6aa:	f1 2c       	mov	r15, r1
+ 6ac:	1b c0       	rjmp	.+54     	; 0x6e4 <main+0x14c>
+				{
+					EEPROM_writeByte(PIN_BASE_ADDRESS+u8_i, arr_PIN1[u8_i]);
+ 6ae:	8f 2d       	mov	r24, r15
+ 6b0:	90 e0       	ldi	r25, 0x00	; 0
+ 6b2:	5c 01       	movw	r10, r24
+ 6b4:	2b ed       	ldi	r18, 0xDB	; 219
+ 6b6:	a2 1a       	sub	r10, r18
+ 6b8:	2e ef       	ldi	r18, 0xFE	; 254
+ 6ba:	b2 0a       	sbc	r11, r18
+ 6bc:	e6 e1       	ldi	r30, 0x16	; 22
+ 6be:	f0 e0       	ldi	r31, 0x00	; 0
+ 6c0:	ec 0f       	add	r30, r28
+ 6c2:	fd 1f       	adc	r31, r29
+ 6c4:	e8 0f       	add	r30, r24
+ 6c6:	f9 1f       	adc	r31, r25
+ 6c8:	b5 01       	movw	r22, r10
+ 6ca:	bb 0c       	add	r11, r11
+ 6cc:	88 0b       	sbc	r24, r24
+ 6ce:	99 0b       	sbc	r25, r25
+ 6d0:	40 81       	ld	r20, Z
+ 6d2:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 6d6:	83 ec       	ldi	r24, 0xC3	; 195
+ 6d8:	99 e0       	ldi	r25, 0x09	; 9
+ 6da:	01 97       	sbiw	r24, 0x01	; 1
+ 6dc:	f1 f7       	brne	.-4      	; 0x6da <main+0x142>
+ 6de:	00 c0       	rjmp	.+0      	; 0x6e0 <main+0x148>
+ 6e0:	00 00       	nop
+					EEPROM_writeByte(PAN_BASE_ADDRESS+u8_i, arr_PAN[u8_i]);	
+					_delay_ms(10);
+				}
+				EEPROM_writeByte(PIN_BASE_ADDRESS-1, u8_sizePIN1);				//save PIN size
+				_delay_ms(10);
+				for(u8_i=0;u8_i<u8_sizePIN1;u8_i++)								//save PIN number
+ 6e2:	f3 94       	inc	r15
+ 6e4:	8b a5       	ldd	r24, Y+43	; 0x2b
+ 6e6:	f8 16       	cp	r15, r24
+ 6e8:	10 f3       	brcs	.-60     	; 0x6ae <main+0x116>
+				{
+					EEPROM_writeByte(PIN_BASE_ADDRESS+u8_i, arr_PIN1[u8_i]);
+					_delay_ms(10);
+				}
+				EEPROM_writeByte(CARD_STATE_ADDRESS, PASS_SET);					//set password flag
+ 6ea:	40 e0       	ldi	r20, 0x00	; 0
+ 6ec:	60 e5       	ldi	r22, 0x50	; 80
+ 6ee:	70 e0       	ldi	r23, 0x00	; 0
+ 6f0:	80 e0       	ldi	r24, 0x00	; 0
+ 6f2:	90 e0       	ldi	r25, 0x00	; 0
+ 6f4:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 6f8:	83 ec       	ldi	r24, 0xC3	; 195
+ 6fa:	99 e0       	ldi	r25, 0x09	; 9
+ 6fc:	01 97       	sbiw	r24, 0x01	; 1
+ 6fe:	f1 f7       	brne	.-4      	; 0x6fc <main+0x164>
+ 700:	00 c0       	rjmp	.+0      	; 0x702 <main+0x16a>
+ 702:	00 00       	nop
+				_delay_ms(10);
+				GPIO_writePort(PORTA_ID,SYSTEM_SAVE_PASSWORD);					//indicate password is set
+ 704:	6a ea       	ldi	r22, 0xAA	; 170
+ 706:	80 e0       	ldi	r24, 0x00	; 0
+ 708:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+				/*RUN USER MODE*/
+				APP_Trigger_signal();
+ 70c:	0e 94 16 01 	call	0x22c	; 0x22c <APP_Trigger_signal>
+				APP_user_mode();
+ 710:	0e 94 27 01 	call	0x24e	; 0x24e <APP_user_mode>
+				break;
+ 714:	0b c0       	rjmp	.+22     	; 0x72c <main+0x194>
+			}
+			else
+			{
+				UART_sendString("password not match");
+ 716:	82 e0       	ldi	r24, 0x02	; 2
+ 718:	91 e0       	ldi	r25, 0x01	; 1
+ 71a:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+				u8_iteration_count++;											//flag indicate iteration count
+ 71e:	1f 5f       	subi	r17, 0xFF	; 255
+			}
+			UART_sendByte(NEW_LINE);
+ 720:	8d e0       	ldi	r24, 0x0D	; 13
+ 722:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		}while(u8_iteration_count < NO_OF_ITERATIONS);
+ 726:	13 30       	cpi	r17, 0x03	; 3
+ 728:	08 f4       	brcc	.+2      	; 0x72c <main+0x194>
+ 72a:	65 cf       	rjmp	.-310    	; 0x5f6 <main+0x5e>
+		if(u8_iteration_count==NO_OF_ITERATIONS)								//lock state
+ 72c:	13 30       	cpi	r17, 0x03	; 3
+ 72e:	09 f0       	breq	.+2      	; 0x732 <main+0x19a>
+ 730:	d4 c0       	rjmp	.+424    	; 0x8da <__stack+0x7b>
+			GPIO_writePort(PORTA_ID,SYSEM_LOCK_STATE);							//indicate system in LOCK state
+ 732:	64 e4       	ldi	r22, 0x44	; 68
+ 734:	80 e0       	ldi	r24, 0x00	; 0
+ 736:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+ 73a:	cf c0       	rjmp	.+414    	; 0x8da <__stack+0x7b>
+	}
+	else
+	{
+		//call system menu
+		GPIO_writePort(PORTA_ID,SYSTEM_MENU_STATE);
+ 73c:	6b eb       	ldi	r22, 0xBB	; 187
+ 73e:	80 e0       	ldi	r24, 0x00	; 0
+ 740:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+		APP_system_menu();
+ 744:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <APP_system_menu>
+
+
+/**********MAIN CODE**********/
+int main(void)
+{
+	uint8 u8_iteration_count=0;		//flag indicate Number of iterations for password
+ 748:	10 e0       	ldi	r17, 0x00	; 0
+		//call system menu
+		GPIO_writePort(PORTA_ID,SYSTEM_MENU_STATE);
+		APP_system_menu();
+		do
+		{
+			u8_system_mode=UART_recieveByte();
+ 74a:	0e 94 59 06 	call	0xcb2	; 0xcb2 <UART_recieveByte>
+			switch (u8_system_mode)
+ 74e:	81 33       	cpi	r24, 0x31	; 49
+ 750:	21 f0       	breq	.+8      	; 0x75a <main+0x1c2>
+ 752:	82 33       	cpi	r24, 0x32	; 50
+ 754:	09 f4       	brne	.+2      	; 0x758 <main+0x1c0>
+ 756:	b0 c0       	rjmp	.+352    	; 0x8b8 <__stack+0x59>
+ 758:	b8 c0       	rjmp	.+368    	; 0x8ca <__stack+0x6b>
+			{
+			case PROGRAMMING_MODE:
+				/*run programming mode*/
+			{
+				APP_check_PAN_number(arr_PAN, &u8_sizePAN,"enter PAN number",MIN_PAN_SIZE,MAX_PAN_SIZE);
+ 75a:	03 e1       	ldi	r16, 0x13	; 19
+ 75c:	20 e1       	ldi	r18, 0x10	; 16
+ 75e:	4e ec       	ldi	r20, 0xCE	; 206
+ 760:	50 e0       	ldi	r21, 0x00	; 0
+ 762:	be 01       	movw	r22, r28
+ 764:	66 5d       	subi	r22, 0xD6	; 214
+ 766:	7f 4f       	sbci	r23, 0xFF	; 255
+ 768:	ce 01       	movw	r24, r28
+ 76a:	02 96       	adiw	r24, 0x02	; 2
+ 76c:	0e 94 49 00 	call	0x92	; 0x92 <APP_check_PAN_number>
+				do
+				{
+					APP_check_PIN_number(arr_PIN1, &u8_sizePIN1, "enter PIN number",MAX_PIN_SIZE);
+ 770:	24 e0       	ldi	r18, 0x04	; 4
+ 772:	42 ee       	ldi	r20, 0xE2	; 226
+ 774:	50 e0       	ldi	r21, 0x00	; 0
+ 776:	be 01       	movw	r22, r28
+ 778:	65 5d       	subi	r22, 0xD5	; 213
+ 77a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 77c:	ce 01       	movw	r24, r28
+ 77e:	46 96       	adiw	r24, 0x16	; 22
+ 780:	0e 94 a7 00 	call	0x14e	; 0x14e <APP_check_PIN_number>
+					APP_check_PIN_number(arr_PIN2, &u8_sizePIN2, "re_enter PIN number",MAX_PIN_SIZE);
+ 784:	24 e0       	ldi	r18, 0x04	; 4
+ 786:	4f ed       	ldi	r20, 0xDF	; 223
+ 788:	50 e0       	ldi	r21, 0x00	; 0
+ 78a:	be 01       	movw	r22, r28
+ 78c:	64 5d       	subi	r22, 0xD4	; 212
+ 78e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 790:	ce 01       	movw	r24, r28
+ 792:	80 96       	adiw	r24, 0x20	; 32
+ 794:	0e 94 a7 00 	call	0x14e	; 0x14e <APP_check_PIN_number>
+					if(APP_compare_PIN(arr_PIN1, arr_PIN2, u8_sizePIN1))
+ 798:	4b a5       	ldd	r20, Y+43	; 0x2b
+ 79a:	be 01       	movw	r22, r28
+ 79c:	60 5e       	subi	r22, 0xE0	; 224
+ 79e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7a0:	ce 01       	movw	r24, r28
+ 7a2:	46 96       	adiw	r24, 0x16	; 22
+ 7a4:	0e 94 00 01 	call	0x200	; 0x200 <APP_compare_PIN>
+ 7a8:	88 23       	and	r24, r24
+ 7aa:	09 f4       	brne	.+2      	; 0x7ae <main+0x216>
+ 7ac:	72 c0       	rjmp	.+228    	; 0x892 <__stack+0x33>
+					{
+						UART_sendString("password match");
+ 7ae:	83 ef       	ldi	r24, 0xF3	; 243
+ 7b0:	90 e0       	ldi	r25, 0x00	; 0
+ 7b2:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+						u8_iteration_count=0;											//flag indicate iteration count
+						EEPROM_writeByte(PAN_BASE_ADDRESS-1, u8_sizePAN);				//save PAN size
+ 7b6:	4a a5       	ldd	r20, Y+42	; 0x2a
+ 7b8:	6f ef       	ldi	r22, 0xFF	; 255
+ 7ba:	70 e0       	ldi	r23, 0x00	; 0
+ 7bc:	80 e0       	ldi	r24, 0x00	; 0
+ 7be:	90 e0       	ldi	r25, 0x00	; 0
+ 7c0:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 7c4:	83 ec       	ldi	r24, 0xC3	; 195
+ 7c6:	99 e0       	ldi	r25, 0x09	; 9
+ 7c8:	01 97       	sbiw	r24, 0x01	; 1
+ 7ca:	f1 f7       	brne	.-4      	; 0x7c8 <main+0x230>
+ 7cc:	00 c0       	rjmp	.+0      	; 0x7ce <main+0x236>
+ 7ce:	00 00       	nop
+						_delay_ms(10);
+						for(u8_i=0;u8_i<u8_sizePAN;u8_i++)								//save to EEPROM
+ 7d0:	10 e0       	ldi	r17, 0x00	; 0
+ 7d2:	18 c0       	rjmp	.+48     	; 0x804 <__DATA_REGION_LENGTH__+0x4>
+						{
+							EEPROM_writeByte(PAN_BASE_ADDRESS+u8_i, arr_PAN[u8_i]);
+ 7d4:	81 2f       	mov	r24, r17
+ 7d6:	90 e0       	ldi	r25, 0x00	; 0
+ 7d8:	6c 01       	movw	r12, r24
+ 7da:	d3 94       	inc	r13
+ 7dc:	e2 e0       	ldi	r30, 0x02	; 2
+ 7de:	f0 e0       	ldi	r31, 0x00	; 0
+ 7e0:	ec 0f       	add	r30, r28
+ 7e2:	fd 1f       	adc	r31, r29
+ 7e4:	e8 0f       	add	r30, r24
+ 7e6:	f9 1f       	adc	r31, r25
+ 7e8:	b6 01       	movw	r22, r12
+ 7ea:	dd 0c       	add	r13, r13
+ 7ec:	88 0b       	sbc	r24, r24
+ 7ee:	99 0b       	sbc	r25, r25
+ 7f0:	40 81       	ld	r20, Z
+ 7f2:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 7f6:	83 ec       	ldi	r24, 0xC3	; 195
+ 7f8:	99 e0       	ldi	r25, 0x09	; 9
+ 7fa:	01 97       	sbiw	r24, 0x01	; 1
+ 7fc:	f1 f7       	brne	.-4      	; 0x7fa <main+0x262>
+ 7fe:	00 c0       	rjmp	.+0      	; 0x800 <__DATA_REGION_LENGTH__>
+ 800:	00 00       	nop
+					{
+						UART_sendString("password match");
+						u8_iteration_count=0;											//flag indicate iteration count
+						EEPROM_writeByte(PAN_BASE_ADDRESS-1, u8_sizePAN);				//save PAN size
+						_delay_ms(10);
+						for(u8_i=0;u8_i<u8_sizePAN;u8_i++)								//save to EEPROM
+ 802:	1f 5f       	subi	r17, 0xFF	; 255
+ 804:	8a a5       	ldd	r24, Y+42	; 0x2a
+ 806:	18 17       	cp	r17, r24
+ 808:	28 f3       	brcs	.-54     	; 0x7d4 <main+0x23c>
+						{
+							EEPROM_writeByte(PAN_BASE_ADDRESS+u8_i, arr_PAN[u8_i]);
+							_delay_ms(10);
+						}
+						EEPROM_writeByte(PIN_BASE_ADDRESS-1, u8_sizePIN1);				//save PIN size
+ 80a:	4b a5       	ldd	r20, Y+43	; 0x2b
+ 80c:	64 e2       	ldi	r22, 0x24	; 36
+ 80e:	71 e0       	ldi	r23, 0x01	; 1
+ 810:	80 e0       	ldi	r24, 0x00	; 0
+ 812:	90 e0       	ldi	r25, 0x00	; 0
+ 814:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 818:	83 ec       	ldi	r24, 0xC3	; 195
+ 81a:	99 e0       	ldi	r25, 0x09	; 9
+ 81c:	01 97       	sbiw	r24, 0x01	; 1
+ 81e:	f1 f7       	brne	.-4      	; 0x81c <__DATA_REGION_LENGTH__+0x1c>
+ 820:	00 c0       	rjmp	.+0      	; 0x822 <__DATA_REGION_LENGTH__+0x22>
+ 822:	00 00       	nop
+						_delay_ms(10);
+						for(u8_i=0;u8_i<u8_sizePIN1;u8_i++)
+ 824:	10 e0       	ldi	r17, 0x00	; 0
+ 826:	1b c0       	rjmp	.+54     	; 0x85e <__DATA_REGION_LENGTH__+0x5e>
+						{
+							EEPROM_writeByte(PIN_BASE_ADDRESS+u8_i, arr_PIN1[u8_i]);
+ 828:	81 2f       	mov	r24, r17
+ 82a:	90 e0       	ldi	r25, 0x00	; 0
+ 82c:	6c 01       	movw	r12, r24
+ 82e:	2b ed       	ldi	r18, 0xDB	; 219
+ 830:	c2 1a       	sub	r12, r18
+ 832:	2e ef       	ldi	r18, 0xFE	; 254
+ 834:	d2 0a       	sbc	r13, r18
+ 836:	e6 e1       	ldi	r30, 0x16	; 22
+ 838:	f0 e0       	ldi	r31, 0x00	; 0
+ 83a:	ec 0f       	add	r30, r28
+ 83c:	fd 1f       	adc	r31, r29
+ 83e:	e8 0f       	add	r30, r24
+ 840:	f9 1f       	adc	r31, r25
+ 842:	b6 01       	movw	r22, r12
+ 844:	dd 0c       	add	r13, r13
+ 846:	88 0b       	sbc	r24, r24
+ 848:	99 0b       	sbc	r25, r25
+ 84a:	40 81       	ld	r20, Z
+ 84c:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 850:	83 ec       	ldi	r24, 0xC3	; 195
+ 852:	99 e0       	ldi	r25, 0x09	; 9
+ 854:	01 97       	sbiw	r24, 0x01	; 1
+ 856:	f1 f7       	brne	.-4      	; 0x854 <__DATA_REGION_LENGTH__+0x54>
+ 858:	00 c0       	rjmp	.+0      	; 0x85a <__DATA_REGION_LENGTH__+0x5a>
+ 85a:	00 00       	nop
+							EEPROM_writeByte(PAN_BASE_ADDRESS+u8_i, arr_PAN[u8_i]);
+							_delay_ms(10);
+						}
+						EEPROM_writeByte(PIN_BASE_ADDRESS-1, u8_sizePIN1);				//save PIN size
+						_delay_ms(10);
+						for(u8_i=0;u8_i<u8_sizePIN1;u8_i++)
+ 85c:	1f 5f       	subi	r17, 0xFF	; 255
+ 85e:	8b a5       	ldd	r24, Y+43	; 0x2b
+ 860:	18 17       	cp	r17, r24
+ 862:	10 f3       	brcs	.-60     	; 0x828 <__DATA_REGION_LENGTH__+0x28>
+						{
+							EEPROM_writeByte(PIN_BASE_ADDRESS+u8_i, arr_PIN1[u8_i]);
+							_delay_ms(10);
+						}
+						EEPROM_writeByte(CARD_STATE_ADDRESS, PASS_SET);					//set password flag
+ 864:	40 e0       	ldi	r20, 0x00	; 0
+ 866:	60 e5       	ldi	r22, 0x50	; 80
+ 868:	70 e0       	ldi	r23, 0x00	; 0
+ 86a:	80 e0       	ldi	r24, 0x00	; 0
+ 86c:	90 e0       	ldi	r25, 0x00	; 0
+ 86e:	0e 94 15 02 	call	0x42a	; 0x42a <EEPROM_writeByte>
+ 872:	83 ec       	ldi	r24, 0xC3	; 195
+ 874:	99 e0       	ldi	r25, 0x09	; 9
+ 876:	01 97       	sbiw	r24, 0x01	; 1
+ 878:	f1 f7       	brne	.-4      	; 0x876 <__stack+0x17>
+ 87a:	00 c0       	rjmp	.+0      	; 0x87c <__stack+0x1d>
+ 87c:	00 00       	nop
+						_delay_ms(10);
+						GPIO_writePort(PORTA_ID,SYSTEM_SAVE_PASSWORD);					//indicate password is set
+ 87e:	6a ea       	ldi	r22, 0xAA	; 170
+ 880:	80 e0       	ldi	r24, 0x00	; 0
+ 882:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+						/*RUN USER MODE*/
+						APP_Trigger_signal();
+ 886:	0e 94 16 01 	call	0x22c	; 0x22c <APP_Trigger_signal>
+						APP_user_mode();
+ 88a:	0e 94 27 01 	call	0x24e	; 0x24e <APP_user_mode>
+					APP_check_PIN_number(arr_PIN1, &u8_sizePIN1, "enter PIN number",MAX_PIN_SIZE);
+					APP_check_PIN_number(arr_PIN2, &u8_sizePIN2, "re_enter PIN number",MAX_PIN_SIZE);
+					if(APP_compare_PIN(arr_PIN1, arr_PIN2, u8_sizePIN1))
+					{
+						UART_sendString("password match");
+						u8_iteration_count=0;											//flag indicate iteration count
+ 88e:	10 e0       	ldi	r17, 0x00	; 0
+						_delay_ms(10);
+						GPIO_writePort(PORTA_ID,SYSTEM_SAVE_PASSWORD);					//indicate password is set
+						/*RUN USER MODE*/
+						APP_Trigger_signal();
+						APP_user_mode();
+						break;
+ 890:	0b c0       	rjmp	.+22     	; 0x8a8 <__stack+0x49>
+					}
+					else
+					{
+						UART_sendString("password not match");
+ 892:	82 e0       	ldi	r24, 0x02	; 2
+ 894:	91 e0       	ldi	r25, 0x01	; 1
+ 896:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+						u8_iteration_count++;											//flag indicate iteration count
+ 89a:	1f 5f       	subi	r17, 0xFF	; 255
+					}
+					UART_sendByte(NEW_LINE);
+ 89c:	8d e0       	ldi	r24, 0x0D	; 13
+ 89e:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+				}while(u8_iteration_count<NO_OF_ITERATIONS);
+ 8a2:	13 30       	cpi	r17, 0x03	; 3
+ 8a4:	08 f4       	brcc	.+2      	; 0x8a8 <__stack+0x49>
+ 8a6:	64 cf       	rjmp	.-312    	; 0x770 <main+0x1d8>
+				if(u8_iteration_count==NO_OF_ITERATIONS)								//lock state
+ 8a8:	13 30       	cpi	r17, 0x03	; 3
+ 8aa:	09 f0       	breq	.+2      	; 0x8ae <__stack+0x4f>
+ 8ac:	4e cf       	rjmp	.-356    	; 0x74a <main+0x1b2>
+					GPIO_writePort(PORTA_ID,SYSEM_LOCK_STATE);							//indicate system in LOCK state
+ 8ae:	64 e4       	ldi	r22, 0x44	; 68
+ 8b0:	80 e0       	ldi	r24, 0x00	; 0
+ 8b2:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+ 8b6:	49 cf       	rjmp	.-366    	; 0x74a <main+0x1b2>
+			}
+			break;
+			case USER_MODE:
+			{
+				/*RUN USER MODE*/
+				GPIO_writePort(PORTA_ID,SYSTEM_USER_STATE);								//indicate system in USER mode
+ 8b8:	68 e8       	ldi	r22, 0x88	; 136
+ 8ba:	80 e0       	ldi	r24, 0x00	; 0
+ 8bc:	0e 94 9b 05 	call	0xb36	; 0xb36 <GPIO_writePort>
+				APP_Trigger_signal();
+ 8c0:	0e 94 16 01 	call	0x22c	; 0x22c <APP_Trigger_signal>
+				APP_user_mode();
+ 8c4:	0e 94 27 01 	call	0x24e	; 0x24e <APP_user_mode>
+			}
+			break;
+ 8c8:	40 cf       	rjmp	.-384    	; 0x74a <main+0x1b2>
+			default:
+				//wrong input mode
+				UART_sendString("wrong input");
+ 8ca:	85 e1       	ldi	r24, 0x15	; 21
+ 8cc:	91 e0       	ldi	r25, 0x01	; 1
+ 8ce:	0e 94 5d 06 	call	0xcba	; 0xcba <UART_sendString>
+				UART_sendByte(NEW_LINE);
+ 8d2:	8d e0       	ldi	r24, 0x0D	; 13
+ 8d4:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+				break;
+ 8d8:	38 cf       	rjmp	.-400    	; 0x74a <main+0x1b2>
+			}
+		}while(u8_system_mode != PROGRAMMING_MODE || u8_system_mode != USER_MODE);
+	}
+}
+ 8da:	80 e0       	ldi	r24, 0x00	; 0
+ 8dc:	90 e0       	ldi	r25, 0x00	; 0
+ 8de:	ac 96       	adiw	r28, 0x2c	; 44
+ 8e0:	0f b6       	in	r0, 0x3f	; 63
+ 8e2:	f8 94       	cli
+ 8e4:	de bf       	out	0x3e, r29	; 62
+ 8e6:	0f be       	out	0x3f, r0	; 63
+ 8e8:	cd bf       	out	0x3d, r28	; 61
+ 8ea:	df 91       	pop	r29
+ 8ec:	cf 91       	pop	r28
+ 8ee:	1f 91       	pop	r17
+ 8f0:	0f 91       	pop	r16
+ 8f2:	ff 90       	pop	r15
+ 8f4:	df 90       	pop	r13
+ 8f6:	cf 90       	pop	r12
+ 8f8:	bf 90       	pop	r11
+ 8fa:	af 90       	pop	r10
+ 8fc:	08 95       	ret
+
+000008fe <GPIO_setPinDirection>:
+	if((pin_num < 0) || (pin_num >= MAX_PIN) || (port_num < 0) || (port_num >= MAX_PORT_ID))
+	{
+		return FAILED;
+	}
+	return SUCCESS;
+}
+ 8fe:	68 30       	cpi	r22, 0x08	; 8
+ 900:	08 f0       	brcs	.+2      	; 0x904 <GPIO_setPinDirection+0x6>
+ 902:	78 c0       	rjmp	.+240    	; 0x9f4 <GPIO_setPinDirection+0xf6>
+ 904:	84 30       	cpi	r24, 0x04	; 4
+ 906:	08 f0       	brcs	.+2      	; 0x90a <GPIO_setPinDirection+0xc>
+ 908:	77 c0       	rjmp	.+238    	; 0x9f8 <GPIO_setPinDirection+0xfa>
+ 90a:	81 30       	cpi	r24, 0x01	; 1
+ 90c:	11 f1       	breq	.+68     	; 0x952 <GPIO_setPinDirection+0x54>
+ 90e:	30 f0       	brcs	.+12     	; 0x91c <GPIO_setPinDirection+0x1e>
+ 910:	82 30       	cpi	r24, 0x02	; 2
+ 912:	d1 f1       	breq	.+116    	; 0x988 <GPIO_setPinDirection+0x8a>
+ 914:	83 30       	cpi	r24, 0x03	; 3
+ 916:	09 f4       	brne	.+2      	; 0x91a <GPIO_setPinDirection+0x1c>
+ 918:	52 c0       	rjmp	.+164    	; 0x9be <GPIO_setPinDirection+0xc0>
+ 91a:	70 c0       	rjmp	.+224    	; 0x9fc <GPIO_setPinDirection+0xfe>
+ 91c:	41 30       	cpi	r20, 0x01	; 1
+ 91e:	61 f4       	brne	.+24     	; 0x938 <GPIO_setPinDirection+0x3a>
+ 920:	2a b3       	in	r18, 0x1a	; 26
+ 922:	81 e0       	ldi	r24, 0x01	; 1
+ 924:	90 e0       	ldi	r25, 0x00	; 0
+ 926:	02 c0       	rjmp	.+4      	; 0x92c <GPIO_setPinDirection+0x2e>
+ 928:	88 0f       	add	r24, r24
+ 92a:	99 1f       	adc	r25, r25
+ 92c:	6a 95       	dec	r22
+ 92e:	e2 f7       	brpl	.-8      	; 0x928 <GPIO_setPinDirection+0x2a>
+ 930:	82 2b       	or	r24, r18
+ 932:	8a bb       	out	0x1a, r24	; 26
+ 934:	81 e0       	ldi	r24, 0x01	; 1
+ 936:	08 95       	ret
+ 938:	2a b3       	in	r18, 0x1a	; 26
+ 93a:	81 e0       	ldi	r24, 0x01	; 1
+ 93c:	90 e0       	ldi	r25, 0x00	; 0
+ 93e:	02 c0       	rjmp	.+4      	; 0x944 <GPIO_setPinDirection+0x46>
+ 940:	88 0f       	add	r24, r24
+ 942:	99 1f       	adc	r25, r25
+ 944:	6a 95       	dec	r22
+ 946:	e2 f7       	brpl	.-8      	; 0x940 <GPIO_setPinDirection+0x42>
+ 948:	80 95       	com	r24
+ 94a:	82 23       	and	r24, r18
+ 94c:	8a bb       	out	0x1a, r24	; 26
+ 94e:	81 e0       	ldi	r24, 0x01	; 1
+ 950:	08 95       	ret
+ 952:	41 30       	cpi	r20, 0x01	; 1
+ 954:	61 f4       	brne	.+24     	; 0x96e <GPIO_setPinDirection+0x70>
+ 956:	27 b3       	in	r18, 0x17	; 23
+ 958:	81 e0       	ldi	r24, 0x01	; 1
+ 95a:	90 e0       	ldi	r25, 0x00	; 0
+ 95c:	02 c0       	rjmp	.+4      	; 0x962 <GPIO_setPinDirection+0x64>
+ 95e:	88 0f       	add	r24, r24
+ 960:	99 1f       	adc	r25, r25
+ 962:	6a 95       	dec	r22
+ 964:	e2 f7       	brpl	.-8      	; 0x95e <GPIO_setPinDirection+0x60>
+ 966:	82 2b       	or	r24, r18
+ 968:	87 bb       	out	0x17, r24	; 23
+ 96a:	81 e0       	ldi	r24, 0x01	; 1
+ 96c:	08 95       	ret
+ 96e:	27 b3       	in	r18, 0x17	; 23
+ 970:	81 e0       	ldi	r24, 0x01	; 1
+ 972:	90 e0       	ldi	r25, 0x00	; 0
+ 974:	02 c0       	rjmp	.+4      	; 0x97a <GPIO_setPinDirection+0x7c>
+ 976:	88 0f       	add	r24, r24
+ 978:	99 1f       	adc	r25, r25
+ 97a:	6a 95       	dec	r22
+ 97c:	e2 f7       	brpl	.-8      	; 0x976 <GPIO_setPinDirection+0x78>
+ 97e:	80 95       	com	r24
+ 980:	82 23       	and	r24, r18
+ 982:	87 bb       	out	0x17, r24	; 23
+ 984:	81 e0       	ldi	r24, 0x01	; 1
+ 986:	08 95       	ret
+ 988:	41 30       	cpi	r20, 0x01	; 1
+ 98a:	61 f4       	brne	.+24     	; 0x9a4 <GPIO_setPinDirection+0xa6>
+ 98c:	24 b3       	in	r18, 0x14	; 20
+ 98e:	81 e0       	ldi	r24, 0x01	; 1
+ 990:	90 e0       	ldi	r25, 0x00	; 0
+ 992:	02 c0       	rjmp	.+4      	; 0x998 <GPIO_setPinDirection+0x9a>
+ 994:	88 0f       	add	r24, r24
+ 996:	99 1f       	adc	r25, r25
+ 998:	6a 95       	dec	r22
+ 99a:	e2 f7       	brpl	.-8      	; 0x994 <GPIO_setPinDirection+0x96>
+ 99c:	82 2b       	or	r24, r18
+ 99e:	84 bb       	out	0x14, r24	; 20
+ 9a0:	81 e0       	ldi	r24, 0x01	; 1
+ 9a2:	08 95       	ret
+ 9a4:	24 b3       	in	r18, 0x14	; 20
+ 9a6:	81 e0       	ldi	r24, 0x01	; 1
+ 9a8:	90 e0       	ldi	r25, 0x00	; 0
+ 9aa:	02 c0       	rjmp	.+4      	; 0x9b0 <GPIO_setPinDirection+0xb2>
+ 9ac:	88 0f       	add	r24, r24
+ 9ae:	99 1f       	adc	r25, r25
+ 9b0:	6a 95       	dec	r22
+ 9b2:	e2 f7       	brpl	.-8      	; 0x9ac <GPIO_setPinDirection+0xae>
+ 9b4:	80 95       	com	r24
+ 9b6:	82 23       	and	r24, r18
+ 9b8:	84 bb       	out	0x14, r24	; 20
+ 9ba:	81 e0       	ldi	r24, 0x01	; 1
+ 9bc:	08 95       	ret
+ 9be:	41 30       	cpi	r20, 0x01	; 1
+ 9c0:	61 f4       	brne	.+24     	; 0x9da <GPIO_setPinDirection+0xdc>
+ 9c2:	21 b3       	in	r18, 0x11	; 17
+ 9c4:	81 e0       	ldi	r24, 0x01	; 1
+ 9c6:	90 e0       	ldi	r25, 0x00	; 0
+ 9c8:	02 c0       	rjmp	.+4      	; 0x9ce <GPIO_setPinDirection+0xd0>
+ 9ca:	88 0f       	add	r24, r24
+ 9cc:	99 1f       	adc	r25, r25
+ 9ce:	6a 95       	dec	r22
+ 9d0:	e2 f7       	brpl	.-8      	; 0x9ca <GPIO_setPinDirection+0xcc>
+ 9d2:	82 2b       	or	r24, r18
+ 9d4:	81 bb       	out	0x11, r24	; 17
+ 9d6:	81 e0       	ldi	r24, 0x01	; 1
+ 9d8:	08 95       	ret
+ 9da:	21 b3       	in	r18, 0x11	; 17
+ 9dc:	81 e0       	ldi	r24, 0x01	; 1
+ 9de:	90 e0       	ldi	r25, 0x00	; 0
+ 9e0:	02 c0       	rjmp	.+4      	; 0x9e6 <GPIO_setPinDirection+0xe8>
+ 9e2:	88 0f       	add	r24, r24
+ 9e4:	99 1f       	adc	r25, r25
+ 9e6:	6a 95       	dec	r22
+ 9e8:	e2 f7       	brpl	.-8      	; 0x9e2 <GPIO_setPinDirection+0xe4>
+ 9ea:	80 95       	com	r24
+ 9ec:	82 23       	and	r24, r18
+ 9ee:	81 bb       	out	0x11, r24	; 17
+ 9f0:	81 e0       	ldi	r24, 0x01	; 1
+ 9f2:	08 95       	ret
+ 9f4:	80 e0       	ldi	r24, 0x00	; 0
+ 9f6:	08 95       	ret
+ 9f8:	80 e0       	ldi	r24, 0x00	; 0
+ 9fa:	08 95       	ret
+ 9fc:	81 e0       	ldi	r24, 0x01	; 1
+ 9fe:	08 95       	ret
+
+00000a00 <GPIO_writePin>:
+ a00:	68 30       	cpi	r22, 0x08	; 8
+ a02:	08 f0       	brcs	.+2      	; 0xa06 <GPIO_writePin+0x6>
+ a04:	78 c0       	rjmp	.+240    	; 0xaf6 <GPIO_writePin+0xf6>
+ a06:	84 30       	cpi	r24, 0x04	; 4
+ a08:	08 f0       	brcs	.+2      	; 0xa0c <GPIO_writePin+0xc>
+ a0a:	77 c0       	rjmp	.+238    	; 0xafa <GPIO_writePin+0xfa>
+ a0c:	81 30       	cpi	r24, 0x01	; 1
+ a0e:	11 f1       	breq	.+68     	; 0xa54 <GPIO_writePin+0x54>
+ a10:	30 f0       	brcs	.+12     	; 0xa1e <GPIO_writePin+0x1e>
+ a12:	82 30       	cpi	r24, 0x02	; 2
+ a14:	d1 f1       	breq	.+116    	; 0xa8a <GPIO_writePin+0x8a>
+ a16:	83 30       	cpi	r24, 0x03	; 3
+ a18:	09 f4       	brne	.+2      	; 0xa1c <GPIO_writePin+0x1c>
+ a1a:	52 c0       	rjmp	.+164    	; 0xac0 <GPIO_writePin+0xc0>
+ a1c:	70 c0       	rjmp	.+224    	; 0xafe <GPIO_writePin+0xfe>
+ a1e:	41 30       	cpi	r20, 0x01	; 1
+ a20:	61 f4       	brne	.+24     	; 0xa3a <GPIO_writePin+0x3a>
+ a22:	2b b3       	in	r18, 0x1b	; 27
+ a24:	81 e0       	ldi	r24, 0x01	; 1
+ a26:	90 e0       	ldi	r25, 0x00	; 0
+ a28:	02 c0       	rjmp	.+4      	; 0xa2e <GPIO_writePin+0x2e>
+ a2a:	88 0f       	add	r24, r24
+ a2c:	99 1f       	adc	r25, r25
+ a2e:	6a 95       	dec	r22
+ a30:	e2 f7       	brpl	.-8      	; 0xa2a <GPIO_writePin+0x2a>
+ a32:	82 2b       	or	r24, r18
+ a34:	8b bb       	out	0x1b, r24	; 27
+ a36:	81 e0       	ldi	r24, 0x01	; 1
+ a38:	08 95       	ret
+ a3a:	2b b3       	in	r18, 0x1b	; 27
+ a3c:	81 e0       	ldi	r24, 0x01	; 1
+ a3e:	90 e0       	ldi	r25, 0x00	; 0
+ a40:	02 c0       	rjmp	.+4      	; 0xa46 <GPIO_writePin+0x46>
+ a42:	88 0f       	add	r24, r24
+ a44:	99 1f       	adc	r25, r25
+ a46:	6a 95       	dec	r22
+ a48:	e2 f7       	brpl	.-8      	; 0xa42 <GPIO_writePin+0x42>
+ a4a:	80 95       	com	r24
+ a4c:	82 23       	and	r24, r18
+ a4e:	8b bb       	out	0x1b, r24	; 27
+ a50:	81 e0       	ldi	r24, 0x01	; 1
+ a52:	08 95       	ret
+ a54:	41 30       	cpi	r20, 0x01	; 1
+ a56:	61 f4       	brne	.+24     	; 0xa70 <GPIO_writePin+0x70>
+ a58:	28 b3       	in	r18, 0x18	; 24
+ a5a:	81 e0       	ldi	r24, 0x01	; 1
+ a5c:	90 e0       	ldi	r25, 0x00	; 0
+ a5e:	02 c0       	rjmp	.+4      	; 0xa64 <GPIO_writePin+0x64>
+ a60:	88 0f       	add	r24, r24
+ a62:	99 1f       	adc	r25, r25
+ a64:	6a 95       	dec	r22
+ a66:	e2 f7       	brpl	.-8      	; 0xa60 <GPIO_writePin+0x60>
+ a68:	82 2b       	or	r24, r18
+ a6a:	88 bb       	out	0x18, r24	; 24
+ a6c:	81 e0       	ldi	r24, 0x01	; 1
+ a6e:	08 95       	ret
+ a70:	28 b3       	in	r18, 0x18	; 24
+ a72:	81 e0       	ldi	r24, 0x01	; 1
+ a74:	90 e0       	ldi	r25, 0x00	; 0
+ a76:	02 c0       	rjmp	.+4      	; 0xa7c <GPIO_writePin+0x7c>
+ a78:	88 0f       	add	r24, r24
+ a7a:	99 1f       	adc	r25, r25
+ a7c:	6a 95       	dec	r22
+ a7e:	e2 f7       	brpl	.-8      	; 0xa78 <GPIO_writePin+0x78>
+ a80:	80 95       	com	r24
+ a82:	82 23       	and	r24, r18
+ a84:	88 bb       	out	0x18, r24	; 24
+ a86:	81 e0       	ldi	r24, 0x01	; 1
+ a88:	08 95       	ret
+ a8a:	41 30       	cpi	r20, 0x01	; 1
+ a8c:	61 f4       	brne	.+24     	; 0xaa6 <GPIO_writePin+0xa6>
+ a8e:	25 b3       	in	r18, 0x15	; 21
+ a90:	81 e0       	ldi	r24, 0x01	; 1
+ a92:	90 e0       	ldi	r25, 0x00	; 0
+ a94:	02 c0       	rjmp	.+4      	; 0xa9a <GPIO_writePin+0x9a>
+ a96:	88 0f       	add	r24, r24
+ a98:	99 1f       	adc	r25, r25
+ a9a:	6a 95       	dec	r22
+ a9c:	e2 f7       	brpl	.-8      	; 0xa96 <GPIO_writePin+0x96>
+ a9e:	82 2b       	or	r24, r18
+ aa0:	85 bb       	out	0x15, r24	; 21
+ aa2:	81 e0       	ldi	r24, 0x01	; 1
+ aa4:	08 95       	ret
+ aa6:	25 b3       	in	r18, 0x15	; 21
+ aa8:	81 e0       	ldi	r24, 0x01	; 1
+ aaa:	90 e0       	ldi	r25, 0x00	; 0
+ aac:	02 c0       	rjmp	.+4      	; 0xab2 <GPIO_writePin+0xb2>
+ aae:	88 0f       	add	r24, r24
+ ab0:	99 1f       	adc	r25, r25
+ ab2:	6a 95       	dec	r22
+ ab4:	e2 f7       	brpl	.-8      	; 0xaae <GPIO_writePin+0xae>
+ ab6:	80 95       	com	r24
+ ab8:	82 23       	and	r24, r18
+ aba:	85 bb       	out	0x15, r24	; 21
+ abc:	81 e0       	ldi	r24, 0x01	; 1
+ abe:	08 95       	ret
+ ac0:	41 30       	cpi	r20, 0x01	; 1
+ ac2:	61 f4       	brne	.+24     	; 0xadc <GPIO_writePin+0xdc>
+ ac4:	22 b3       	in	r18, 0x12	; 18
+ ac6:	81 e0       	ldi	r24, 0x01	; 1
+ ac8:	90 e0       	ldi	r25, 0x00	; 0
+ aca:	02 c0       	rjmp	.+4      	; 0xad0 <GPIO_writePin+0xd0>
+ acc:	88 0f       	add	r24, r24
+ ace:	99 1f       	adc	r25, r25
+ ad0:	6a 95       	dec	r22
+ ad2:	e2 f7       	brpl	.-8      	; 0xacc <GPIO_writePin+0xcc>
+ ad4:	82 2b       	or	r24, r18
+ ad6:	82 bb       	out	0x12, r24	; 18
+ ad8:	81 e0       	ldi	r24, 0x01	; 1
+ ada:	08 95       	ret
+ adc:	22 b3       	in	r18, 0x12	; 18
+ ade:	81 e0       	ldi	r24, 0x01	; 1
+ ae0:	90 e0       	ldi	r25, 0x00	; 0
+ ae2:	02 c0       	rjmp	.+4      	; 0xae8 <GPIO_writePin+0xe8>
+ ae4:	88 0f       	add	r24, r24
+ ae6:	99 1f       	adc	r25, r25
+ ae8:	6a 95       	dec	r22
+ aea:	e2 f7       	brpl	.-8      	; 0xae4 <GPIO_writePin+0xe4>
+ aec:	80 95       	com	r24
+ aee:	82 23       	and	r24, r18
+ af0:	82 bb       	out	0x12, r24	; 18
+ af2:	81 e0       	ldi	r24, 0x01	; 1
+ af4:	08 95       	ret
+ af6:	80 e0       	ldi	r24, 0x00	; 0
+ af8:	08 95       	ret
+ afa:	80 e0       	ldi	r24, 0x00	; 0
+ afc:	08 95       	ret
+ afe:	81 e0       	ldi	r24, 0x01	; 1
+ b00:	08 95       	ret
+
+00000b02 <GPIO_setPortDirection>:
+ * If the direction value is PORT_OUTPUT all pins in this port should be output pins.
+ * If the input port number is not correct, The function will not handle the request.
+ */
+EN_STATE GPIO_setPortDirection(uint8 port_num, EN_PORT_DIRECTION direction)
+{
+	if(port_num < 0 || port_num >= MAX_PORT_ID )
+ b02:	84 30       	cpi	r24, 0x04	; 4
+ b04:	a0 f4       	brcc	.+40     	; 0xb2e <GPIO_setPortDirection+0x2c>
+	{
+		return FAILED;
+	}
+	else
+	{
+		switch(port_num)
+ b06:	81 30       	cpi	r24, 0x01	; 1
+ b08:	49 f0       	breq	.+18     	; 0xb1c <GPIO_setPortDirection+0x1a>
+ b0a:	28 f0       	brcs	.+10     	; 0xb16 <GPIO_setPortDirection+0x14>
+ b0c:	82 30       	cpi	r24, 0x02	; 2
+ b0e:	49 f0       	breq	.+18     	; 0xb22 <GPIO_setPortDirection+0x20>
+ b10:	83 30       	cpi	r24, 0x03	; 3
+ b12:	51 f0       	breq	.+20     	; 0xb28 <GPIO_setPortDirection+0x26>
+ b14:	0e c0       	rjmp	.+28     	; 0xb32 <GPIO_setPortDirection+0x30>
+		{
+		case PORTA_ID:
+			DDRA = direction;
+ b16:	6a bb       	out	0x1a, r22	; 26
+		case PORTD_ID:
+			DDRD = direction;
+			break;
+		}
+	}
+	return SUCCESS;
+ b18:	81 e0       	ldi	r24, 0x01	; 1
+	{
+		switch(port_num)
+		{
+		case PORTA_ID:
+			DDRA = direction;
+			break;
+ b1a:	08 95       	ret
+		case PORTB_ID:
+			DDRB = direction;
+ b1c:	67 bb       	out	0x17, r22	; 23
+		case PORTD_ID:
+			DDRD = direction;
+			break;
+		}
+	}
+	return SUCCESS;
+ b1e:	81 e0       	ldi	r24, 0x01	; 1
+		case PORTA_ID:
+			DDRA = direction;
+			break;
+		case PORTB_ID:
+			DDRB = direction;
+			break;
+ b20:	08 95       	ret
+		case PORTC_ID:
+			DDRC = direction;
+ b22:	64 bb       	out	0x14, r22	; 20
+		case PORTD_ID:
+			DDRD = direction;
+			break;
+		}
+	}
+	return SUCCESS;
+ b24:	81 e0       	ldi	r24, 0x01	; 1
+		case PORTB_ID:
+			DDRB = direction;
+			break;
+		case PORTC_ID:
+			DDRC = direction;
+			break;
+ b26:	08 95       	ret
+		case PORTD_ID:
+			DDRD = direction;
+ b28:	61 bb       	out	0x11, r22	; 17
+			break;
+		}
+	}
+	return SUCCESS;
+ b2a:	81 e0       	ldi	r24, 0x01	; 1
+		case PORTC_ID:
+			DDRC = direction;
+			break;
+		case PORTD_ID:
+			DDRD = direction;
+			break;
+ b2c:	08 95       	ret
+ */
+EN_STATE GPIO_setPortDirection(uint8 port_num, EN_PORT_DIRECTION direction)
+{
+	if(port_num < 0 || port_num >= MAX_PORT_ID )
+	{
+		return FAILED;
+ b2e:	80 e0       	ldi	r24, 0x00	; 0
+ b30:	08 95       	ret
+		case PORTD_ID:
+			DDRD = direction;
+			break;
+		}
+	}
+	return SUCCESS;
+ b32:	81 e0       	ldi	r24, 0x01	; 1
+}
+ b34:	08 95       	ret
+
+00000b36 <GPIO_writePort>:
+ * If any pin in the port is input pin this will activate/deactivate the internal pull-up resistor.
+ * If the input port number is not correct, The function will not handle the request.
+ */
+EN_STATE GPIO_writePort(uint8 port_num, uint8 value)
+{
+	if(port_num < 0 || port_num >= MAX_PORT_ID )
+ b36:	84 30       	cpi	r24, 0x04	; 4
+ b38:	a0 f4       	brcc	.+40     	; 0xb62 <GPIO_writePort+0x2c>
+	{
+		return FAILED;
+	}
+	else
+	{
+		switch(port_num)
+ b3a:	81 30       	cpi	r24, 0x01	; 1
+ b3c:	49 f0       	breq	.+18     	; 0xb50 <GPIO_writePort+0x1a>
+ b3e:	28 f0       	brcs	.+10     	; 0xb4a <GPIO_writePort+0x14>
+ b40:	82 30       	cpi	r24, 0x02	; 2
+ b42:	49 f0       	breq	.+18     	; 0xb56 <GPIO_writePort+0x20>
+ b44:	83 30       	cpi	r24, 0x03	; 3
+ b46:	51 f0       	breq	.+20     	; 0xb5c <GPIO_writePort+0x26>
+ b48:	0e c0       	rjmp	.+28     	; 0xb66 <GPIO_writePort+0x30>
+		{
+		case PORTA_ID:
+			PORTA = value;
+ b4a:	6b bb       	out	0x1b, r22	; 27
+		case PORTD_ID:
+			PORTD = value;
+			break;
+		}
+	}
+	return SUCCESS;
+ b4c:	81 e0       	ldi	r24, 0x01	; 1
+	{
+		switch(port_num)
+		{
+		case PORTA_ID:
+			PORTA = value;
+			break;
+ b4e:	08 95       	ret
+		case PORTB_ID:
+			PORTB = value;
+ b50:	68 bb       	out	0x18, r22	; 24
+		case PORTD_ID:
+			PORTD = value;
+			break;
+		}
+	}
+	return SUCCESS;
+ b52:	81 e0       	ldi	r24, 0x01	; 1
+		case PORTA_ID:
+			PORTA = value;
+			break;
+		case PORTB_ID:
+			PORTB = value;
+			break;
+ b54:	08 95       	ret
+		case PORTC_ID:
+			PORTC = value;
+ b56:	65 bb       	out	0x15, r22	; 21
+		case PORTD_ID:
+			PORTD = value;
+			break;
+		}
+	}
+	return SUCCESS;
+ b58:	81 e0       	ldi	r24, 0x01	; 1
+		case PORTB_ID:
+			PORTB = value;
+			break;
+		case PORTC_ID:
+			PORTC = value;
+			break;
+ b5a:	08 95       	ret
+		case PORTD_ID:
+			PORTD = value;
+ b5c:	62 bb       	out	0x12, r22	; 18
+			break;
+		}
+	}
+	return SUCCESS;
+ b5e:	81 e0       	ldi	r24, 0x01	; 1
+		case PORTC_ID:
+			PORTC = value;
+			break;
+		case PORTD_ID:
+			PORTD = value;
+			break;
+ b60:	08 95       	ret
+ */
+EN_STATE GPIO_writePort(uint8 port_num, uint8 value)
+{
+	if(port_num < 0 || port_num >= MAX_PORT_ID )
+	{
+		return FAILED;
+ b62:	80 e0       	ldi	r24, 0x00	; 0
+ b64:	08 95       	ret
+		case PORTD_ID:
+			PORTD = value;
+			break;
+		}
+	}
+	return SUCCESS;
+ b66:	81 e0       	ldi	r24, 0x01	; 1
+}
+ b68:	08 95       	ret
+
+00000b6a <SPI_initMaster>:
+	 * SPR1:0  = 00 Choose SPI clock = Fosc/4
+	 ***********************************************************************/
+	SPCR = (1<<SPE);
+
+	/* Clear the SPI2X bit in SPSR to Choose SPI clock = Fosc/4 */
+	SPSR &= ~(1<<SPI2X);
+ b6a:	41 e0       	ldi	r20, 0x01	; 1
+ b6c:	64 e0       	ldi	r22, 0x04	; 4
+ b6e:	81 e0       	ldi	r24, 0x01	; 1
+ b70:	0e 94 7f 04 	call	0x8fe	; 0x8fe <GPIO_setPinDirection>
+ b74:	41 e0       	ldi	r20, 0x01	; 1
+ b76:	65 e0       	ldi	r22, 0x05	; 5
+ b78:	81 e0       	ldi	r24, 0x01	; 1
+ b7a:	0e 94 7f 04 	call	0x8fe	; 0x8fe <GPIO_setPinDirection>
+ b7e:	40 e0       	ldi	r20, 0x00	; 0
+ b80:	66 e0       	ldi	r22, 0x06	; 6
+ b82:	81 e0       	ldi	r24, 0x01	; 1
+ b84:	0e 94 7f 04 	call	0x8fe	; 0x8fe <GPIO_setPinDirection>
+ b88:	41 e0       	ldi	r20, 0x01	; 1
+ b8a:	67 e0       	ldi	r22, 0x07	; 7
+ b8c:	81 e0       	ldi	r24, 0x01	; 1
+ b8e:	0e 94 7f 04 	call	0x8fe	; 0x8fe <GPIO_setPinDirection>
+ b92:	80 e5       	ldi	r24, 0x50	; 80
+ b94:	8d b9       	out	0x0d, r24	; 13
+ b96:	8e b1       	in	r24, 0x0e	; 14
+ b98:	8e 7f       	andi	r24, 0xFE	; 254
+ b9a:	8e b9       	out	0x0e, r24	; 14
+ b9c:	08 95       	ret
+
+00000b9e <SPI_sendReceiveByte>:
+ * In the same time data will be received from the other device.
+ */
+uint8 SPI_sendReceiveByte(uint8 data)
+{
+	/* Initiate the communication and send data by SPI */
+	SPDR = data;
+ b9e:	8f b9       	out	0x0f, r24	; 15
+
+	/* Wait until SPI interrupt flag SPIF = 1 (data has been sent/received correctly) */
+	while(BIT_IS_CLEAR(SPSR,SPIF)){}
+ ba0:	77 9b       	sbis	0x0e, 7	; 14
+ ba2:	fe cf       	rjmp	.-4      	; 0xba0 <SPI_sendReceiveByte+0x2>
+
+	/*
+	 * Note: SPIF flag is cleared by first reading SPSR (with SPIF set) which is done in the previous step.
+	 * and then accessing SPDR like the below line.
+	 */
+	return SPDR;
+ ba4:	8f b1       	in	r24, 0x0f	; 15
+}
+ ba6:	08 95       	ret
+
+00000ba8 <__vector_11>:
+	g_callBackPtr_0=g_ptr;
+	TCCR0 = (1<<FOC0) | (1<<CS02) | (1<<CS00);
+}
+
+ISR(TIMER0_OVF_vect)
+{
+ ba8:	1f 92       	push	r1
+ baa:	0f 92       	push	r0
+ bac:	0f b6       	in	r0, 0x3f	; 63
+ bae:	0f 92       	push	r0
+ bb0:	11 24       	eor	r1, r1
+ bb2:	2f 93       	push	r18
+ bb4:	3f 93       	push	r19
+ bb6:	4f 93       	push	r20
+ bb8:	5f 93       	push	r21
+ bba:	6f 93       	push	r22
+ bbc:	7f 93       	push	r23
+ bbe:	8f 93       	push	r24
+ bc0:	9f 93       	push	r25
+ bc2:	af 93       	push	r26
+ bc4:	bf 93       	push	r27
+ bc6:	ef 93       	push	r30
+ bc8:	ff 93       	push	r31
+	if(g_callBackPtr_0 != NULL_PTR)
+ bca:	e0 91 25 01 	lds	r30, 0x0125	; 0x800125 <g_callBackPtr_0>
+ bce:	f0 91 26 01 	lds	r31, 0x0126	; 0x800126 <g_callBackPtr_0+0x1>
+ bd2:	30 97       	sbiw	r30, 0x00	; 0
+ bd4:	b9 f0       	breq	.+46     	; 0xc04 <__vector_11+0x5c>
+	{
+		if(NO_OF_OVERFLOWS > 0)
+ bd6:	80 91 24 01 	lds	r24, 0x0124	; 0x800124 <NO_OF_OVERFLOWS>
+ bda:	88 23       	and	r24, r24
+ bdc:	79 f0       	breq	.+30     	; 0xbfc <__vector_11+0x54>
+		{
+			g_tick++;
+ bde:	80 91 23 01 	lds	r24, 0x0123	; 0x800123 <g_tick>
+ be2:	8f 5f       	subi	r24, 0xFF	; 255
+ be4:	80 93 23 01 	sts	0x0123, r24	; 0x800123 <g_tick>
+			if(g_tick == NO_OF_OVERFLOWS)
+ be8:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <g_tick>
+ bec:	80 91 24 01 	lds	r24, 0x0124	; 0x800124 <NO_OF_OVERFLOWS>
+ bf0:	98 13       	cpse	r25, r24
+ bf2:	08 c0       	rjmp	.+16     	; 0xc04 <__vector_11+0x5c>
+			{
+				g_callBackPtr_0();
+ bf4:	09 95       	icall
+				g_tick = 0; //clear the tick counter again to start new count
+ bf6:	10 92 23 01 	sts	0x0123, r1	; 0x800123 <g_tick>
+ bfa:	04 c0       	rjmp	.+8      	; 0xc04 <__vector_11+0x5c>
+			}
+		}
+		else
+		{
+			g_callBackPtr_0();
+ bfc:	09 95       	icall
+			TCNT0=init_value;
+ bfe:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <__data_end>
+ c02:	82 bf       	out	0x32, r24	; 50
+		}
+	}
+}
+ c04:	ff 91       	pop	r31
+ c06:	ef 91       	pop	r30
+ c08:	bf 91       	pop	r27
+ c0a:	af 91       	pop	r26
+ c0c:	9f 91       	pop	r25
+ c0e:	8f 91       	pop	r24
+ c10:	7f 91       	pop	r23
+ c12:	6f 91       	pop	r22
+ c14:	5f 91       	pop	r21
+ c16:	4f 91       	pop	r20
+ c18:	3f 91       	pop	r19
+ c1a:	2f 91       	pop	r18
+ c1c:	0f 90       	pop	r0
+ c1e:	0f be       	out	0x3f, r0	; 63
+ c20:	0f 90       	pop	r0
+ c22:	1f 90       	pop	r1
+ c24:	18 95       	reti
+
+00000c26 <TWI_init>:
+    TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
+    /* Wait for TWINT flag set in TWCR Register (data received successfully) */
+    while(BIT_IS_CLEAR(TWCR,TWINT));
+    /* Read Data */
+    return TWDR;
+}
+ c26:	82 e0       	ldi	r24, 0x02	; 2
+ c28:	80 b9       	out	0x00, r24	; 0
+ c2a:	11 b8       	out	0x01, r1	; 1
+ c2c:	82 b9       	out	0x02, r24	; 2
+ c2e:	84 e0       	ldi	r24, 0x04	; 4
+ c30:	86 bf       	out	0x36, r24	; 54
+ c32:	08 95       	ret
+
+00000c34 <TWI_start>:
+ c34:	84 ea       	ldi	r24, 0xA4	; 164
+ c36:	86 bf       	out	0x36, r24	; 54
+ c38:	06 b6       	in	r0, 0x36	; 54
+ c3a:	07 fe       	sbrs	r0, 7
+ c3c:	fd cf       	rjmp	.-6      	; 0xc38 <TWI_start+0x4>
+ c3e:	08 95       	ret
+
+00000c40 <TWI_stop>:
+ c40:	84 e9       	ldi	r24, 0x94	; 148
+ c42:	86 bf       	out	0x36, r24	; 54
+ c44:	08 95       	ret
+
+00000c46 <TWI_writeByte>:
+ c46:	83 b9       	out	0x03, r24	; 3
+ c48:	84 e8       	ldi	r24, 0x84	; 132
+ c4a:	86 bf       	out	0x36, r24	; 54
+ c4c:	06 b6       	in	r0, 0x36	; 54
+ c4e:	07 fe       	sbrs	r0, 7
+ c50:	fd cf       	rjmp	.-6      	; 0xc4c <TWI_writeByte+0x6>
+ c52:	08 95       	ret
+
+00000c54 <TWI_readByteWithNACK>:
+{
+	/* 
+	 * Clear the TWINT flag before reading the data TWINT=1
+	 * Enable TWI Module TWEN=1 
+	 */
+    TWCR = (1 << TWINT) | (1 << TWEN);
+ c54:	84 e8       	ldi	r24, 0x84	; 132
+ c56:	86 bf       	out	0x36, r24	; 54
+    /* Wait for TWINT flag set in TWCR Register (data received successfully) */
+    while(BIT_IS_CLEAR(TWCR,TWINT));
+ c58:	06 b6       	in	r0, 0x36	; 54
+ c5a:	07 fe       	sbrs	r0, 7
+ c5c:	fd cf       	rjmp	.-6      	; 0xc58 <TWI_readByteWithNACK+0x4>
+    /* Read Data */
+    return TWDR;
+ c5e:	83 b1       	in	r24, 0x03	; 3
+}
+ c60:	08 95       	ret
+
+00000c62 <TWI_getStatus>:
+
+uint8 TWI_getStatus(void)
+{
+    uint8 status;
+    /* masking to eliminate first 3 bits and get the last 5 bits (status bits) */
+    status = TWSR & 0xF8;
+ c62:	81 b1       	in	r24, 0x01	; 1
+    return status;
+}
+ c64:	88 7f       	andi	r24, 0xF8	; 248
+ c66:	08 95       	ret
+
+00000c68 <UART_init>:
+void UART_init(uint32 baud_rate)
+{
+	uint16 ubrr_value = 0;
+
+	/* U2X = 1 for double transmission speed */
+	UCSRA = (1<<U2X);
+ c68:	22 e0       	ldi	r18, 0x02	; 2
+ c6a:	2b b9       	out	0x0b, r18	; 11
+	 * RXEN  = 1 Receiver Enable
+	 * RXEN  = 1 Transmitter Enable
+	 * UCSZ2 = 0 For 8-bit data mode
+	 * RXB8 & TXB8 not used for 8-bit data mode
+	 ***********************************************************************/ 
+	UCSRB = (1<<RXEN) | (1<<TXEN);
+ c6c:	28 e1       	ldi	r18, 0x18	; 24
+ c6e:	2a b9       	out	0x0a, r18	; 10
+	 * UPM1:0  = 00 Disable parity bit
+	 * USBS    = 0 One stop bit
+	 * UCSZ1:0 = 11 For 8-bit data mode
+	 * UCPOL   = 0 Used with the Synchronous operation only
+	 ***********************************************************************/ 	
+	UCSRC = (1<<URSEL) | (1<<UCSZ0) | (1<<UCSZ1); 
+ c70:	26 e8       	ldi	r18, 0x86	; 134
+ c72:	20 bd       	out	0x20, r18	; 32
+	
+	/* Calculate the UBRR register value */
+	ubrr_value = (uint16)(((F_CPU / (baud_rate * 8UL))) - 1);
+ c74:	dc 01       	movw	r26, r24
+ c76:	cb 01       	movw	r24, r22
+ c78:	88 0f       	add	r24, r24
+ c7a:	99 1f       	adc	r25, r25
+ c7c:	aa 1f       	adc	r26, r26
+ c7e:	bb 1f       	adc	r27, r27
+ c80:	88 0f       	add	r24, r24
+ c82:	99 1f       	adc	r25, r25
+ c84:	aa 1f       	adc	r26, r26
+ c86:	bb 1f       	adc	r27, r27
+ c88:	9c 01       	movw	r18, r24
+ c8a:	ad 01       	movw	r20, r26
+ c8c:	22 0f       	add	r18, r18
+ c8e:	33 1f       	adc	r19, r19
+ c90:	44 1f       	adc	r20, r20
+ c92:	55 1f       	adc	r21, r21
+ c94:	60 e4       	ldi	r22, 0x40	; 64
+ c96:	72 e4       	ldi	r23, 0x42	; 66
+ c98:	8f e0       	ldi	r24, 0x0F	; 15
+ c9a:	90 e0       	ldi	r25, 0x00	; 0
+ c9c:	0e 94 91 06 	call	0xd22	; 0xd22 <__udivmodsi4>
+ ca0:	21 50       	subi	r18, 0x01	; 1
+ ca2:	31 09       	sbc	r19, r1
+
+	/* First 8 bits from the BAUD_PRESCALE inside UBRRL and last 4 bits in UBRRH*/
+	UBRRH = ubrr_value>>8;
+ ca4:	30 bd       	out	0x20, r19	; 32
+	UBRRL = ubrr_value;
+ ca6:	29 b9       	out	0x09, r18	; 9
+ ca8:	08 95       	ret
+
+00000caa <UART_sendByte>:
+{
+	/*
+	 * UDRE flag is set when the Tx buffer (UDR) is empty and ready for
+	 * transmitting a new byte so wait until this flag is set to one
+	 */
+	while(BIT_IS_CLEAR(UCSRA,UDRE)){}
+ caa:	5d 9b       	sbis	0x0b, 5	; 11
+ cac:	fe cf       	rjmp	.-4      	; 0xcaa <UART_sendByte>
+
+	/*
+	 * Put the required data in the UDR register and it also clear the UDRE flag as
+	 * the UDR register is not empty now
+	 */
+	UDR = data;
+ cae:	8c b9       	out	0x0c, r24	; 12
+ cb0:	08 95       	ret
+
+00000cb2 <UART_recieveByte>:
+ * Functional responsible for receive byte from another UART device.
+ */
+uint8 UART_recieveByte(void)
+{
+	/* RXC flag is set when the UART receive data so wait until this flag is set to one */
+	while(BIT_IS_CLEAR(UCSRA,RXC)){}
+ cb2:	5f 9b       	sbis	0x0b, 7	; 11
+ cb4:	fe cf       	rjmp	.-4      	; 0xcb2 <UART_recieveByte>
+
+	/*
+	 * Read the received data from the Rx buffer (UDR)
+	 * The RXC flag will be cleared after read the data
+	 */
+    return UDR;		
+ cb6:	8c b1       	in	r24, 0x0c	; 12
+}
+ cb8:	08 95       	ret
+
+00000cba <UART_sendString>:
+/*
+ * Description :
+ * Send the required string through UART to the other UART device.
+ */
+void UART_sendString(const uint8 *Str)
+{
+ cba:	0f 93       	push	r16
+ cbc:	1f 93       	push	r17
+ cbe:	cf 93       	push	r28
+ cc0:	8c 01       	movw	r16, r24
+	uint8 i = 0;
+ cc2:	c0 e0       	ldi	r28, 0x00	; 0
+
+	/* Send the whole string */
+	while(Str[i] != '\0')
+ cc4:	03 c0       	rjmp	.+6      	; 0xccc <UART_sendString+0x12>
+	{
+		UART_sendByte(Str[i]);
+ cc6:	0e 94 55 06 	call	0xcaa	; 0xcaa <UART_sendByte>
+		i++;
+ cca:	cf 5f       	subi	r28, 0xFF	; 255
+void UART_sendString(const uint8 *Str)
+{
+	uint8 i = 0;
+
+	/* Send the whole string */
+	while(Str[i] != '\0')
+ ccc:	f8 01       	movw	r30, r16
+ cce:	ec 0f       	add	r30, r28
+ cd0:	f1 1d       	adc	r31, r1
+ cd2:	80 81       	ld	r24, Z
+ cd4:	81 11       	cpse	r24, r1
+ cd6:	f7 cf       	rjmp	.-18     	; 0xcc6 <UART_sendString+0xc>
+	{
+		UART_sendByte(*Str);
+		Str++;
+	}		
+	*******************************************************************/
+}
+ cd8:	cf 91       	pop	r28
+ cda:	1f 91       	pop	r17
+ cdc:	0f 91       	pop	r16
+ cde:	08 95       	ret
+
+00000ce0 <UART_receiveString>:
+/*
+ * Description :
+ * Receive the required string until the '#' symbol through UART from the other UART device.
+ */
+void UART_receiveString(uint8 *Str)
+{
+ ce0:	ef 92       	push	r14
+ ce2:	ff 92       	push	r15
+ ce4:	0f 93       	push	r16
+ ce6:	1f 93       	push	r17
+ ce8:	cf 93       	push	r28
+ cea:	8c 01       	movw	r16, r24
+	uint8 i = 0;
+
+	/* Receive the first byte */
+	Str[i] = UART_recieveByte();
+ cec:	0e 94 59 06 	call	0xcb2	; 0xcb2 <UART_recieveByte>
+ cf0:	f8 01       	movw	r30, r16
+ cf2:	80 83       	st	Z, r24
+ * Description :
+ * Receive the required string until the '#' symbol through UART from the other UART device.
+ */
+void UART_receiveString(uint8 *Str)
+{
+	uint8 i = 0;
+ cf4:	c0 e0       	ldi	r28, 0x00	; 0
+
+	/* Receive the first byte */
+	Str[i] = UART_recieveByte();
+
+	/* Receive the whole string until the '#' */
+	while(Str[i] != '#')
+ cf6:	08 c0       	rjmp	.+16     	; 0xd08 <UART_receiveString+0x28>
+	{
+		i++;
+ cf8:	cf 5f       	subi	r28, 0xFF	; 255
+		Str[i] = UART_recieveByte();
+ cfa:	78 01       	movw	r14, r16
+ cfc:	ec 0e       	add	r14, r28
+ cfe:	f1 1c       	adc	r15, r1
+ d00:	0e 94 59 06 	call	0xcb2	; 0xcb2 <UART_recieveByte>
+ d04:	f7 01       	movw	r30, r14
+ d06:	80 83       	st	Z, r24
+
+	/* Receive the first byte */
+	Str[i] = UART_recieveByte();
+
+	/* Receive the whole string until the '#' */
+	while(Str[i] != '#')
+ d08:	f8 01       	movw	r30, r16
+ d0a:	ec 0f       	add	r30, r28
+ d0c:	f1 1d       	adc	r31, r1
+ d0e:	80 81       	ld	r24, Z
+ d10:	83 32       	cpi	r24, 0x23	; 35
+ d12:	91 f7       	brne	.-28     	; 0xcf8 <UART_receiveString+0x18>
+		i++;
+		Str[i] = UART_recieveByte();
+	}
+
+	/* After receiving the whole string plus the '#', replace the '#' with '\0' */
+	Str[i] = '\0';
+ d14:	10 82       	st	Z, r1
+}
+ d16:	cf 91       	pop	r28
+ d18:	1f 91       	pop	r17
+ d1a:	0f 91       	pop	r16
+ d1c:	ff 90       	pop	r15
+ d1e:	ef 90       	pop	r14
+ d20:	08 95       	ret
+
+00000d22 <__udivmodsi4>:
+ d22:	a1 e2       	ldi	r26, 0x21	; 33
+ d24:	1a 2e       	mov	r1, r26
+ d26:	aa 1b       	sub	r26, r26
+ d28:	bb 1b       	sub	r27, r27
+ d2a:	fd 01       	movw	r30, r26
+ d2c:	0d c0       	rjmp	.+26     	; 0xd48 <__udivmodsi4_ep>
+
+00000d2e <__udivmodsi4_loop>:
+ d2e:	aa 1f       	adc	r26, r26
+ d30:	bb 1f       	adc	r27, r27
+ d32:	ee 1f       	adc	r30, r30
+ d34:	ff 1f       	adc	r31, r31
+ d36:	a2 17       	cp	r26, r18
+ d38:	b3 07       	cpc	r27, r19
+ d3a:	e4 07       	cpc	r30, r20
+ d3c:	f5 07       	cpc	r31, r21
+ d3e:	20 f0       	brcs	.+8      	; 0xd48 <__udivmodsi4_ep>
+ d40:	a2 1b       	sub	r26, r18
+ d42:	b3 0b       	sbc	r27, r19
+ d44:	e4 0b       	sbc	r30, r20
+ d46:	f5 0b       	sbc	r31, r21
+
+00000d48 <__udivmodsi4_ep>:
+ d48:	66 1f       	adc	r22, r22
+ d4a:	77 1f       	adc	r23, r23
+ d4c:	88 1f       	adc	r24, r24
+ d4e:	99 1f       	adc	r25, r25
+ d50:	1a 94       	dec	r1
+ d52:	69 f7       	brne	.-38     	; 0xd2e <__udivmodsi4_loop>
+ d54:	60 95       	com	r22
+ d56:	70 95       	com	r23
+ d58:	80 95       	com	r24
+ d5a:	90 95       	com	r25
+ d5c:	9b 01       	movw	r18, r22
+ d5e:	ac 01       	movw	r20, r24
+ d60:	bd 01       	movw	r22, r26
+ d62:	cf 01       	movw	r24, r30
+ d64:	08 95       	ret
+
+00000d66 <_exit>:
+ d66:	f8 94       	cli
+
+00000d68 <__stop_program>:
+ d68:	ff cf       	rjmp	.-2      	; 0xd68 <__stop_program>
