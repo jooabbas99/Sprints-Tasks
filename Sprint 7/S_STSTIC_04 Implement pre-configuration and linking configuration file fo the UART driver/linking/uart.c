@@ -6,7 +6,7 @@
  */ 
 #include "uart.h"
 #include "uart_register.h"
-#include "../utilities/BIT_MATH.h
+#include "../utilities/BIT_MATH.h"
 
 void UART_init(ST_UART_config_t *conf) {
 	// Set UART mode (Async/Sync)
