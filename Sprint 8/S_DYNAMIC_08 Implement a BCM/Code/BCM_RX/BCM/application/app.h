@@ -13,7 +13,7 @@
 typedef enum {
 	BCM_TX_MODE=0,
 	BCM_RX_MODE
-	}enm_bcm_mode_t;
+}enm_bcm_mode_t;
 void app_init(void);
 void app_start(void);
 

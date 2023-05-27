@@ -102,6 +102,7 @@ typedef struct {
 
 // Function Prototypes
 
+
 void uart_init(uart_config_t *uart_config);
 void uart_write(uint16 *data);
 void uart_read(uint16 *data);
