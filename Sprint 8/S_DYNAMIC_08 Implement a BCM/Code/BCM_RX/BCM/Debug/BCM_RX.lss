@@ -1,0 +1,1614 @@
+
+BCM_RX.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000008c8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000048  00800060  000008c8  0000095c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000065  008000a8  008000a8  000009a4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000009a4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000009d4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001d0  00000000  00000000  00000a10  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002332  00000000  00000000  00000be0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000b4e  00000000  00000000  00002f12  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000fd0  00000000  00000000  00003a60  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003b4  00000000  00000000  00004a30  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000da4  00000000  00000000  00004de4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000dc3  00000000  00000000  00005b88  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000140  00000000  00000000  0000694b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 14 04 	jmp	0x828	; 0x828 <__vector_13>
+  38:	0c 94 3b 04 	jmp	0x876	; 0x876 <__vector_14>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e8 ec       	ldi	r30, 0xC8	; 200
+  68:	f8 e0       	ldi	r31, 0x08	; 8
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 3a       	cpi	r26, 0xA8	; 168
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	a8 ea       	ldi	r26, 0xA8	; 168
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ad 30       	cpi	r26, 0x0D	; 13
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 cd 00 	call	0x19a	; 0x19a <main>
+  8a:	0c 94 62 04 	jmp	0x8c4	; 0x8c4 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <app_init>:
+static uint8 rx_data[BUFFER_SIZE] = {0};
+static uint16 rx_length;
+static enm_bcm_mode_t bcm_mode;
+static str_led_t str_led_txc, str_led_rxc;
+void app_init(void){
+	bcm_init(&bcm_instance_ch_0);
+  92:	82 e9       	ldi	r24, 0x92	; 146
+  94:	90 e0       	ldi	r25, 0x00	; 0
+  96:	0e 94 89 01 	call	0x312	; 0x312 <bcm_init>
+	rx_length = 0;
+  9a:	10 92 b0 00 	sts	0x00B0, r1	; 0x8000b0 <rx_length+0x1>
+  9e:	10 92 af 00 	sts	0x00AF, r1	; 0x8000af <rx_length>
+	bcm_mode = BCM_RX_MODE;
+  a2:	81 e0       	ldi	r24, 0x01	; 1
+  a4:	80 93 ae 00 	sts	0x00AE, r24	; 0x8000ae <bcm_mode>
+	str_led_txc.enm_led_status=LED_OFF;
+  a8:	eb ea       	ldi	r30, 0xAB	; 171
+  aa:	f0 e0       	ldi	r31, 0x00	; 0
+  ac:	12 82       	std	Z+2, r1	; 0x02
+	str_led_txc.str_dio.pin= PIND3;
+  ae:	83 e0       	ldi	r24, 0x03	; 3
+  b0:	81 83       	std	Z+1, r24	; 0x01
+	str_led_txc.str_dio.port = PORT_D;
+  b2:	80 83       	st	Z, r24
+	str_led_rxc.enm_led_status=LED_OFF;
+  b4:	e8 ea       	ldi	r30, 0xA8	; 168
+  b6:	f0 e0       	ldi	r31, 0x00	; 0
+  b8:	12 82       	std	Z+2, r1	; 0x02
+	str_led_rxc.str_dio.pin= PIND4;
+  ba:	94 e0       	ldi	r25, 0x04	; 4
+  bc:	91 83       	std	Z+1, r25	; 0x01
+	str_led_rxc.str_dio.port = PORT_D;
+  be:	80 83       	st	Z, r24
+	LED_init(&str_led_txc);
+  c0:	8b ea       	ldi	r24, 0xAB	; 171
+  c2:	90 e0       	ldi	r25, 0x00	; 0
+  c4:	0e 94 a8 00 	call	0x150	; 0x150 <LED_init>
+	LED_init(&str_led_rxc);
+  c8:	88 ea       	ldi	r24, 0xA8	; 168
+  ca:	90 e0       	ldi	r25, 0x00	; 0
+  cc:	0e 94 a8 00 	call	0x150	; 0x150 <LED_init>
+  d0:	08 95       	ret
+
+000000d2 <app_start>:
+}
+void app_start(void){
+  d2:	cf 93       	push	r28
+  d4:	df 93       	push	r29
+  d6:	1f 92       	push	r1
+  d8:	cd b7       	in	r28, 0x3d	; 61
+  da:	de b7       	in	r29, 0x3e	; 62
+	// tx
+	uint8 bcm_operating_flag;
+	uint16 lenth = 22;
+	bcm_dispatcher(&bcm_instance_ch_0,&bcm_operating_flag);
+  dc:	be 01       	movw	r22, r28
+  de:	6f 5f       	subi	r22, 0xFF	; 255
+  e0:	7f 4f       	sbci	r23, 0xFF	; 255
+  e2:	82 e9       	ldi	r24, 0x92	; 146
+  e4:	90 e0       	ldi	r25, 0x00	; 0
+  e6:	0e 94 3c 02 	call	0x478	; 0x478 <bcm_dispatcher>
+	if(bcm_operating_flag == BCM_IDEL_FLAG){
+  ea:	89 81       	ldd	r24, Y+1	; 0x01
+  ec:	81 30       	cpi	r24, 0x01	; 1
+  ee:	61 f5       	brne	.+88     	; 0x148 <app_start+0x76>
+		LED_off(&str_led_txc);
+  f0:	8b ea       	ldi	r24, 0xAB	; 171
+  f2:	90 e0       	ldi	r25, 0x00	; 0
+  f4:	0e 94 c1 00 	call	0x182	; 0x182 <LED_off>
+		LED_off(&str_led_rxc);
+  f8:	88 ea       	ldi	r24, 0xA8	; 168
+  fa:	90 e0       	ldi	r25, 0x00	; 0
+  fc:	0e 94 c1 00 	call	0x182	; 0x182 <LED_off>
+		if (bcm_mode == BCM_TX_MODE)
+ 100:	80 91 ae 00 	lds	r24, 0x00AE	; 0x8000ae <bcm_mode>
+ 104:	81 11       	cpse	r24, r1
+ 106:	10 c0       	rjmp	.+32     	; 0x128 <app_start+0x56>
+		{
+			// 
+			LED_on(&str_led_txc);
+ 108:	8b ea       	ldi	r24, 0xAB	; 171
+ 10a:	90 e0       	ldi	r25, 0x00	; 0
+ 10c:	0e 94 b4 00 	call	0x168	; 0x168 <LED_on>
+			bcm_send_n(&bcm_instance_ch_0,tx_data,lenth);
+ 110:	46 e1       	ldi	r20, 0x16	; 22
+ 112:	50 e0       	ldi	r21, 0x00	; 0
+ 114:	60 e6       	ldi	r22, 0x60	; 96
+ 116:	70 e0       	ldi	r23, 0x00	; 0
+ 118:	82 e9       	ldi	r24, 0x92	; 146
+ 11a:	90 e0       	ldi	r25, 0x00	; 0
+ 11c:	0e 94 c4 01 	call	0x388	; 0x388 <bcm_send_n>
+			bcm_mode = BCM_RX_MODE;
+ 120:	81 e0       	ldi	r24, 0x01	; 1
+ 122:	80 93 ae 00 	sts	0x00AE, r24	; 0x8000ae <bcm_mode>
+ 126:	10 c0       	rjmp	.+32     	; 0x148 <app_start+0x76>
+		}else if (bcm_mode == BCM_RX_MODE){
+ 128:	81 30       	cpi	r24, 0x01	; 1
+ 12a:	71 f4       	brne	.+28     	; 0x148 <app_start+0x76>
+			LED_on(&str_led_rxc);
+ 12c:	88 ea       	ldi	r24, 0xA8	; 168
+ 12e:	90 e0       	ldi	r25, 0x00	; 0
+ 130:	0e 94 b4 00 	call	0x168	; 0x168 <LED_on>
+			bcm_recive_n(&bcm_instance_ch_0,rx_data,&rx_length);
+ 134:	4f ea       	ldi	r20, 0xAF	; 175
+ 136:	50 e0       	ldi	r21, 0x00	; 0
+ 138:	61 eb       	ldi	r22, 0xB1	; 177
+ 13a:	70 e0       	ldi	r23, 0x00	; 0
+ 13c:	82 e9       	ldi	r24, 0x92	; 146
+ 13e:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	0e 94 0b 02 	call	0x416	; 0x416 <bcm_recive_n>
+			bcm_mode = BCM_TX_MODE;
+ 144:	10 92 ae 00 	sts	0x00AE, r1	; 0x8000ae <bcm_mode>
+		}
+	}
+
+ 148:	0f 90       	pop	r0
+ 14a:	df 91       	pop	r29
+ 14c:	cf 91       	pop	r28
+ 14e:	08 95       	ret
+
+00000150 <LED_init>:
+ */ 
+#include "led.h"
+
+
+
+void LED_init(str_led_t *led){
+ 150:	cf 93       	push	r28
+ 152:	df 93       	push	r29
+ 154:	ec 01       	movw	r28, r24
+	dio_init(led->str_dio,DIO_OUT);
+ 156:	61 e0       	ldi	r22, 0x01	; 1
+ 158:	88 81       	ld	r24, Y
+ 15a:	99 81       	ldd	r25, Y+1	; 0x01
+ 15c:	0e 94 6e 02 	call	0x4dc	; 0x4dc <dio_init>
+	led->enm_led_status = LED_OFF;
+ 160:	1a 82       	std	Y+2, r1	; 0x02
+}
+ 162:	df 91       	pop	r29
+ 164:	cf 91       	pop	r28
+ 166:	08 95       	ret
+
+00000168 <LED_on>:
+void LED_on(str_led_t *led){
+ 168:	cf 93       	push	r28
+ 16a:	df 93       	push	r29
+ 16c:	ec 01       	movw	r28, r24
+	dio_write_pin(led->str_dio,DIO_HIGH);
+ 16e:	61 e0       	ldi	r22, 0x01	; 1
+ 170:	88 81       	ld	r24, Y
+ 172:	99 81       	ldd	r25, Y+1	; 0x01
+ 174:	0e 94 f6 02 	call	0x5ec	; 0x5ec <dio_write_pin>
+	led->enm_led_status = LED_ON;
+ 178:	81 e0       	ldi	r24, 0x01	; 1
+ 17a:	8a 83       	std	Y+2, r24	; 0x02
+}
+ 17c:	df 91       	pop	r29
+ 17e:	cf 91       	pop	r28
+ 180:	08 95       	ret
+
+00000182 <LED_off>:
+void LED_off(str_led_t *led){
+ 182:	cf 93       	push	r28
+ 184:	df 93       	push	r29
+ 186:	ec 01       	movw	r28, r24
+	dio_write_pin(led->str_dio,DIO_LOW);
+ 188:	60 e0       	ldi	r22, 0x00	; 0
+ 18a:	88 81       	ld	r24, Y
+ 18c:	99 81       	ldd	r25, Y+1	; 0x01
+ 18e:	0e 94 f6 02 	call	0x5ec	; 0x5ec <dio_write_pin>
+	led->enm_led_status = LED_OFF;
+ 192:	1a 82       	std	Y+2, r1	; 0x02
+}
+ 194:	df 91       	pop	r29
+ 196:	cf 91       	pop	r28
+ 198:	08 95       	ret
+
+0000019a <main>:
+ 19a:	0e 94 49 00 	call	0x92	; 0x92 <app_init>
+ 19e:	0e 94 69 00 	call	0xd2	; 0xd2 <app_start>
+ 1a2:	fd cf       	rjmp	.-6      	; 0x19e <main+0x4>
+
+000001a4 <uart_tx_callback>:
+			
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	return BCM_OK;
+}
+ 1a4:	0f 93       	push	r16
+ 1a6:	1f 93       	push	r17
+ 1a8:	cf 93       	push	r28
+ 1aa:	df 93       	push	r29
+ 1ac:	1f 92       	push	r1
+ 1ae:	cd b7       	in	r28, 0x3d	; 61
+ 1b0:	de b7       	in	r29, 0x3e	; 62
+ 1b2:	19 82       	std	Y+1, r1	; 0x01
+ 1b4:	80 91 e4 00 	lds	r24, 0x00E4	; 0x8000e4 <counter.1736>
+ 1b8:	81 11       	cpse	r24, r1
+ 1ba:	0d c0       	rjmp	.+26     	; 0x1d6 <uart_tx_callback+0x32>
+ 1bc:	80 91 f4 00 	lds	r24, 0x00F4	; 0x8000f4 <pakets+0x3>
+ 1c0:	89 83       	std	Y+1, r24	; 0x01
+ 1c2:	ce 01       	movw	r24, r28
+ 1c4:	01 96       	adiw	r24, 0x01	; 1
+ 1c6:	0e 94 e3 03 	call	0x7c6	; 0x7c6 <uart_write>
+ 1ca:	80 91 e4 00 	lds	r24, 0x00E4	; 0x8000e4 <counter.1736>
+ 1ce:	8f 5f       	subi	r24, 0xFF	; 255
+ 1d0:	80 93 e4 00 	sts	0x00E4, r24	; 0x8000e4 <counter.1736>
+ 1d4:	2e c0       	rjmp	.+92     	; 0x232 <uart_tx_callback+0x8e>
+ 1d6:	90 e0       	ldi	r25, 0x00	; 0
+ 1d8:	20 91 f3 00 	lds	r18, 0x00F3	; 0x8000f3 <pakets+0x2>
+ 1dc:	30 91 f4 00 	lds	r19, 0x00F4	; 0x8000f4 <pakets+0x3>
+ 1e0:	21 50       	subi	r18, 0x01	; 1
+ 1e2:	31 09       	sbc	r19, r1
+ 1e4:	82 17       	cp	r24, r18
+ 1e6:	93 07       	cpc	r25, r19
+ 1e8:	20 f5       	brcc	.+72     	; 0x232 <uart_tx_callback+0x8e>
+ 1ea:	01 ef       	ldi	r16, 0xF1	; 241
+ 1ec:	10 e0       	ldi	r17, 0x00	; 0
+ 1ee:	d8 01       	movw	r26, r16
+ 1f0:	ed 91       	ld	r30, X+
+ 1f2:	fc 91       	ld	r31, X
+ 1f4:	8e 0f       	add	r24, r30
+ 1f6:	9f 1f       	adc	r25, r31
+ 1f8:	fc 01       	movw	r30, r24
+ 1fa:	31 97       	sbiw	r30, 0x01	; 1
+ 1fc:	80 81       	ld	r24, Z
+ 1fe:	89 83       	std	Y+1, r24	; 0x01
+ 200:	ce 01       	movw	r24, r28
+ 202:	01 96       	adiw	r24, 0x01	; 1
+ 204:	0e 94 e3 03 	call	0x7c6	; 0x7c6 <uart_write>
+ 208:	80 91 e4 00 	lds	r24, 0x00E4	; 0x8000e4 <counter.1736>
+ 20c:	8f 5f       	subi	r24, 0xFF	; 255
+ 20e:	80 93 e4 00 	sts	0x00E4, r24	; 0x8000e4 <counter.1736>
+ 212:	90 e0       	ldi	r25, 0x00	; 0
+ 214:	f8 01       	movw	r30, r16
+ 216:	22 81       	ldd	r18, Z+2	; 0x02
+ 218:	33 81       	ldd	r19, Z+3	; 0x03
+ 21a:	21 50       	subi	r18, 0x01	; 1
+ 21c:	31 09       	sbc	r19, r1
+ 21e:	82 17       	cp	r24, r18
+ 220:	93 07       	cpc	r25, r19
+ 222:	38 f0       	brcs	.+14     	; 0x232 <uart_tx_callback+0x8e>
+ 224:	10 92 e4 00 	sts	0x00E4, r1	; 0x8000e4 <counter.1736>
+ 228:	0e 94 d7 03 	call	0x7ae	; 0x7ae <uart_udrei_disable>
+ 22c:	81 e0       	ldi	r24, 0x01	; 1
+ 22e:	80 93 96 00 	sts	0x0096, r24	; 0x800096 <enm_transiver_state>
+ 232:	0f 90       	pop	r0
+ 234:	df 91       	pop	r29
+ 236:	cf 91       	pop	r28
+ 238:	1f 91       	pop	r17
+ 23a:	0f 91       	pop	r16
+ 23c:	08 95       	ret
+
+0000023e <uart_rx_callback>:
+ 23e:	cf 93       	push	r28
+ 240:	df 93       	push	r29
+ 242:	1f 92       	push	r1
+ 244:	cd b7       	in	r28, 0x3d	; 61
+ 246:	de b7       	in	r29, 0x3e	; 62
+ 248:	19 82       	std	Y+1, r1	; 0x01
+ 24a:	80 91 e3 00 	lds	r24, 0x00E3	; 0x8000e3 <counter.1741>
+ 24e:	82 30       	cpi	r24, 0x02	; 2
+ 250:	18 f5       	brcc	.+70     	; 0x298 <uart_rx_callback+0x5a>
+ 252:	ce 01       	movw	r24, r28
+ 254:	01 96       	adiw	r24, 0x01	; 1
+ 256:	0e 94 f1 03 	call	0x7e2	; 0x7e2 <uart_read>
+ 25a:	e0 91 e7 00 	lds	r30, 0x00E7	; 0x8000e7 <pakets_recive+0x2>
+ 25e:	f0 91 e8 00 	lds	r31, 0x00E8	; 0x8000e8 <pakets_recive+0x3>
+ 262:	20 91 e3 00 	lds	r18, 0x00E3	; 0x8000e3 <counter.1741>
+ 266:	42 2f       	mov	r20, r18
+ 268:	50 e0       	ldi	r21, 0x00	; 0
+ 26a:	44 0f       	add	r20, r20
+ 26c:	55 1f       	adc	r21, r21
+ 26e:	44 0f       	add	r20, r20
+ 270:	55 1f       	adc	r21, r21
+ 272:	44 0f       	add	r20, r20
+ 274:	55 1f       	adc	r21, r21
+ 276:	89 81       	ldd	r24, Y+1	; 0x01
+ 278:	90 e0       	ldi	r25, 0x00	; 0
+ 27a:	02 c0       	rjmp	.+4      	; 0x280 <uart_rx_callback+0x42>
+ 27c:	88 0f       	add	r24, r24
+ 27e:	99 1f       	adc	r25, r25
+ 280:	4a 95       	dec	r20
+ 282:	e2 f7       	brpl	.-8      	; 0x27c <uart_rx_callback+0x3e>
+ 284:	40 81       	ld	r20, Z
+ 286:	51 81       	ldd	r21, Z+1	; 0x01
+ 288:	84 2b       	or	r24, r20
+ 28a:	95 2b       	or	r25, r21
+ 28c:	91 83       	std	Z+1, r25	; 0x01
+ 28e:	80 83       	st	Z, r24
+ 290:	2f 5f       	subi	r18, 0xFF	; 255
+ 292:	20 93 e3 00 	sts	0x00E3, r18	; 0x8000e3 <counter.1741>
+ 296:	39 c0       	rjmp	.+114    	; 0x30a <uart_rx_callback+0xcc>
+ 298:	90 e0       	ldi	r25, 0x00	; 0
+ 29a:	e0 91 e7 00 	lds	r30, 0x00E7	; 0x8000e7 <pakets_recive+0x2>
+ 29e:	f0 91 e8 00 	lds	r31, 0x00E8	; 0x8000e8 <pakets_recive+0x3>
+ 2a2:	20 81       	ld	r18, Z
+ 2a4:	31 81       	ldd	r19, Z+1	; 0x01
+ 2a6:	82 17       	cp	r24, r18
+ 2a8:	93 07       	cpc	r25, r19
+ 2aa:	78 f5       	brcc	.+94     	; 0x30a <uart_rx_callback+0xcc>
+ 2ac:	ce 01       	movw	r24, r28
+ 2ae:	01 96       	adiw	r24, 0x01	; 1
+ 2b0:	0e 94 f1 03 	call	0x7e2	; 0x7e2 <uart_read>
+ 2b4:	a5 ee       	ldi	r26, 0xE5	; 229
+ 2b6:	b0 e0       	ldi	r27, 0x00	; 0
+ 2b8:	2d 91       	ld	r18, X+
+ 2ba:	3c 91       	ld	r19, X
+ 2bc:	11 97       	sbiw	r26, 0x01	; 1
+ 2be:	80 91 e3 00 	lds	r24, 0x00E3	; 0x8000e3 <counter.1741>
+ 2c2:	e8 2f       	mov	r30, r24
+ 2c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2c6:	32 97       	sbiw	r30, 0x02	; 2
+ 2c8:	e2 0f       	add	r30, r18
+ 2ca:	f3 1f       	adc	r31, r19
+ 2cc:	99 81       	ldd	r25, Y+1	; 0x01
+ 2ce:	90 83       	st	Z, r25
+ 2d0:	8f 5f       	subi	r24, 0xFF	; 255
+ 2d2:	80 93 e3 00 	sts	0x00E3, r24	; 0x8000e3 <counter.1741>
+ 2d6:	90 e0       	ldi	r25, 0x00	; 0
+ 2d8:	12 96       	adiw	r26, 0x02	; 2
+ 2da:	ed 91       	ld	r30, X+
+ 2dc:	fc 91       	ld	r31, X
+ 2de:	13 97       	sbiw	r26, 0x03	; 3
+ 2e0:	20 81       	ld	r18, Z
+ 2e2:	31 81       	ldd	r19, Z+1	; 0x01
+ 2e4:	82 17       	cp	r24, r18
+ 2e6:	93 07       	cpc	r25, r19
+ 2e8:	80 f0       	brcs	.+32     	; 0x30a <uart_rx_callback+0xcc>
+ 2ea:	10 92 e3 00 	sts	0x00E3, r1	; 0x8000e3 <counter.1741>
+ 2ee:	0e 94 df 03 	call	0x7be	; 0x7be <uart_rxci_disable>
+ 2f2:	e0 91 e7 00 	lds	r30, 0x00E7	; 0x8000e7 <pakets_recive+0x2>
+ 2f6:	f0 91 e8 00 	lds	r31, 0x00E8	; 0x8000e8 <pakets_recive+0x3>
+ 2fa:	80 81       	ld	r24, Z
+ 2fc:	91 81       	ldd	r25, Z+1	; 0x01
+ 2fe:	02 97       	sbiw	r24, 0x02	; 2
+ 300:	91 83       	std	Z+1, r25	; 0x01
+ 302:	80 83       	st	Z, r24
+ 304:	81 e0       	ldi	r24, 0x01	; 1
+ 306:	80 93 96 00 	sts	0x0096, r24	; 0x800096 <enm_transiver_state>
+ 30a:	0f 90       	pop	r0
+ 30c:	df 91       	pop	r29
+ 30e:	cf 91       	pop	r28
+ 310:	08 95       	ret
+
+00000312 <bcm_init>:
+ 312:	cf 93       	push	r28
+ 314:	df 93       	push	r29
+ 316:	00 97       	sbiw	r24, 0x00	; 0
+ 318:	69 f1       	breq	.+90     	; 0x374 <bcm_init+0x62>
+ 31a:	dc 01       	movw	r26, r24
+ 31c:	11 96       	adiw	r26, 0x01	; 1
+ 31e:	2c 91       	ld	r18, X
+ 320:	11 97       	sbiw	r26, 0x01	; 1
+ 322:	23 30       	cpi	r18, 0x03	; 3
+ 324:	48 f5       	brcc	.+82     	; 0x378 <bcm_init+0x66>
+ 326:	ec 91       	ld	r30, X
+ 328:	f0 e0       	ldi	r31, 0x00	; 0
+ 32a:	ee 0f       	add	r30, r30
+ 32c:	ff 1f       	adc	r31, r31
+ 32e:	ee 0f       	add	r30, r30
+ 330:	ff 1f       	adc	r31, r31
+ 332:	e3 50       	subi	r30, 0x03	; 3
+ 334:	ff 4f       	sbci	r31, 0xFF	; 255
+ 336:	31 81       	ldd	r19, Z+1	; 0x01
+ 338:	31 11       	cpse	r19, r1
+ 33a:	20 c0       	rjmp	.+64     	; 0x37c <bcm_init+0x6a>
+ 33c:	ec 01       	movw	r28, r24
+ 33e:	22 23       	and	r18, r18
+ 340:	19 f0       	breq	.+6      	; 0x348 <bcm_init+0x36>
+ 342:	23 30       	cpi	r18, 0x03	; 3
+ 344:	e8 f4       	brcc	.+58     	; 0x380 <bcm_init+0x6e>
+ 346:	04 c0       	rjmp	.+8      	; 0x350 <bcm_init+0x3e>
+ 348:	8a 81       	ldd	r24, Y+2	; 0x02
+ 34a:	9b 81       	ldd	r25, Y+3	; 0x03
+ 34c:	0e 94 7e 03 	call	0x6fc	; 0x6fc <uart_init>
+ 350:	e8 81       	ld	r30, Y
+ 352:	f0 e0       	ldi	r31, 0x00	; 0
+ 354:	ee 0f       	add	r30, r30
+ 356:	ff 1f       	adc	r31, r31
+ 358:	ee 0f       	add	r30, r30
+ 35a:	ff 1f       	adc	r31, r31
+ 35c:	e3 50       	subi	r30, 0x03	; 3
+ 35e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 360:	88 81       	ld	r24, Y
+ 362:	99 81       	ldd	r25, Y+1	; 0x01
+ 364:	aa 81       	ldd	r26, Y+2	; 0x02
+ 366:	bb 81       	ldd	r27, Y+3	; 0x03
+ 368:	80 83       	st	Z, r24
+ 36a:	91 83       	std	Z+1, r25	; 0x01
+ 36c:	a2 83       	std	Z+2, r26	; 0x02
+ 36e:	b3 83       	std	Z+3, r27	; 0x03
+ 370:	80 e0       	ldi	r24, 0x00	; 0
+ 372:	07 c0       	rjmp	.+14     	; 0x382 <bcm_init+0x70>
+ 374:	81 e0       	ldi	r24, 0x01	; 1
+ 376:	05 c0       	rjmp	.+10     	; 0x382 <bcm_init+0x70>
+ 378:	81 e0       	ldi	r24, 0x01	; 1
+ 37a:	03 c0       	rjmp	.+6      	; 0x382 <bcm_init+0x70>
+ 37c:	82 e0       	ldi	r24, 0x02	; 2
+ 37e:	01 c0       	rjmp	.+2      	; 0x382 <bcm_init+0x70>
+ 380:	84 e0       	ldi	r24, 0x04	; 4
+ 382:	df 91       	pop	r29
+ 384:	cf 91       	pop	r28
+ 386:	08 95       	ret
+
+00000388 <bcm_send_n>:
+
+// Send multiple bytes of data over a specific BCM instance
+enu_system_status_t bcm_send_n(str_bcm_instance_t* ptr_str_bcm_instance, uint8* data, uint16 length) {
+ 388:	cf 93       	push	r28
+ 38a:	df 93       	push	r29
+ 38c:	1f 92       	push	r1
+ 38e:	cd b7       	in	r28, 0x3d	; 61
+ 390:	de b7       	in	r29, 0x3e	; 62
+	if (ptr_str_bcm_instance == NULL || ptr_str_bcm_instance->bcm_instance_id >= NUM_BCM_INSTANCES) {
+ 392:	00 97       	sbiw	r24, 0x00	; 0
+ 394:	89 f1       	breq	.+98     	; 0x3f8 <bcm_send_n+0x70>
+ 396:	dc 01       	movw	r26, r24
+ 398:	ec 91       	ld	r30, X
+ 39a:	e3 30       	cpi	r30, 0x03	; 3
+ 39c:	78 f5       	brcc	.+94     	; 0x3fc <bcm_send_n+0x74>
+		return BCM_INVALID_INSTANCE;
+	}
+	
+	if (bcm_instances[ptr_str_bcm_instance->bcm_instance_id].protocol >= BCM_MAX_PROTOCOL) {
+ 39e:	f0 e0       	ldi	r31, 0x00	; 0
+ 3a0:	ee 0f       	add	r30, r30
+ 3a2:	ff 1f       	adc	r31, r31
+ 3a4:	ee 0f       	add	r30, r30
+ 3a6:	ff 1f       	adc	r31, r31
+ 3a8:	e3 50       	subi	r30, 0x03	; 3
+ 3aa:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3ac:	21 81       	ldd	r18, Z+1	; 0x01
+ 3ae:	23 30       	cpi	r18, 0x03	; 3
+ 3b0:	38 f5       	brcc	.+78     	; 0x400 <__EEPROM_REGION_LENGTH__>
+		return BCM_NOT_INITIALIZED;
+	}
+	
+	if (data == NULL || length == 0) {
+ 3b2:	61 15       	cp	r22, r1
+ 3b4:	71 05       	cpc	r23, r1
+ 3b6:	31 f1       	breq	.+76     	; 0x404 <__EEPROM_REGION_LENGTH__+0x4>
+ 3b8:	41 15       	cp	r20, r1
+ 3ba:	51 05       	cpc	r21, r1
+ 3bc:	29 f1       	breq	.+74     	; 0x408 <__EEPROM_REGION_LENGTH__+0x8>
+		return BCM_INVALID_PARAMETER;
+	}
+	
+	// Perform protocol-specific send operation
+	uint8 temp = 0;
+	switch (ptr_str_bcm_instance->protocol) {
+ 3be:	11 96       	adiw	r26, 0x01	; 1
+ 3c0:	8c 91       	ld	r24, X
+ 3c2:	88 23       	and	r24, r24
+ 3c4:	21 f0       	breq	.+8      	; 0x3ce <bcm_send_n+0x46>
+ 3c6:	83 30       	cpi	r24, 0x03	; 3
+ 3c8:	08 f1       	brcs	.+66     	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+		case BCM_PROTOCOL_I2C:
+
+		break;
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+ 3ca:	84 e0       	ldi	r24, 0x04	; 4
+ 3cc:	20 c0       	rjmp	.+64     	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+	
+	// Perform protocol-specific send operation
+	uint8 temp = 0;
+	switch (ptr_str_bcm_instance->protocol) {
+		case BCM_PROTOCOL_UART:
+			enm_transiver_state[BCM_PROTOCOL_UART] = BCM_BUSY_FLAG;
+ 3ce:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <enm_transiver_state>
+			// add 2 byte of the length
+			pakets[BCM_PROTOCOL_UART].data_length = (length + LENGTH_BYTE_SIZE);
+ 3d2:	4e 5f       	subi	r20, 0xFE	; 254
+ 3d4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 3d6:	e1 ef       	ldi	r30, 0xF1	; 241
+ 3d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 3da:	53 83       	std	Z+3, r21	; 0x03
+ 3dc:	42 83       	std	Z+2, r20	; 0x02
+			pakets[BCM_PROTOCOL_UART].ptr_data = data;
+ 3de:	71 83       	std	Z+1, r23	; 0x01
+ 3e0:	60 83       	st	Z, r22
+			// send data length
+			temp = (uint8)pakets[BCM_PROTOCOL_UART].data_length;
+ 3e2:	49 83       	std	Y+1, r20	; 0x01
+			uart_write(&temp);
+ 3e4:	ce 01       	movw	r24, r28
+ 3e6:	01 96       	adiw	r24, 0x01	; 1
+ 3e8:	0e 94 e3 03 	call	0x7c6	; 0x7c6 <uart_write>
+			uart_write_INT(uart_tx_callback);
+ 3ec:	82 ed       	ldi	r24, 0xD2	; 210
+ 3ee:	90 e0       	ldi	r25, 0x00	; 0
+ 3f0:	0e 94 06 04 	call	0x80c	; 0x80c <uart_write_INT>
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 3f4:	80 e0       	ldi	r24, 0x00	; 0
+			pakets[BCM_PROTOCOL_UART].ptr_data = data;
+			// send data length
+			temp = (uint8)pakets[BCM_PROTOCOL_UART].data_length;
+			uart_write(&temp);
+			uart_write_INT(uart_tx_callback);
+		break;
+ 3f6:	0b c0       	rjmp	.+22     	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+}
+
+// Send multiple bytes of data over a specific BCM instance
+enu_system_status_t bcm_send_n(str_bcm_instance_t* ptr_str_bcm_instance, uint8* data, uint16 length) {
+	if (ptr_str_bcm_instance == NULL || ptr_str_bcm_instance->bcm_instance_id >= NUM_BCM_INSTANCES) {
+		return BCM_INVALID_INSTANCE;
+ 3f8:	81 e0       	ldi	r24, 0x01	; 1
+ 3fa:	09 c0       	rjmp	.+18     	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+ 3fc:	81 e0       	ldi	r24, 0x01	; 1
+ 3fe:	07 c0       	rjmp	.+14     	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+	}
+	
+	if (bcm_instances[ptr_str_bcm_instance->bcm_instance_id].protocol >= BCM_MAX_PROTOCOL) {
+		return BCM_NOT_INITIALIZED;
+ 400:	83 e0       	ldi	r24, 0x03	; 3
+ 402:	05 c0       	rjmp	.+10     	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+	}
+	
+	if (data == NULL || length == 0) {
+		return BCM_INVALID_PARAMETER;
+ 404:	85 e0       	ldi	r24, 0x05	; 5
+ 406:	03 c0       	rjmp	.+6      	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+ 408:	85 e0       	ldi	r24, 0x05	; 5
+ 40a:	01 c0       	rjmp	.+2      	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 40c:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 40e:	0f 90       	pop	r0
+ 410:	df 91       	pop	r29
+ 412:	cf 91       	pop	r28
+ 414:	08 95       	ret
+
+00000416 <bcm_recive_n>:
+
+
+enu_system_status_t bcm_recive_n(str_bcm_instance_t* ptr_str_bcm_instance, uint8* data, uint16 *length) {
+	if (ptr_str_bcm_instance == NULL || ptr_str_bcm_instance->bcm_instance_id >= NUM_BCM_INSTANCES) {
+ 416:	00 97       	sbiw	r24, 0x00	; 0
+ 418:	39 f1       	breq	.+78     	; 0x468 <bcm_recive_n+0x52>
+ 41a:	dc 01       	movw	r26, r24
+ 41c:	ec 91       	ld	r30, X
+ 41e:	e3 30       	cpi	r30, 0x03	; 3
+ 420:	28 f5       	brcc	.+74     	; 0x46c <bcm_recive_n+0x56>
+		return BCM_INVALID_INSTANCE;
+	}
+	
+	if (bcm_instances[ptr_str_bcm_instance->bcm_instance_id].protocol >= BCM_MAX_PROTOCOL) {
+ 422:	f0 e0       	ldi	r31, 0x00	; 0
+ 424:	ee 0f       	add	r30, r30
+ 426:	ff 1f       	adc	r31, r31
+ 428:	ee 0f       	add	r30, r30
+ 42a:	ff 1f       	adc	r31, r31
+ 42c:	e3 50       	subi	r30, 0x03	; 3
+ 42e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 430:	21 81       	ldd	r18, Z+1	; 0x01
+ 432:	23 30       	cpi	r18, 0x03	; 3
+ 434:	e8 f4       	brcc	.+58     	; 0x470 <bcm_recive_n+0x5a>
+		return BCM_NOT_INITIALIZED;
+	}
+	
+	// Perform protocol-specific send operation
+	uint8 temp = 0;
+	switch (ptr_str_bcm_instance->protocol) {
+ 436:	11 96       	adiw	r26, 0x01	; 1
+ 438:	8c 91       	ld	r24, X
+ 43a:	88 23       	and	r24, r24
+ 43c:	21 f0       	breq	.+8      	; 0x446 <bcm_recive_n+0x30>
+ 43e:	83 30       	cpi	r24, 0x03	; 3
+ 440:	c8 f0       	brcs	.+50     	; 0x474 <bcm_recive_n+0x5e>
+		case BCM_PROTOCOL_I2C:
+
+		break;
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+ 442:	84 e0       	ldi	r24, 0x04	; 4
+ 444:	08 95       	ret
+ 446:	da 01       	movw	r26, r20
+	
+	// Perform protocol-specific send operation
+	uint8 temp = 0;
+	switch (ptr_str_bcm_instance->protocol) {
+		case BCM_PROTOCOL_UART:
+		enm_transiver_state[BCM_PROTOCOL_UART] = BCM_BUSY_FLAG;
+ 448:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <enm_transiver_state>
+		// add 2 byte of the length
+		*length = 0;
+ 44c:	1d 92       	st	X+, r1
+ 44e:	1c 92       	st	X, r1
+		pakets_recive[BCM_PROTOCOL_UART].data_length = length ;
+ 450:	e5 ee       	ldi	r30, 0xE5	; 229
+ 452:	f0 e0       	ldi	r31, 0x00	; 0
+ 454:	53 83       	std	Z+3, r21	; 0x03
+ 456:	42 83       	std	Z+2, r20	; 0x02
+		pakets_recive[BCM_PROTOCOL_UART].ptr_data = data;
+ 458:	71 83       	std	Z+1, r23	; 0x01
+ 45a:	60 83       	st	Z, r22
+
+		uart_read_INT(uart_rx_callback);
+ 45c:	8f e1       	ldi	r24, 0x1F	; 31
+ 45e:	91 e0       	ldi	r25, 0x01	; 1
+ 460:	0e 94 0d 04 	call	0x81a	; 0x81a <uart_read_INT>
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 464:	80 e0       	ldi	r24, 0x00	; 0
+		*length = 0;
+		pakets_recive[BCM_PROTOCOL_UART].data_length = length ;
+		pakets_recive[BCM_PROTOCOL_UART].ptr_data = data;
+
+		uart_read_INT(uart_rx_callback);
+		break;
+ 466:	08 95       	ret
+}
+
+
+enu_system_status_t bcm_recive_n(str_bcm_instance_t* ptr_str_bcm_instance, uint8* data, uint16 *length) {
+	if (ptr_str_bcm_instance == NULL || ptr_str_bcm_instance->bcm_instance_id >= NUM_BCM_INSTANCES) {
+		return BCM_INVALID_INSTANCE;
+ 468:	81 e0       	ldi	r24, 0x01	; 1
+ 46a:	08 95       	ret
+ 46c:	81 e0       	ldi	r24, 0x01	; 1
+ 46e:	08 95       	ret
+	}
+	
+	if (bcm_instances[ptr_str_bcm_instance->bcm_instance_id].protocol >= BCM_MAX_PROTOCOL) {
+		return BCM_NOT_INITIALIZED;
+ 470:	83 e0       	ldi	r24, 0x03	; 3
+ 472:	08 95       	ret
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 474:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 476:	08 95       	ret
+
+00000478 <bcm_dispatcher>:
+
+// Dispatcher function to execute periodic actions and notify events
+enu_system_status_t bcm_dispatcher(str_bcm_instance_t* ptr_str_bcm_instance,enm_transiver_state_t * state) {
+	if (ptr_str_bcm_instance == NULL || ptr_str_bcm_instance->bcm_instance_id >= NUM_BCM_INSTANCES) {
+ 478:	00 97       	sbiw	r24, 0x00	; 0
+ 47a:	41 f1       	breq	.+80     	; 0x4cc <bcm_dispatcher+0x54>
+ 47c:	dc 01       	movw	r26, r24
+ 47e:	ec 91       	ld	r30, X
+ 480:	e3 30       	cpi	r30, 0x03	; 3
+ 482:	30 f5       	brcc	.+76     	; 0x4d0 <bcm_dispatcher+0x58>
+		return BCM_INVALID_INSTANCE;
+	}
+	
+	if (bcm_instances[ptr_str_bcm_instance->bcm_instance_id].protocol  >= BCM_MAX_PROTOCOL) {
+ 484:	f0 e0       	ldi	r31, 0x00	; 0
+ 486:	ee 0f       	add	r30, r30
+ 488:	ff 1f       	adc	r31, r31
+ 48a:	ee 0f       	add	r30, r30
+ 48c:	ff 1f       	adc	r31, r31
+ 48e:	e3 50       	subi	r30, 0x03	; 3
+ 490:	ff 4f       	sbci	r31, 0xFF	; 255
+ 492:	21 81       	ldd	r18, Z+1	; 0x01
+ 494:	23 30       	cpi	r18, 0x03	; 3
+ 496:	f0 f4       	brcc	.+60     	; 0x4d4 <bcm_dispatcher+0x5c>
+		return BCM_NOT_INITIALIZED;
+	}
+	
+	// Perform protocol-specific periodic actions and event notification
+	switch (ptr_str_bcm_instance->protocol) {
+ 498:	11 96       	adiw	r26, 0x01	; 1
+ 49a:	8c 91       	ld	r24, X
+ 49c:	81 30       	cpi	r24, 0x01	; 1
+ 49e:	51 f0       	breq	.+20     	; 0x4b4 <bcm_dispatcher+0x3c>
+ 4a0:	18 f0       	brcs	.+6      	; 0x4a8 <bcm_dispatcher+0x30>
+ 4a2:	82 30       	cpi	r24, 0x02	; 2
+ 4a4:	69 f0       	breq	.+26     	; 0x4c0 <bcm_dispatcher+0x48>
+ 4a6:	18 c0       	rjmp	.+48     	; 0x4d8 <bcm_dispatcher+0x60>
+		case BCM_PROTOCOL_UART:
+			*state = enm_transiver_state[BCM_PROTOCOL_UART];
+ 4a8:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <enm_transiver_state>
+ 4ac:	fb 01       	movw	r30, r22
+ 4ae:	80 83       	st	Z, r24
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 4b0:	80 e0       	ldi	r24, 0x00	; 0
+	// Perform protocol-specific periodic actions and event notification
+	switch (ptr_str_bcm_instance->protocol) {
+		case BCM_PROTOCOL_UART:
+			*state = enm_transiver_state[BCM_PROTOCOL_UART];
+		// add 2 byte of the lengt
+		break;
+ 4b2:	08 95       	ret
+		
+		case BCM_PROTOCOL_SPI:
+			*state = enm_transiver_state[BCM_PROTOCOL_SPI];
+ 4b4:	80 91 97 00 	lds	r24, 0x0097	; 0x800097 <enm_transiver_state+0x1>
+ 4b8:	db 01       	movw	r26, r22
+ 4ba:	8c 93       	st	X, r24
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 4bc:	80 e0       	ldi	r24, 0x00	; 0
+		// add 2 byte of the lengt
+		break;
+		
+		case BCM_PROTOCOL_SPI:
+			*state = enm_transiver_state[BCM_PROTOCOL_SPI];
+		break;
+ 4be:	08 95       	ret
+		
+		case BCM_PROTOCOL_I2C:
+			*state = enm_transiver_state[BCM_PROTOCOL_I2C];
+ 4c0:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <enm_transiver_state+0x2>
+ 4c4:	fb 01       	movw	r30, r22
+ 4c6:	80 83       	st	Z, r24
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+	}
+	
+	return BCM_OK;
+ 4c8:	80 e0       	ldi	r24, 0x00	; 0
+			*state = enm_transiver_state[BCM_PROTOCOL_SPI];
+		break;
+		
+		case BCM_PROTOCOL_I2C:
+			*state = enm_transiver_state[BCM_PROTOCOL_I2C];
+		break;
+ 4ca:	08 95       	ret
+}
+
+// Dispatcher function to execute periodic actions and notify events
+enu_system_status_t bcm_dispatcher(str_bcm_instance_t* ptr_str_bcm_instance,enm_transiver_state_t * state) {
+	if (ptr_str_bcm_instance == NULL || ptr_str_bcm_instance->bcm_instance_id >= NUM_BCM_INSTANCES) {
+		return BCM_INVALID_INSTANCE;
+ 4cc:	81 e0       	ldi	r24, 0x01	; 1
+ 4ce:	08 95       	ret
+ 4d0:	81 e0       	ldi	r24, 0x01	; 1
+ 4d2:	08 95       	ret
+	}
+	
+	if (bcm_instances[ptr_str_bcm_instance->bcm_instance_id].protocol  >= BCM_MAX_PROTOCOL) {
+		return BCM_NOT_INITIALIZED;
+ 4d4:	83 e0       	ldi	r24, 0x03	; 3
+ 4d6:	08 95       	ret
+		case BCM_PROTOCOL_I2C:
+			*state = enm_transiver_state[BCM_PROTOCOL_I2C];
+		break;
+		
+		default:
+		return BCM_INVALID_PROTOCOL;
+ 4d8:	84 e0       	ldi	r24, 0x04	; 4
+	}
+	
+	return BCM_OK;
+ 4da:	08 95       	ret
+
+000004dc <dio_init>:
+#include "dio_interface.h"
+
+#include "../../i_lib/bit_math.h"
+
+enm_dio_error_t dio_init(str_dio_t dio_pin,enm_dio_dir_t dir){
+	switch(dio_pin.port){
+ 4dc:	81 30       	cpi	r24, 0x01	; 1
+ 4de:	39 f1       	breq	.+78     	; 0x52e <dio_init+0x52>
+ 4e0:	38 f0       	brcs	.+14     	; 0x4f0 <dio_init+0x14>
+ 4e2:	82 30       	cpi	r24, 0x02	; 2
+ 4e4:	09 f4       	brne	.+2      	; 0x4e8 <dio_init+0xc>
+ 4e6:	42 c0       	rjmp	.+132    	; 0x56c <dio_init+0x90>
+ 4e8:	83 30       	cpi	r24, 0x03	; 3
+ 4ea:	09 f4       	brne	.+2      	; 0x4ee <dio_init+0x12>
+ 4ec:	5e c0       	rjmp	.+188    	; 0x5aa <dio_init+0xce>
+ 4ee:	7c c0       	rjmp	.+248    	; 0x5e8 <dio_init+0x10c>
+		case PORT_A:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRA,dio_pin.pin) :SET_BIT(DDRA,dio_pin.pin);
+ 4f0:	61 11       	cpse	r22, r1
+ 4f2:	0f c0       	rjmp	.+30     	; 0x512 <dio_init+0x36>
+ 4f4:	4a b3       	in	r20, 0x1a	; 26
+ 4f6:	21 e0       	ldi	r18, 0x01	; 1
+ 4f8:	30 e0       	ldi	r19, 0x00	; 0
+ 4fa:	b9 01       	movw	r22, r18
+ 4fc:	02 c0       	rjmp	.+4      	; 0x502 <dio_init+0x26>
+ 4fe:	66 0f       	add	r22, r22
+ 500:	77 1f       	adc	r23, r23
+ 502:	9a 95       	dec	r25
+ 504:	e2 f7       	brpl	.-8      	; 0x4fe <dio_init+0x22>
+ 506:	cb 01       	movw	r24, r22
+ 508:	80 95       	com	r24
+ 50a:	84 23       	and	r24, r20
+ 50c:	8a bb       	out	0x1a, r24	; 26
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 50e:	81 e0       	ldi	r24, 0x01	; 1
+ 510:	08 95       	ret
+#include "../../i_lib/bit_math.h"
+
+enm_dio_error_t dio_init(str_dio_t dio_pin,enm_dio_dir_t dir){
+	switch(dio_pin.port){
+		case PORT_A:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRA,dio_pin.pin) :SET_BIT(DDRA,dio_pin.pin);
+ 512:	4a b3       	in	r20, 0x1a	; 26
+ 514:	21 e0       	ldi	r18, 0x01	; 1
+ 516:	30 e0       	ldi	r19, 0x00	; 0
+ 518:	b9 01       	movw	r22, r18
+ 51a:	02 c0       	rjmp	.+4      	; 0x520 <dio_init+0x44>
+ 51c:	66 0f       	add	r22, r22
+ 51e:	77 1f       	adc	r23, r23
+ 520:	9a 95       	dec	r25
+ 522:	e2 f7       	brpl	.-8      	; 0x51c <dio_init+0x40>
+ 524:	cb 01       	movw	r24, r22
+ 526:	84 2b       	or	r24, r20
+ 528:	8a bb       	out	0x1a, r24	; 26
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 52a:	81 e0       	ldi	r24, 0x01	; 1
+ 52c:	08 95       	ret
+	switch(dio_pin.port){
+		case PORT_A:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRA,dio_pin.pin) :SET_BIT(DDRA,dio_pin.pin);
+		break;
+		case PORT_B:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRB,dio_pin.pin) :SET_BIT(DDRB,dio_pin.pin);
+ 52e:	61 11       	cpse	r22, r1
+ 530:	0f c0       	rjmp	.+30     	; 0x550 <dio_init+0x74>
+ 532:	47 b3       	in	r20, 0x17	; 23
+ 534:	21 e0       	ldi	r18, 0x01	; 1
+ 536:	30 e0       	ldi	r19, 0x00	; 0
+ 538:	b9 01       	movw	r22, r18
+ 53a:	02 c0       	rjmp	.+4      	; 0x540 <dio_init+0x64>
+ 53c:	66 0f       	add	r22, r22
+ 53e:	77 1f       	adc	r23, r23
+ 540:	9a 95       	dec	r25
+ 542:	e2 f7       	brpl	.-8      	; 0x53c <dio_init+0x60>
+ 544:	cb 01       	movw	r24, r22
+ 546:	80 95       	com	r24
+ 548:	84 23       	and	r24, r20
+ 54a:	87 bb       	out	0x17, r24	; 23
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 54c:	81 e0       	ldi	r24, 0x01	; 1
+ 54e:	08 95       	ret
+	switch(dio_pin.port){
+		case PORT_A:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRA,dio_pin.pin) :SET_BIT(DDRA,dio_pin.pin);
+		break;
+		case PORT_B:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRB,dio_pin.pin) :SET_BIT(DDRB,dio_pin.pin);
+ 550:	47 b3       	in	r20, 0x17	; 23
+ 552:	21 e0       	ldi	r18, 0x01	; 1
+ 554:	30 e0       	ldi	r19, 0x00	; 0
+ 556:	b9 01       	movw	r22, r18
+ 558:	02 c0       	rjmp	.+4      	; 0x55e <dio_init+0x82>
+ 55a:	66 0f       	add	r22, r22
+ 55c:	77 1f       	adc	r23, r23
+ 55e:	9a 95       	dec	r25
+ 560:	e2 f7       	brpl	.-8      	; 0x55a <dio_init+0x7e>
+ 562:	cb 01       	movw	r24, r22
+ 564:	84 2b       	or	r24, r20
+ 566:	87 bb       	out	0x17, r24	; 23
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 568:	81 e0       	ldi	r24, 0x01	; 1
+ 56a:	08 95       	ret
+		break;
+		case PORT_B:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRB,dio_pin.pin) :SET_BIT(DDRB,dio_pin.pin);
+		break;
+		case PORT_C:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRC,dio_pin.pin) :SET_BIT(DDRC,dio_pin.pin);
+ 56c:	61 11       	cpse	r22, r1
+ 56e:	0f c0       	rjmp	.+30     	; 0x58e <dio_init+0xb2>
+ 570:	44 b3       	in	r20, 0x14	; 20
+ 572:	21 e0       	ldi	r18, 0x01	; 1
+ 574:	30 e0       	ldi	r19, 0x00	; 0
+ 576:	b9 01       	movw	r22, r18
+ 578:	02 c0       	rjmp	.+4      	; 0x57e <dio_init+0xa2>
+ 57a:	66 0f       	add	r22, r22
+ 57c:	77 1f       	adc	r23, r23
+ 57e:	9a 95       	dec	r25
+ 580:	e2 f7       	brpl	.-8      	; 0x57a <dio_init+0x9e>
+ 582:	cb 01       	movw	r24, r22
+ 584:	80 95       	com	r24
+ 586:	84 23       	and	r24, r20
+ 588:	84 bb       	out	0x14, r24	; 20
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 58a:	81 e0       	ldi	r24, 0x01	; 1
+ 58c:	08 95       	ret
+		break;
+		case PORT_B:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRB,dio_pin.pin) :SET_BIT(DDRB,dio_pin.pin);
+		break;
+		case PORT_C:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRC,dio_pin.pin) :SET_BIT(DDRC,dio_pin.pin);
+ 58e:	44 b3       	in	r20, 0x14	; 20
+ 590:	21 e0       	ldi	r18, 0x01	; 1
+ 592:	30 e0       	ldi	r19, 0x00	; 0
+ 594:	b9 01       	movw	r22, r18
+ 596:	02 c0       	rjmp	.+4      	; 0x59c <dio_init+0xc0>
+ 598:	66 0f       	add	r22, r22
+ 59a:	77 1f       	adc	r23, r23
+ 59c:	9a 95       	dec	r25
+ 59e:	e2 f7       	brpl	.-8      	; 0x598 <dio_init+0xbc>
+ 5a0:	cb 01       	movw	r24, r22
+ 5a2:	84 2b       	or	r24, r20
+ 5a4:	84 bb       	out	0x14, r24	; 20
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 5a6:	81 e0       	ldi	r24, 0x01	; 1
+ 5a8:	08 95       	ret
+		break;
+		case PORT_C:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRC,dio_pin.pin) :SET_BIT(DDRC,dio_pin.pin);
+		break;
+		case PORT_D:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRD,dio_pin.pin) :SET_BIT(DDRD,dio_pin.pin);
+ 5aa:	61 11       	cpse	r22, r1
+ 5ac:	0f c0       	rjmp	.+30     	; 0x5cc <dio_init+0xf0>
+ 5ae:	41 b3       	in	r20, 0x11	; 17
+ 5b0:	21 e0       	ldi	r18, 0x01	; 1
+ 5b2:	30 e0       	ldi	r19, 0x00	; 0
+ 5b4:	b9 01       	movw	r22, r18
+ 5b6:	02 c0       	rjmp	.+4      	; 0x5bc <dio_init+0xe0>
+ 5b8:	66 0f       	add	r22, r22
+ 5ba:	77 1f       	adc	r23, r23
+ 5bc:	9a 95       	dec	r25
+ 5be:	e2 f7       	brpl	.-8      	; 0x5b8 <dio_init+0xdc>
+ 5c0:	cb 01       	movw	r24, r22
+ 5c2:	80 95       	com	r24
+ 5c4:	84 23       	and	r24, r20
+ 5c6:	81 bb       	out	0x11, r24	; 17
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 5c8:	81 e0       	ldi	r24, 0x01	; 1
+ 5ca:	08 95       	ret
+		break;
+		case PORT_C:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRC,dio_pin.pin) :SET_BIT(DDRC,dio_pin.pin);
+		break;
+		case PORT_D:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRD,dio_pin.pin) :SET_BIT(DDRD,dio_pin.pin);
+ 5cc:	41 b3       	in	r20, 0x11	; 17
+ 5ce:	21 e0       	ldi	r18, 0x01	; 1
+ 5d0:	30 e0       	ldi	r19, 0x00	; 0
+ 5d2:	b9 01       	movw	r22, r18
+ 5d4:	02 c0       	rjmp	.+4      	; 0x5da <dio_init+0xfe>
+ 5d6:	66 0f       	add	r22, r22
+ 5d8:	77 1f       	adc	r23, r23
+ 5da:	9a 95       	dec	r25
+ 5dc:	e2 f7       	brpl	.-8      	; 0x5d6 <dio_init+0xfa>
+ 5de:	cb 01       	movw	r24, r22
+ 5e0:	84 2b       	or	r24, r20
+ 5e2:	81 bb       	out	0x11, r24	; 17
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 5e4:	81 e0       	ldi	r24, 0x01	; 1
+ 5e6:	08 95       	ret
+		break;
+		case PORT_D:
+		(dir == DIO_IN) ? CLEAR_BIT(DDRD,dio_pin.pin) :SET_BIT(DDRD,dio_pin.pin);
+		break;
+		default:
+		return DIO_FAIL;
+ 5e8:	80 e0       	ldi	r24, 0x00	; 0
+		break;
+	}
+	return DIO_SUCCESS;
+}
+ 5ea:	08 95       	ret
+
+000005ec <dio_write_pin>:
+
+enm_dio_error_t dio_write_pin(str_dio_t dio_pin, enm_dio_value_t value)
+{
+	switch(dio_pin.port){
+ 5ec:	81 30       	cpi	r24, 0x01	; 1
+ 5ee:	39 f1       	breq	.+78     	; 0x63e <dio_write_pin+0x52>
+ 5f0:	38 f0       	brcs	.+14     	; 0x600 <dio_write_pin+0x14>
+ 5f2:	82 30       	cpi	r24, 0x02	; 2
+ 5f4:	09 f4       	brne	.+2      	; 0x5f8 <dio_write_pin+0xc>
+ 5f6:	42 c0       	rjmp	.+132    	; 0x67c <dio_write_pin+0x90>
+ 5f8:	83 30       	cpi	r24, 0x03	; 3
+ 5fa:	09 f4       	brne	.+2      	; 0x5fe <dio_write_pin+0x12>
+ 5fc:	5e c0       	rjmp	.+188    	; 0x6ba <dio_write_pin+0xce>
+ 5fe:	7c c0       	rjmp	.+248    	; 0x6f8 <dio_write_pin+0x10c>
+		case PORT_A:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTA,dio_pin.pin) :SET_BIT(PORTA,dio_pin.pin);
+ 600:	61 11       	cpse	r22, r1
+ 602:	0f c0       	rjmp	.+30     	; 0x622 <dio_write_pin+0x36>
+ 604:	4b b3       	in	r20, 0x1b	; 27
+ 606:	21 e0       	ldi	r18, 0x01	; 1
+ 608:	30 e0       	ldi	r19, 0x00	; 0
+ 60a:	b9 01       	movw	r22, r18
+ 60c:	02 c0       	rjmp	.+4      	; 0x612 <dio_write_pin+0x26>
+ 60e:	66 0f       	add	r22, r22
+ 610:	77 1f       	adc	r23, r23
+ 612:	9a 95       	dec	r25
+ 614:	e2 f7       	brpl	.-8      	; 0x60e <dio_write_pin+0x22>
+ 616:	cb 01       	movw	r24, r22
+ 618:	80 95       	com	r24
+ 61a:	84 23       	and	r24, r20
+ 61c:	8b bb       	out	0x1b, r24	; 27
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 61e:	81 e0       	ldi	r24, 0x01	; 1
+ 620:	08 95       	ret
+
+enm_dio_error_t dio_write_pin(str_dio_t dio_pin, enm_dio_value_t value)
+{
+	switch(dio_pin.port){
+		case PORT_A:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTA,dio_pin.pin) :SET_BIT(PORTA,dio_pin.pin);
+ 622:	4b b3       	in	r20, 0x1b	; 27
+ 624:	21 e0       	ldi	r18, 0x01	; 1
+ 626:	30 e0       	ldi	r19, 0x00	; 0
+ 628:	b9 01       	movw	r22, r18
+ 62a:	02 c0       	rjmp	.+4      	; 0x630 <dio_write_pin+0x44>
+ 62c:	66 0f       	add	r22, r22
+ 62e:	77 1f       	adc	r23, r23
+ 630:	9a 95       	dec	r25
+ 632:	e2 f7       	brpl	.-8      	; 0x62c <dio_write_pin+0x40>
+ 634:	cb 01       	movw	r24, r22
+ 636:	84 2b       	or	r24, r20
+ 638:	8b bb       	out	0x1b, r24	; 27
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 63a:	81 e0       	ldi	r24, 0x01	; 1
+ 63c:	08 95       	ret
+	switch(dio_pin.port){
+		case PORT_A:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTA,dio_pin.pin) :SET_BIT(PORTA,dio_pin.pin);
+		break;
+		case PORT_B:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTB,dio_pin.pin) :SET_BIT(PORTB,dio_pin.pin);
+ 63e:	61 11       	cpse	r22, r1
+ 640:	0f c0       	rjmp	.+30     	; 0x660 <dio_write_pin+0x74>
+ 642:	48 b3       	in	r20, 0x18	; 24
+ 644:	21 e0       	ldi	r18, 0x01	; 1
+ 646:	30 e0       	ldi	r19, 0x00	; 0
+ 648:	b9 01       	movw	r22, r18
+ 64a:	02 c0       	rjmp	.+4      	; 0x650 <dio_write_pin+0x64>
+ 64c:	66 0f       	add	r22, r22
+ 64e:	77 1f       	adc	r23, r23
+ 650:	9a 95       	dec	r25
+ 652:	e2 f7       	brpl	.-8      	; 0x64c <dio_write_pin+0x60>
+ 654:	cb 01       	movw	r24, r22
+ 656:	80 95       	com	r24
+ 658:	84 23       	and	r24, r20
+ 65a:	88 bb       	out	0x18, r24	; 24
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 65c:	81 e0       	ldi	r24, 0x01	; 1
+ 65e:	08 95       	ret
+	switch(dio_pin.port){
+		case PORT_A:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTA,dio_pin.pin) :SET_BIT(PORTA,dio_pin.pin);
+		break;
+		case PORT_B:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTB,dio_pin.pin) :SET_BIT(PORTB,dio_pin.pin);
+ 660:	48 b3       	in	r20, 0x18	; 24
+ 662:	21 e0       	ldi	r18, 0x01	; 1
+ 664:	30 e0       	ldi	r19, 0x00	; 0
+ 666:	b9 01       	movw	r22, r18
+ 668:	02 c0       	rjmp	.+4      	; 0x66e <dio_write_pin+0x82>
+ 66a:	66 0f       	add	r22, r22
+ 66c:	77 1f       	adc	r23, r23
+ 66e:	9a 95       	dec	r25
+ 670:	e2 f7       	brpl	.-8      	; 0x66a <dio_write_pin+0x7e>
+ 672:	cb 01       	movw	r24, r22
+ 674:	84 2b       	or	r24, r20
+ 676:	88 bb       	out	0x18, r24	; 24
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 678:	81 e0       	ldi	r24, 0x01	; 1
+ 67a:	08 95       	ret
+		break;
+		case PORT_B:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTB,dio_pin.pin) :SET_BIT(PORTB,dio_pin.pin);
+		break;
+		case PORT_C:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTC,dio_pin.pin):SET_BIT(PORTC,dio_pin.pin);
+ 67c:	61 11       	cpse	r22, r1
+ 67e:	0f c0       	rjmp	.+30     	; 0x69e <dio_write_pin+0xb2>
+ 680:	45 b3       	in	r20, 0x15	; 21
+ 682:	21 e0       	ldi	r18, 0x01	; 1
+ 684:	30 e0       	ldi	r19, 0x00	; 0
+ 686:	b9 01       	movw	r22, r18
+ 688:	02 c0       	rjmp	.+4      	; 0x68e <dio_write_pin+0xa2>
+ 68a:	66 0f       	add	r22, r22
+ 68c:	77 1f       	adc	r23, r23
+ 68e:	9a 95       	dec	r25
+ 690:	e2 f7       	brpl	.-8      	; 0x68a <dio_write_pin+0x9e>
+ 692:	cb 01       	movw	r24, r22
+ 694:	80 95       	com	r24
+ 696:	84 23       	and	r24, r20
+ 698:	85 bb       	out	0x15, r24	; 21
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 69a:	81 e0       	ldi	r24, 0x01	; 1
+ 69c:	08 95       	ret
+		break;
+		case PORT_B:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTB,dio_pin.pin) :SET_BIT(PORTB,dio_pin.pin);
+		break;
+		case PORT_C:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTC,dio_pin.pin):SET_BIT(PORTC,dio_pin.pin);
+ 69e:	45 b3       	in	r20, 0x15	; 21
+ 6a0:	21 e0       	ldi	r18, 0x01	; 1
+ 6a2:	30 e0       	ldi	r19, 0x00	; 0
+ 6a4:	b9 01       	movw	r22, r18
+ 6a6:	02 c0       	rjmp	.+4      	; 0x6ac <dio_write_pin+0xc0>
+ 6a8:	66 0f       	add	r22, r22
+ 6aa:	77 1f       	adc	r23, r23
+ 6ac:	9a 95       	dec	r25
+ 6ae:	e2 f7       	brpl	.-8      	; 0x6a8 <dio_write_pin+0xbc>
+ 6b0:	cb 01       	movw	r24, r22
+ 6b2:	84 2b       	or	r24, r20
+ 6b4:	85 bb       	out	0x15, r24	; 21
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 6b6:	81 e0       	ldi	r24, 0x01	; 1
+ 6b8:	08 95       	ret
+		break;
+		case PORT_C:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTC,dio_pin.pin):SET_BIT(PORTC,dio_pin.pin);
+		break;
+		case PORT_D:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTD,dio_pin.pin):SET_BIT(PORTD,dio_pin.pin);
+ 6ba:	61 11       	cpse	r22, r1
+ 6bc:	0f c0       	rjmp	.+30     	; 0x6dc <dio_write_pin+0xf0>
+ 6be:	42 b3       	in	r20, 0x12	; 18
+ 6c0:	21 e0       	ldi	r18, 0x01	; 1
+ 6c2:	30 e0       	ldi	r19, 0x00	; 0
+ 6c4:	b9 01       	movw	r22, r18
+ 6c6:	02 c0       	rjmp	.+4      	; 0x6cc <dio_write_pin+0xe0>
+ 6c8:	66 0f       	add	r22, r22
+ 6ca:	77 1f       	adc	r23, r23
+ 6cc:	9a 95       	dec	r25
+ 6ce:	e2 f7       	brpl	.-8      	; 0x6c8 <dio_write_pin+0xdc>
+ 6d0:	cb 01       	movw	r24, r22
+ 6d2:	80 95       	com	r24
+ 6d4:	84 23       	and	r24, r20
+ 6d6:	82 bb       	out	0x12, r24	; 18
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 6d8:	81 e0       	ldi	r24, 0x01	; 1
+ 6da:	08 95       	ret
+		break;
+		case PORT_C:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTC,dio_pin.pin):SET_BIT(PORTC,dio_pin.pin);
+		break;
+		case PORT_D:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTD,dio_pin.pin):SET_BIT(PORTD,dio_pin.pin);
+ 6dc:	42 b3       	in	r20, 0x12	; 18
+ 6de:	21 e0       	ldi	r18, 0x01	; 1
+ 6e0:	30 e0       	ldi	r19, 0x00	; 0
+ 6e2:	b9 01       	movw	r22, r18
+ 6e4:	02 c0       	rjmp	.+4      	; 0x6ea <dio_write_pin+0xfe>
+ 6e6:	66 0f       	add	r22, r22
+ 6e8:	77 1f       	adc	r23, r23
+ 6ea:	9a 95       	dec	r25
+ 6ec:	e2 f7       	brpl	.-8      	; 0x6e6 <dio_write_pin+0xfa>
+ 6ee:	cb 01       	movw	r24, r22
+ 6f0:	84 2b       	or	r24, r20
+ 6f2:	82 bb       	out	0x12, r24	; 18
+		break;
+		default:
+		return DIO_FAIL;
+		break;
+	}
+	return DIO_SUCCESS;
+ 6f4:	81 e0       	ldi	r24, 0x01	; 1
+ 6f6:	08 95       	ret
+		break;
+		case PORT_D:
+		(value == DIO_LOW) ? CLEAR_BIT(PORTD,dio_pin.pin):SET_BIT(PORTD,dio_pin.pin);
+		break;
+		default:
+		return DIO_FAIL;
+ 6f8:	80 e0       	ldi	r24, 0x00	; 0
+		break;
+	}
+	return DIO_SUCCESS;
+}
+ 6fa:	08 95       	ret
+
+000006fc <uart_init>:
+ 6fc:	fc 01       	movw	r30, r24
+ 6fe:	23 81       	ldd	r18, Z+3	; 0x03
+ 700:	30 e0       	ldi	r19, 0x00	; 0
+ 702:	22 0f       	add	r18, r18
+ 704:	33 1f       	adc	r19, r19
+ 706:	22 0f       	add	r18, r18
+ 708:	33 1f       	adc	r19, r19
+ 70a:	22 0f       	add	r18, r18
+ 70c:	33 1f       	adc	r19, r19
+ 70e:	60 81       	ld	r22, Z
+ 710:	80 e4       	ldi	r24, 0x40	; 64
+ 712:	68 9f       	mul	r22, r24
+ 714:	b0 01       	movw	r22, r0
+ 716:	11 24       	eor	r1, r1
+ 718:	92 81       	ldd	r25, Z+2	; 0x02
+ 71a:	80 e1       	ldi	r24, 0x10	; 16
+ 71c:	98 9f       	mul	r25, r24
+ 71e:	a0 01       	movw	r20, r0
+ 720:	11 24       	eor	r1, r1
+ 722:	34 81       	ldd	r19, Z+4	; 0x04
+ 724:	91 81       	ldd	r25, Z+1	; 0x01
+ 726:	89 2f       	mov	r24, r25
+ 728:	90 e0       	ldi	r25, 0x00	; 0
+ 72a:	88 0f       	add	r24, r24
+ 72c:	99 1f       	adc	r25, r25
+ 72e:	20 68       	ori	r18, 0x80	; 128
+ 730:	26 2b       	or	r18, r22
+ 732:	42 2b       	or	r20, r18
+ 734:	43 2b       	or	r20, r19
+ 736:	84 2b       	or	r24, r20
+ 738:	80 bd       	out	0x20, r24	; 32
+ 73a:	2b b1       	in	r18, 0x0b	; 11
+ 73c:	95 81       	ldd	r25, Z+5	; 0x05
+ 73e:	89 2f       	mov	r24, r25
+ 740:	90 e0       	ldi	r25, 0x00	; 0
+ 742:	88 0f       	add	r24, r24
+ 744:	99 1f       	adc	r25, r25
+ 746:	92 2f       	mov	r25, r18
+ 748:	9c 7f       	andi	r25, 0xFC	; 252
+ 74a:	89 2b       	or	r24, r25
+ 74c:	8b b9       	out	0x0b, r24	; 11
+ 74e:	21 85       	ldd	r18, Z+9	; 0x09
+ 750:	80 e1       	ldi	r24, 0x10	; 16
+ 752:	28 9f       	mul	r18, r24
+ 754:	a0 01       	movw	r20, r0
+ 756:	11 24       	eor	r1, r1
+ 758:	92 85       	ldd	r25, Z+10	; 0x0a
+ 75a:	29 2f       	mov	r18, r25
+ 75c:	30 e0       	ldi	r19, 0x00	; 0
+ 75e:	22 0f       	add	r18, r18
+ 760:	33 1f       	adc	r19, r19
+ 762:	22 0f       	add	r18, r18
+ 764:	33 1f       	adc	r19, r19
+ 766:	22 0f       	add	r18, r18
+ 768:	33 1f       	adc	r19, r19
+ 76a:	91 81       	ldd	r25, Z+1	; 0x01
+ 76c:	96 95       	lsr	r25
+ 76e:	96 95       	lsr	r25
+ 770:	89 2f       	mov	r24, r25
+ 772:	90 e0       	ldi	r25, 0x00	; 0
+ 774:	88 0f       	add	r24, r24
+ 776:	99 1f       	adc	r25, r25
+ 778:	88 0f       	add	r24, r24
+ 77a:	99 1f       	adc	r25, r25
+ 77c:	9a b1       	in	r25, 0x0a	; 10
+ 77e:	24 2b       	or	r18, r20
+ 780:	82 2b       	or	r24, r18
+ 782:	93 70       	andi	r25, 0x03	; 3
+ 784:	89 2b       	or	r24, r25
+ 786:	8a b9       	out	0x0a, r24	; 10
+ 788:	85 85       	ldd	r24, Z+13	; 0x0d
+ 78a:	89 b9       	out	0x09, r24	; 9
+ 78c:	86 85       	ldd	r24, Z+14	; 0x0e
+ 78e:	80 bd       	out	0x20, r24	; 32
+ 790:	83 85       	ldd	r24, Z+11	; 0x0b
+ 792:	81 30       	cpi	r24, 0x01	; 1
+ 794:	31 f0       	breq	.+12     	; 0x7a2 <uart_init+0xa6>
+ 796:	84 85       	ldd	r24, Z+12	; 0x0c
+ 798:	81 30       	cpi	r24, 0x01	; 1
+ 79a:	19 f0       	breq	.+6      	; 0x7a2 <uart_init+0xa6>
+ 79c:	80 85       	ldd	r24, Z+8	; 0x08
+ 79e:	81 30       	cpi	r24, 0x01	; 1
+ 7a0:	09 f4       	brne	.+2      	; 0x7a4 <uart_init+0xa8>
+ 7a2:	78 94       	sei
+ 7a4:	08 95       	ret
+
+000007a6 <uart_udrei_enable>:
+ 7a6:	8a b1       	in	r24, 0x0a	; 10
+ 7a8:	80 62       	ori	r24, 0x20	; 32
+ 7aa:	8a b9       	out	0x0a, r24	; 10
+ 7ac:	08 95       	ret
+
+000007ae <uart_udrei_disable>:
+ 7ae:	8a b1       	in	r24, 0x0a	; 10
+ 7b0:	8f 7d       	andi	r24, 0xDF	; 223
+ 7b2:	8a b9       	out	0x0a, r24	; 10
+ 7b4:	08 95       	ret
+
+000007b6 <uart_rxci_enable>:
+ 7b6:	8a b1       	in	r24, 0x0a	; 10
+ 7b8:	80 68       	ori	r24, 0x80	; 128
+ 7ba:	8a b9       	out	0x0a, r24	; 10
+ 7bc:	08 95       	ret
+
+000007be <uart_rxci_disable>:
+ 7be:	8a b1       	in	r24, 0x0a	; 10
+ 7c0:	8f 77       	andi	r24, 0x7F	; 127
+ 7c2:	8a b9       	out	0x0a, r24	; 10
+ 7c4:	08 95       	ret
+
+000007c6 <uart_write>:
+ 7c6:	5d 9b       	sbis	0x0b, 5	; 11
+ 7c8:	fe cf       	rjmp	.-4      	; 0x7c6 <uart_write>
+ 7ca:	fc 01       	movw	r30, r24
+ 7cc:	20 81       	ld	r18, Z
+ 7ce:	2c b9       	out	0x0c, r18	; 12
+ 7d0:	52 9b       	sbis	0x0a, 2	; 10
+ 7d2:	06 c0       	rjmp	.+12     	; 0x7e0 <uart_write+0x1a>
+ 7d4:	2a b1       	in	r18, 0x0a	; 10
+ 7d6:	90 81       	ld	r25, Z
+ 7d8:	82 2f       	mov	r24, r18
+ 7da:	8e 7f       	andi	r24, 0xFE	; 254
+ 7dc:	89 2b       	or	r24, r25
+ 7de:	8a b9       	out	0x0a, r24	; 10
+ 7e0:	08 95       	ret
+
+000007e2 <uart_read>:
+ 7e2:	fc 01       	movw	r30, r24
+ 7e4:	5f 9b       	sbis	0x0b, 7	; 11
+ 7e6:	fe cf       	rjmp	.-4      	; 0x7e4 <uart_read+0x2>
+ 7e8:	2c b1       	in	r18, 0x0c	; 12
+ 7ea:	42 2f       	mov	r20, r18
+ 7ec:	50 e0       	ldi	r21, 0x00	; 0
+ 7ee:	51 83       	std	Z+1, r21	; 0x01
+ 7f0:	40 83       	st	Z, r20
+ 7f2:	52 9b       	sbis	0x0a, 2	; 10
+ 7f4:	0a c0       	rjmp	.+20     	; 0x80a <__DATA_REGION_LENGTH__+0xa>
+ 7f6:	9a b1       	in	r25, 0x0a	; 10
+ 7f8:	92 70       	andi	r25, 0x02	; 2
+ 7fa:	29 2f       	mov	r18, r25
+ 7fc:	30 e0       	ldi	r19, 0x00	; 0
+ 7fe:	22 0f       	add	r18, r18
+ 800:	33 1f       	adc	r19, r19
+ 802:	24 2b       	or	r18, r20
+ 804:	35 2b       	or	r19, r21
+ 806:	31 83       	std	Z+1, r19	; 0x01
+ 808:	20 83       	st	Z, r18
+ 80a:	08 95       	ret
+
+0000080c <uart_write_INT>:
+ 80c:	90 93 0c 01 	sts	0x010C, r25	; 0x80010c <tx_callback+0x1>
+ 810:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <tx_callback>
+ 814:	0e 94 d3 03 	call	0x7a6	; 0x7a6 <uart_udrei_enable>
+ 818:	08 95       	ret
+
+0000081a <uart_read_INT>:
+ 81a:	90 93 0a 01 	sts	0x010A, r25	; 0x80010a <rx_callback+0x1>
+ 81e:	80 93 09 01 	sts	0x0109, r24	; 0x800109 <rx_callback>
+ 822:	0e 94 db 03 	call	0x7b6	; 0x7b6 <uart_rxci_enable>
+ 826:	08 95       	ret
+
+00000828 <__vector_13>:
+ 828:	1f 92       	push	r1
+ 82a:	0f 92       	push	r0
+ 82c:	0f b6       	in	r0, 0x3f	; 63
+ 82e:	0f 92       	push	r0
+ 830:	11 24       	eor	r1, r1
+ 832:	2f 93       	push	r18
+ 834:	3f 93       	push	r19
+ 836:	4f 93       	push	r20
+ 838:	5f 93       	push	r21
+ 83a:	6f 93       	push	r22
+ 83c:	7f 93       	push	r23
+ 83e:	8f 93       	push	r24
+ 840:	9f 93       	push	r25
+ 842:	af 93       	push	r26
+ 844:	bf 93       	push	r27
+ 846:	ef 93       	push	r30
+ 848:	ff 93       	push	r31
+ 84a:	e0 91 09 01 	lds	r30, 0x0109	; 0x800109 <rx_callback>
+ 84e:	f0 91 0a 01 	lds	r31, 0x010A	; 0x80010a <rx_callback+0x1>
+ 852:	09 95       	icall
+ 854:	ff 91       	pop	r31
+ 856:	ef 91       	pop	r30
+ 858:	bf 91       	pop	r27
+ 85a:	af 91       	pop	r26
+ 85c:	9f 91       	pop	r25
+ 85e:	8f 91       	pop	r24
+ 860:	7f 91       	pop	r23
+ 862:	6f 91       	pop	r22
+ 864:	5f 91       	pop	r21
+ 866:	4f 91       	pop	r20
+ 868:	3f 91       	pop	r19
+ 86a:	2f 91       	pop	r18
+ 86c:	0f 90       	pop	r0
+ 86e:	0f be       	out	0x3f, r0	; 63
+ 870:	0f 90       	pop	r0
+ 872:	1f 90       	pop	r1
+ 874:	18 95       	reti
+
+00000876 <__vector_14>:
+ 876:	1f 92       	push	r1
+ 878:	0f 92       	push	r0
+ 87a:	0f b6       	in	r0, 0x3f	; 63
+ 87c:	0f 92       	push	r0
+ 87e:	11 24       	eor	r1, r1
+ 880:	2f 93       	push	r18
+ 882:	3f 93       	push	r19
+ 884:	4f 93       	push	r20
+ 886:	5f 93       	push	r21
+ 888:	6f 93       	push	r22
+ 88a:	7f 93       	push	r23
+ 88c:	8f 93       	push	r24
+ 88e:	9f 93       	push	r25
+ 890:	af 93       	push	r26
+ 892:	bf 93       	push	r27
+ 894:	ef 93       	push	r30
+ 896:	ff 93       	push	r31
+ 898:	e0 91 0b 01 	lds	r30, 0x010B	; 0x80010b <tx_callback>
+ 89c:	f0 91 0c 01 	lds	r31, 0x010C	; 0x80010c <tx_callback+0x1>
+ 8a0:	09 95       	icall
+ 8a2:	ff 91       	pop	r31
+ 8a4:	ef 91       	pop	r30
+ 8a6:	bf 91       	pop	r27
+ 8a8:	af 91       	pop	r26
+ 8aa:	9f 91       	pop	r25
+ 8ac:	8f 91       	pop	r24
+ 8ae:	7f 91       	pop	r23
+ 8b0:	6f 91       	pop	r22
+ 8b2:	5f 91       	pop	r21
+ 8b4:	4f 91       	pop	r20
+ 8b6:	3f 91       	pop	r19
+ 8b8:	2f 91       	pop	r18
+ 8ba:	0f 90       	pop	r0
+ 8bc:	0f be       	out	0x3f, r0	; 63
+ 8be:	0f 90       	pop	r0
+ 8c0:	1f 90       	pop	r1
+ 8c2:	18 95       	reti
+
+000008c4 <_exit>:
+ 8c4:	f8 94       	cli
+
+000008c6 <__stop_program>:
+ 8c6:	ff cf       	rjmp	.-2      	; 0x8c6 <__stop_program>
