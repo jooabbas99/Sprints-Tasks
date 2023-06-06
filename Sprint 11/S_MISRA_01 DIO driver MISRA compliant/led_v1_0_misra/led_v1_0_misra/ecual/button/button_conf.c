@@ -10,8 +10,8 @@
 const str_button_t button = {
 		
 			.str_dio ={
-				.pin = PIN0,
-				.port = DIO_PORTB
+				.pin = PIN4,
+				.port = DIO_PORTC
 			},
 			.enm_button_active = BUTTON_ACTIVE_HIGH
 	};

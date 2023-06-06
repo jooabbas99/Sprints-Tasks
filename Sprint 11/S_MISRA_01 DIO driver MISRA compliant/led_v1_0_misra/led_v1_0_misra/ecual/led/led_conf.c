@@ -10,29 +10,29 @@
 const str_led_t leds[4] = {
 		{
 			.str_dio ={
-				.pin = PIN0,
-				.port = DIO_PORTA
+				.pin = PIN4,
+				.port = DIO_PORTB
 			},
 			.enm_led_status = LED_NOT_INIT
 		},
 		{
 			.str_dio ={
-				.pin = PIN1,
-				.port = DIO_PORTA
+				.pin = PIN5,
+				.port = DIO_PORTB
 			},
 			.enm_led_status = LED_NOT_INIT
 		},
 		{
 			.str_dio ={
-				.pin = PIN2,
-				.port = DIO_PORTA
+				.pin = PIN6,
+				.port = DIO_PORTB
 			},
 			.enm_led_status = LED_NOT_INIT
 		},
 		{
 			.str_dio ={
-				.pin = PIN3,
-				.port = DIO_PORTA
+				.pin = PIN7,
+				.port = DIO_PORTB
 			},
 			.enm_led_status = LED_NOT_INIT
 		}
