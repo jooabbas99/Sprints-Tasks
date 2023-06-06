@@ -22,6 +22,9 @@ typedef signed long int    sint32;     /* 4-BYTES SIGNED DATA    */
 typedef float  float32;                 /* 4-BYTES FLOATING DATA */
 typedef double double64;                /* 8-BYTES FLOATING DATA */
 
+typedef uint8	bool;
 
+#define TRUE	1
+#define FALSE	0
 
 #endif /* STD_TPES_H_ */

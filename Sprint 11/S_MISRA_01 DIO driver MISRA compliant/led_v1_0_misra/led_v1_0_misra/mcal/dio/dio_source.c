@@ -23,13 +23,19 @@
 	 * This ensures that the program has a defined behavior even in the presence of unexpected input.
 	 *
  */
+static bool is_pin_correct(enm_dio_pin_t pin){
+	return (pin < NUMBER_OF_PINS) ? TRUE : FALSE;
+}
+static bool is_port_correct(enm_dio_port_t port){
+	return (port < NUMBER_OF_PORTS) ? TRUE : FALSE;
+}
 enm_dio_error_t dio_init(str_dio_t dio_pin,enm_dio_dir_t dir){
 	// Rule 18.1, requires that all declarations should be at the top of the function or file scope.
 	enm_dio_error_t enm_dio_error;
 	enm_dio_error = DIO_NOT_COMPLETE;
 	// Rule 10.1, requires that all operands of logical and relational operators should have a Boolean type.
 	// (OP_1 > OP_2) return 0 if it false and 1 if it true
-	if ((dio_pin.pin > 7) || (dio_pin.port > 4) )
+	if (is_pin_correct(dio_pin.pin) != TRUE || !is_port_correct(dio_pin.port) != TRUE )
 	{
 		enm_dio_error = DIO_VALUE_ERROR;
 	}
@@ -65,7 +71,7 @@ enm_dio_error_t dio_write_pin(str_dio_t dio_pin, enm_dio_value_t value){
 	enm_dio_error_t enm_dio_error = DIO_NOT_COMPLETE;
 	// Rule 10.1, requires that all operands of logical and relational operators should have a Boolean type.
 	// (OP_1 > OP_2) return 0 if it false and 1 if it true
-	if ((dio_pin.pin > 7) || (dio_pin.port > 4) )
+	if (is_pin_correct(dio_pin.pin) != TRUE || !is_port_correct(dio_pin.port) != TRUE )
 	{
 		enm_dio_error = DIO_VALUE_ERROR;
 	}
@@ -100,7 +106,7 @@ enm_dio_error_t dio_toggle_pin(str_dio_t dio_pin){
 	enm_dio_error_t enm_dio_error = DIO_NOT_COMPLETE;
 	// Rule 10.1, requires that all operands of logical and relational operators should have a Boolean type.
 	// (OP_1 > OP_2) return 0 if it false and 1 if it true
-	if ((dio_pin.pin > 7) || (dio_pin.port > 4) )
+	if (is_pin_correct(dio_pin.pin) != TRUE || !is_port_correct(dio_pin.port) != TRUE )
 	{
 		enm_dio_error = DIO_VALUE_ERROR;
 	}
@@ -135,7 +141,7 @@ enm_dio_error_t dio_read_pin(str_dio_t dio_pin,uint8 *data){
 	enm_dio_error_t enm_dio_error = DIO_NOT_COMPLETE;
 	// Rule 10.1, requires that all operands of logical and relational operators should have a Boolean type.
 	// (OP_1 > OP_2) return 0 if it false and 1 if it true
-	if ((dio_pin.pin > 7) || (dio_pin.port > 4) )
+	if (is_pin_correct(dio_pin.pin) != TRUE || !is_port_correct(dio_pin.port) != TRUE )
 	{
 		enm_dio_error = DIO_VALUE_ERROR;
 	}

@@ -233,7 +233,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x59e
+.text           0x00000000      0x5b6
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
                 0x00000000                __vector_default
@@ -336,20 +336,24 @@ END GROUP
                 0x00000278                led_off
  .text.main     0x000002a8        0xa main.o
                 0x000002a8                main
+ .text.is_pin_correct
+                0x000002b2        0xc mcal/dio/dio_source.o
+ .text.is_port_correct
+                0x000002be        0xc mcal/dio/dio_source.o
  .text.dio_init
-                0x000002b2      0x124 mcal/dio/dio_source.o
-                0x000002b2                dio_init
+                0x000002ca      0x124 mcal/dio/dio_source.o
+                0x000002ca                dio_init
  .text.dio_write_pin
-                0x000003d6      0x124 mcal/dio/dio_source.o
-                0x000003d6                dio_write_pin
+                0x000003ee      0x124 mcal/dio/dio_source.o
+                0x000003ee                dio_write_pin
  .text.dio_read_pin
-                0x000004fa       0xa0 mcal/dio/dio_source.o
-                0x000004fa                dio_read_pin
-                0x0000059a                . = ALIGN (0x2)
+                0x00000512       0xa0 mcal/dio/dio_source.o
+                0x00000512                dio_read_pin
+                0x000005b2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000059a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000059a                _exit
-                0x0000059a                exit
+ .fini9         0x000005b2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000005b2                _exit
+                0x000005b2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -368,11 +372,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000059a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000005b2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000059e                _etext = .
+                0x000005b6                _etext = .
 
-.data           0x00800060       0x10 load address 0x0000059e
+.data           0x00800060       0x10 load address 0x000005b6
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -401,8 +405,8 @@ END GROUP
                 0x00800072                btnState
                 0x00800073                counter
                 0x00800074                PROVIDE (__bss_end, .)
-                0x0000059e                __data_load_start = LOADADDR (.data)
-                0x000005ae                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000005b6                __data_load_start = LOADADDR (.data)
+                0x000005c6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800074        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -479,7 +483,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x110
+.debug_aranges  0x00000000      0x120
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 application/app.o
@@ -494,12 +498,12 @@ END GROUP
  .debug_aranges
                 0x000000b8       0x20 main.o
  .debug_aranges
-                0x000000d8       0x38 mcal/dio/dio_source.o
+                0x000000d8       0x48 mcal/dio/dio_source.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1673
+.debug_info     0x00000000     0x16fc
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_info    0x000004e6      0x4a5 application/app.o
@@ -508,9 +512,9 @@ END GROUP
  .debug_info    0x00000e12      0x18b ecual/led/led_conf.o
  .debug_info    0x00000f9d      0x3a2 ecual/led/led_source.o
  .debug_info    0x0000133f       0x7d main.o
- .debug_info    0x000013bc      0x2b7 mcal/dio/dio_source.o
+ .debug_info    0x000013bc      0x340 mcal/dio/dio_source.o
 
-.debug_abbrev   0x00000000      0xa66
+.debug_abbrev   0x00000000      0xac0
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_abbrev  0x000004a3      0x17f application/app.o
@@ -519,9 +523,9 @@ END GROUP
  .debug_abbrev  0x000007ad       0x95 ecual/led/led_conf.o
  .debug_abbrev  0x00000842       0xf5 ecual/led/led_source.o
  .debug_abbrev  0x00000937       0x5d main.o
- .debug_abbrev  0x00000994       0xd2 mcal/dio/dio_source.o
+ .debug_abbrev  0x00000994      0x12c mcal/dio/dio_source.o
 
-.debug_line     0x00000000      0xb64
+.debug_line     0x00000000      0xb9d
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_line    0x00000116      0x2ae application/app.o
@@ -530,17 +534,17 @@ END GROUP
  .debug_line    0x0000055a       0x88 ecual/led/led_conf.o
  .debug_line    0x000005e2      0x1a2 ecual/led/led_source.o
  .debug_line    0x00000784       0x63 main.o
- .debug_line    0x000007e7      0x37d mcal/dio/dio_source.o
+ .debug_line    0x000007e7      0x3b6 mcal/dio/dio_source.o
 
-.debug_frame    0x00000000      0x184
+.debug_frame    0x00000000      0x1b8
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 application/app.o
  .debug_frame   0x00000034       0x54 ecual/button/button_source.o
  .debug_frame   0x00000088       0x84 ecual/led/led_source.o
  .debug_frame   0x0000010c       0x24 main.o
- .debug_frame   0x00000130       0x54 mcal/dio/dio_source.o
+ .debug_frame   0x00000130       0x88 mcal/dio/dio_source.o
 
-.debug_str      0x00000000      0x7dd
+.debug_str      0x00000000      0x801
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_str     0x00000196      0x4a4 application/app.o
@@ -555,15 +559,15 @@ END GROUP
                                 0x3a4 (size before relaxing)
  .debug_str     0x00000792       0x11 main.o
                                 0x15f (size before relaxing)
- .debug_str     0x000007a3       0x3a mcal/dio/dio_source.o
-                                0x30d (size before relaxing)
+ .debug_str     0x000007a3       0x5e mcal/dio/dio_source.o
+                                0x331 (size before relaxing)
 
-.debug_loc      0x00000000      0x94a
+.debug_loc      0x00000000      0x926
  *(.debug_loc)
  .debug_loc     0x00000000       0x90 application/app.o
  .debug_loc     0x00000090      0x168 ecual/button/button_source.o
  .debug_loc     0x000001f8      0x3f0 ecual/led/led_source.o
- .debug_loc     0x000005e8      0x362 mcal/dio/dio_source.o
+ .debug_loc     0x000005e8      0x33e mcal/dio/dio_source.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -583,13 +587,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x90
+.debug_ranges   0x00000000       0xa0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 application/app.o
  .debug_ranges  0x00000018       0x18 ecual/button/button_source.o
  .debug_ranges  0x00000030       0x28 ecual/led/led_source.o
  .debug_ranges  0x00000058       0x10 main.o
- .debug_ranges  0x00000068       0x28 mcal/dio/dio_source.o
+ .debug_ranges  0x00000068       0x38 mcal/dio/dio_source.o
 
 .debug_macro
  *(.debug_macro)

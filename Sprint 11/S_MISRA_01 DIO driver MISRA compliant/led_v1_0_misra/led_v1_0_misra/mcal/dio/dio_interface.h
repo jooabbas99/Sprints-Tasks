@@ -46,6 +46,8 @@ typedef struct {
 	enm_dio_pin_t pin;
 }str_dio_t;
 
+#define NUMBER_OF_PORTS	4
+#define NUMBER_OF_PINS	7
 
 // DIO functions
 
