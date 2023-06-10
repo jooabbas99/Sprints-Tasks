@@ -36,7 +36,7 @@ enm_timer0_error_t timer0_init(str_timer0_conf_t str_timer0_conf){
 	}
 	return ret_err;
 }
-void timer0_loop(){
+void timer0_loop(void){
 	uint32_t counter = 0;
 	while(counter < number_of_overflow){
 		// stop after one overflow
@@ -46,35 +46,56 @@ void timer0_loop(){
 		counter ++;
 	}
 }
-void timer0_start(void){
-	if (TIMER0_PRESCALAR == CLK_1024){
+enm_timer0_error_t timer0_start(str_timer0_conf_t str_timer0_conf){
+	enm_timer0_error_t ret_err = TIMER_OK;
+	switch(str_timer0_conf.enm_timer0_prescaller){
+		case CLK_1024:
 		SET_BIT(TCCR0, CS02);
 		CLEAR_BIT(TCCR0, CS01);
 		SET_BIT(TCCR0, CS00);
+		break;
+		default:
+		ret_err = TIMER_NOT_OK;
+		break;
 	}
+		return ret_err ;
 }
-void timer0_stop(void){
-	if (TIMER0_PRESCALAR == NO_CLK){
+enm_timer0_error_t timer0_stop(str_timer0_conf_t str_timer0_conf){
+	enm_timer0_error_t ret_err = TIMER_OK;
+	switch(str_timer0_conf.enm_timer0_prescaller){
+		case NO_CLK:
 		CLEAR_BIT(TCCR0, CS02);
 		CLEAR_BIT(TCCR0, CS01);
 		CLEAR_BIT(TCCR0, CS00);
+		break;
+		default:
+		ret_err = TIMER_NOT_OK;
+		break;
 	}
+	return ret_err;
 }
-void timer0_set_delay(uint32_t delay){
-	if (WAVE_GENERATION_MODE == NORMAL_MODE){
-		uint8_t tick = PRESCALER / F_CPU; // p = 1024 , Fcpu = 16
+enm_timer0_error_t timer0_set_delay(str_timer0_conf_t str_timer0_conf,uint32_t delay){
+	enm_timer0_error_t ret_err = TIMER_OK;
+	switch(str_timer0_conf.enm_timer0_modes){
+		case NORMAL_MODE:
+		uint8_t tick = str_timer0_conf.enm_timer0_prescaller / F_CPU; // p = 1024 , Fcpu = 16
 		uint32_t total_number_of_overflows = (delay * 1000) / tick;
 		number_of_overflow = total_number_of_overflows / 256;
 		timer_init_value = 256 - (total_number_of_overflows % 256);
 		TCNT0 = timer_init_value;
 		number_of_overflow ++;
-	}
-	else if( WAVE_GENERATION_MODE == CTC_MODE){
-		uint8_t tick = PRESCALER / F_CPU;
+		break;
+		case CTC_MODE:
+		uint8_t tick = str_timer0_conf.enm_timer0_prescaller / F_CPU;
 		uint32_t number_of_ticks = (delay * 1000) / tick;
 		OCR0 = number_of_ticks - 1;
 		number_of_overflow++;
+		break;
+		default:
+		ret_err = TIMER_NOT_OK;
+		break;
 	}
+	return ret_err;
 }
 enm_timer0_error_t timer0_set_overflow_delay(str_timer0_conf_t str_timer0_conf,uint32_t delay){
 	uint8_t tick =  str_timer0_conf.enm_timer0_prescaller / F_CPU;
