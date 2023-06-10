@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>led_v1_0_misra</AssemblyName>
-    <Name>timer_v1_0_misra</Name>
+    <Name>LED_v3_0_misra</Name>
     <RootNamespace>led_v1_0_misra</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
@@ -166,6 +166,9 @@
     <Compile Include="mcal\dio\dio_source.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="mcal\int\int.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="mcal\timer\timer.c">
       <SubType>compile</SubType>
     </Compile>
@@ -191,6 +194,7 @@
     <Folder Include="mcal" />
     <Folder Include="ecual" />
     <Folder Include="mcal\dio\" />
+    <Folder Include="mcal\int\" />
     <Folder Include="mcal\timer\" />
     <Folder Include="utility" />
   </ItemGroup>
