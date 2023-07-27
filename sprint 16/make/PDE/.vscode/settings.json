@@ -1,0 +1,12 @@
+{ 
+    "triggerTaskOnSave.on": true, 
+    "triggerTaskOnSave.tasks": { 
+        "Lint": [ 
+            "src/*.c", 
+            "include/*.h"  
+        ] 
+    }, 
+    "files.exclude": {
+        "**/.*": false
+    }
+}
