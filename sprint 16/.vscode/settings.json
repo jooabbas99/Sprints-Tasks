@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "stdlib.h": "c",
+        "card.h": "c",
+        "terminal.h": "c",
+        "app.h": "c"
+    }
+}

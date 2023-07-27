@@ -1,3 +1,0 @@
-/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/S_ALG_01_Longest Consecutive Sequence /cmake-build-debug/CMakeFiles/S_ALG_01_Longest_Consecutive_Sequence_.dir
-/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/S_ALG_01_Longest Consecutive Sequence /cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/youssefabbas/Documents/Embeded system/Sprints/TASKS/sprint 2/S_ALG_01_Longest Consecutive Sequence /cmake-build-debug/CMakeFiles/rebuild_cache.dir
