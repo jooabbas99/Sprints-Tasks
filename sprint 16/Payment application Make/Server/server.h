@@ -4,6 +4,7 @@
 
 #ifndef PROJECT_SPRINT_2_SERVER_H
 #define PROJECT_SPRINT_2_SERVER_H
+
 #include "../Card/card.h"
 #include "../Terminal/terminal.h"
 #define ACCOUNTS_DB_SIZE 255
@@ -45,8 +46,5 @@ EN_serverError_t saveTransaction(ST_transaction_t *transData);
 void listSavedTransactions(void);
 
 void recieveTransactionDataTest(void);
-
-
-
 
 #endif //PROJECT_SPRINT_2_SERVER_H

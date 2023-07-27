@@ -1,7 +1,3 @@
-//
-// Created by Khaled Mustafa.
-//
-
 #ifndef PROJECT_SPRINT_2_TERMINAL_H
 #define PROJECT_SPRINT_2_TERMINAL_H
 
