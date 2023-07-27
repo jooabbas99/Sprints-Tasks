@@ -48,15 +48,4 @@
 #define PIN7 7
 
 
-// define Interrupt registers  
-// MCUCR
-#define MCUCR *((volatile uint8_t*)0x55)
-// MCUCSR
-#define MCUCSR *((volatile uint8_t*)0x54)
-//GICR
-#define GICR *((volatile uint8_t*)0x5B)
-
-//GIFR
-#define GIFR *((volatile uint8_t*)0x5A)
-
 #endif /* REGISTERS_H_ */

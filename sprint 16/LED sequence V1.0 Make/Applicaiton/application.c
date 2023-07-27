@@ -6,9 +6,8 @@
  */ 
 
 #include "application.h"
-uint8_t  counter = 0;
+uint8_t btnState , counter;
 ST_led_t led[LED_NO];
-uint8_t interrupt_flag;
 void AppInit(){
 	led[0].pinNumber = PIN0;
 	led[0].portNmber = PORT_A;
@@ -30,42 +29,38 @@ void AppInit(){
 	LED_init(&led[1]);
 	LED_init(&led[2]);
 	LED_init(&led[3]);
-	// interrupt 
-	BUTTON_init(EXT_INT_BTN_PORT,EXT_INT_BTN_PIN);
+	BUTTON_init(PORT_B,PIN0);
+	btnState = 0;
 	counter = 0;
-	interrupt_flag = 0;
-	// enable global interrupt 
-	sei();
-	// enable interrupt mode 
-	SET_BIT(MCUCR,ISC00);
-	SET_BIT(MCUCR,ISC01);
-	//enable GICR
-	SET_BIT(GICR,GICR_INT_0);
-	
-	
 }
 
 void AppStart(){
 	
-		if(interrupt_flag){
-			if (counter < (LED_NO *2))
-				counter ++;
-			else
-				counter = 0;
-			interrupt_flag = 0;
-		
-		
-			if (counter <= LED_NO)
-			{
-				LED_on(&led[counter-1]);
-			}
-			else
-			{	
-				LED_off(&led[counter-(LED_NO+1)]);
-			}
+	BUTTON_status(PORT_B,PIN0,&btnState);
+	
+	if (btnState == BUTTON_HIGH)
+	{
+		counter ++;
+		if (counter <= LED_NO)
+		{
+			LED_on(&led[counter-1]);
 		}
-}
-
-ISR(EXT_INT_0){
-	interrupt_flag = 1;
+		else
+		{	
+			if (counter > LED_NO*2)
+			{
+				counter = 0;
+			}else {
+				LED_off(&led[counter-5]);
+				
+			}
+			
+		}
+		BUTTON_status(PORT_B,PIN0,&btnState);
+		while(btnState == HIGH){
+			BUTTON_status(PORT_B,PIN0,&btnState);
+		}
+		
+	}
+	
 }
