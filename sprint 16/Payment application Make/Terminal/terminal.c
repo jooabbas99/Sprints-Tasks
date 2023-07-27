@@ -1,6 +1,3 @@
-//
-// Created by Khaled Mustafa.
-//
 
 #include "terminal.h"
 /**
@@ -283,18 +280,14 @@ void isBelowMaxAmountTest(void) {
     printf("Expected result: TERMINAL_OK\n");
     programState_test = isBelowMaxAmount(&terminalData_test);
     printf("Actual result: %s.\n", terminalError_test[programState_test]);
-
     printf("--------------------\n");
-
     printf("Test case #2\n");
     terminalData_test.transAmount = 10;
     printf("Input date: 10\n");
     printf("Expected result: TERMINAL_OK\n");
     programState_test = isBelowMaxAmount(&terminalData_test);
     printf("Actual result: %s.\n", terminalError_test[programState_test]);
-
     printf("--------------------\n");
-
     printf("Test case #3\n");
     terminalData_test.transAmount = 20000;
     printf("Input date: 2000\n");

@@ -5,11 +5,7 @@
 #include "Server/server.h"
 #include "Terminal/terminal.h"
 
-
 int main() {
-
     appStart();
-//    isCardExpiredTest();
-return 0;
-
+    return 0;
 }

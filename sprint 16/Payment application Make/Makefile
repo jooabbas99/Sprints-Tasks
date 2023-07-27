@@ -1,3 +1,4 @@
+# command configurations
 SHELL = /bin/bash
 RM = rm -rf
 
@@ -6,6 +7,7 @@ CFLAGS = -O1 -Wall -Werror -gdwarf-2
 LDFLAGS = -lm
 CPPFLAGS = $(foreach directory, $(INDIRS), -I$(directory))
 
+# folders configurations
 BINDIR = bin
 BUILDDIR = build
 
@@ -13,6 +15,7 @@ BUILDDIR = build
 SRCS = $(shell find . -name '*.c' -type f)
 HDRS = $(shell find . -name '*.h' -type f)
 OBJS = $(patsubst %.c,$(BUILDDIR)/%.o,$(SRCS))
+
 
 TARGET = $(BINDIR)/main
 

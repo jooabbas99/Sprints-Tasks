@@ -1,7 +1,3 @@
-//
-// Created by Hazem
-//
-
 #include "server.h"
 //Implement server-side accounts database
 //Create a global array of ST_accountsDB_t for the valid accounts' database.
@@ -25,22 +21,17 @@ ST_transaction_t transaction[TRANSACTIONS_DB_SIZE]={0};
 static uint32_t Inc_Number=0;
 //this function will take card data and validate if the account related to this card exists or not.
 //It checks if the PAN exists or not in the server's database (searches for the card PAN in the DB).
-EN_serverError_t isValidAccount(ST_cardData_t *cardData, ST_accountsDB_t *accountRefrence)
+EN_serverError_t isValidAccount(ST_cardData_t *cardData,ST_accountsDB_t *accountRefrence) 
 {
-    // uint8_t length;
-    // length=strlen((const char *)cardData->primaryAccountNumber);
-    for(int x=0; x < ACCOUNTS_DB_SIZE; x++)
-    {
-        if(strcmp((const char *)cardData->primaryAccountNumber ,(const char *)accountsDB[x].primaryAccountNumber) == 0){
-            *accountRefrence=accountsDB[x];
-//            memcpy(accountRefrence->primaryAccountNumber,accountsDB[x].primaryAccountNumber,length+1);
-//            accountRefrence->state=accountsDB[x].state;
-            return SERVER_OK;
-        }
+  for (int x = 0; x < ACCOUNTS_DB_SIZE; x++) {
+    if (strcmp((const char *)cardData->primaryAccountNumber,
+               (const char *)accountsDB[x].primaryAccountNumber) == 0) {
+      *accountRefrence = accountsDB[x];
+      return SERVER_OK;
     }
-    return ACCOUNT_NOT_FOUND;
+  }
+  return ACCOUNT_NOT_FOUND;
 }
-
 
 /*
 This function takes a reference to the account into the database and verifies if it is blocked or not
