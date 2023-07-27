@@ -10,9 +10,7 @@
 #define APPLICATION_H_
 #include "../ECUAL/LED/led.h"
 #include "../ECUAL/Button/button.h"
-#include "../MCAL/Interrupt/interrupt.h"
 #define LED_NO 4
-
 
 void AppInit();
 void AppStart();

@@ -14,9 +14,6 @@
 #define BUTTON_HIGH 1
 #define BUTTON_LOW 0
 
-#define EXT_INT_BTN_PORT PORT_D
-#define EXT_INT_BTN_PIN PIN2
-
 void BUTTON_init(uint8_t button_port , uint8_t button_pin);
 void BUTTON_status(uint8_t button_port , uint8_t button_pin,uint8_t *status);
 
